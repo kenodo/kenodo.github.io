@@ -1,0 +1,110 @@
+*{
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: url(ocean.png);
+    background-size: cover;
+}
+
+
+
+
+.scene{
+  
+    height:70%;
+    width:100%;
+}
+
+
+.ground{
+    position: absolute;
+    background-image: url(ground.png);
+    background-size:cover;
+    width:100%;
+    height:290px;
+    top:400px;
+    overflow: hidden;
+}
+
+.object{
+    position:absolute;
+    height:900px;
+    width:300px;
+    top:-450px;
+    left:400px;
+    background-image: url(%D0%BC%D0%B0%D1%8F%D0%BA.png);
+    background-size: cover;
+}
+
+.player{
+    position: absolute;
+    top:340px;
+    
+    left:800px;
+    z-index: 100;
+    height: 150px;
+    width: 80px;
+    
+    transition:left 2s linear;
+    background-image: url('перс.png');
+    background-size: cover;
+}
+
+.pug{
+   position: absolute;
+    top:400px;
+    
+    left:150px;
+    z-index: 99;
+    height: 65px;
+    width: 82px;
+    
+    transition:left 2s linear;
+    transition-delay: 1s;
+    background-image: url('pugStand.gif');
+    background-size:cover;  
+}
+
+.book{
+   position: absolute;
+    top:420px;
+    
+    left:850px;
+    z-index: 99;
+    height: 32px;
+    width: 60px;
+    
+    transition:left 2s linear;
+    transition-delay: 1s;
+    background-image: url('book.gif');
+    background-size:cover;  
+}
+
+
+.bookScreen{
+    position: absolute;
+    z-index:101;
+    width:65%;
+    height: 75%;
+    margin-top:5%;
+    margin-left:10%;
+    background-image: url("diary/diary.png");
+    background-size: cover;
+    display:none;
+}
+
+
+.bookIcon{
+    position: absolute;
+    z-index:101;
+    width:55px;
+    height:48px;
+    top:0px;
+    left:40px;
+    background-image: url(diary/icon.png);
+    background-size: cover;
+    display: none;
+}

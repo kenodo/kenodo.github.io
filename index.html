@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Проект</title>
+    <link rel="stylesheet" href="main.css">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+<body>
+   
+<div class="scene">
+    <div class="ground"> </div>
+    <div class="object"></div>
+   
+    
+    
+</div>
+       
+        <div class="player">
+            <p style="color: white;"></p>
+        </div>
+       
+       
+       <div class="pug"></div>
+       
+       <div class="book"></div>
+       
+       <div class="bookScreen">
+           <img src="diary/1.png">
+           
+       </div>
+       
+       
+       <div class="bookIcon"></div>
+       
+       
+       
+ 
+   
+   
+    
+    
+    <script>
+        
+        var position = 800;
+        var moveLeft=false;
+        var moveRight=false;
+        var mops=false;
+        var book=false;
+        
+        function checkBorderLeft(){
+        
+            ////
+        
+        }
+        
+        
+        
+        function checkBorderRight(){
+        
+            ///
+            
+        }
+        
+        
+        function mopsNormal(){
+            
+            
+            
+            $(".pug").css("background-image","url('pugStand.gif')");
+        }
+        
+        
+        function normalStateImage(){
+             $(".player").css("background-image","url('перс.png')");
+            
+            
+           if(mops) setTimeout(mopsNormal,1000);
+        }
+    
+ 
+        
+        
+        
+(function() {
+    document.onmousemove = handleMouseMove;
+    function handleMouseMove(event) {
+       
+        
+        
+
+        event = event || window.event; // IE-ism
+
+        // If pageX/Y aren't available and clientX/Y are,
+        // calculate pageX/Y - logic taken from jQuery.
+        // (This is to support old IE)
+        if (event.pageX == null && event.clientX != null) {
+            eventDoc = (event.target && event.target.ownerDocument) || document;
+            doc = eventDoc.documentElement;
+            body = eventDoc.body;
+
+            event.pageX = event.clientX +
+              (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+              (doc && doc.clientLeft || body && body.clientLeft || 0);
+            event.pageY = event.clientY +
+              (doc && doc.scrollTop  || body && body.scrollTop  || 0) -
+              (doc && doc.clientTop  || body && body.clientTop  || 0 );
+        }
+
+        // Use event.pageX / event.pageY here
+        
+        $( ".ground" ).click(function() {
+            
+          $(".bookScreen").hide(1000);
+            
+            
+           var x=event.clientX;
+           var y=event.clientY; 
+            
+            if (event.clientX>position){
+                moveLeft=false;
+                moveRight=true;
+            }
+            
+            else if (event.clientX<position){
+                moveLeft=true;
+                moveRight=false;
+            }
+            
+            
+            
+        $(".player").css("background-image","url('перс.gif')");
+        if (mops)$(".pug").css("background-image","url('pugRun.gif')");
+            
+            
+          $(".player").css("left",x);
+            if(mops)$(".pug").css("left",x-80);   
+            
+             position = event.clientX;
+            
+            if (moveLeft){
+                 $(".player").css("transform","scaleX(1)");
+                  if (mops) $(".pug").css("transform","scaleX(1)");
+            }
+            
+            if (moveRight){
+                 $(".player").css("transform","scaleX(-1)");
+                  if(mops)$(".pug").css("transform","scaleX(-1)");
+            }
+            
+            
+            setTimeout(normalStateImage,2000);
+        });
+        
+        
+        
+        function bookDisplay(){
+            $(".bookScreen").show(1000);
+            book=true;
+            $(".book").hide(500);
+            $(".bookIcon").show(100);
+        }
+        
+        
+        $( ".book" ).click(function() {
+            
+          
+            
+           var x=event.clientX;
+            
+            if (event.clientX>position){
+                moveLeft=false;
+                moveRight=true;
+            }
+            
+            else if (event.clientX<position){
+                moveLeft=true;
+                moveRight=false;
+            }
+            
+            
+            
+        $(".player").css("background-image","url('перс.gif')");
+        if (mops)$(".pug").css("background-image","url('pugRun.gif')");
+            
+            
+          $(".player").css("left",x);
+            if(mops)$(".pug").css("left",x-80);   
+            
+             position = event.clientX;
+            
+            if (moveLeft){
+                 $(".player").css("transform","scaleX(1)");
+                  if (mops) $(".pug").css("transform","scaleX(1)");
+            }
+            
+            if (moveRight){
+                 $(".player").css("transform","scaleX(-1)");
+                  if(mops)$(".pug").css("transform","scaleX(-1)");
+            }
+            
+            
+            setTimeout(normalStateImage,2000);
+            setTimeout(bookDisplay,2000);
+        });
+        
+        
+        $(".bookIcon").click(function(){
+             $(".bookScreen").show(1000);
+        });
+        
+        
+          
+       
+        
+        
+       
+        
+        //
+    }
+})();
+    
+    </script>
+   
+   
+   
+   
+   
+   
+   
+   
+    
+</body>
+</html>
