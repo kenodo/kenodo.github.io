@@ -72,7 +72,7 @@
      
      window.onload = function(){
          console.log("loaded");
-         setTimeout('$(".scene").show(1500);$(".loading").hide();',1000);
+         setTimeout('$(".scene").show();$(".loading").hide();',1000);
 };
      
      
@@ -247,7 +247,11 @@
         
         
          $("#bScr").click(function() { 
-             if(final) $(".final").show(1500);
+             if(final){
+              $(".final").show(1500);
+              $(".scene").hide();
+                 
+             } 
         });
         
          $( ".lAction" ).click(function() {         
