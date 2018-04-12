@@ -14,9 +14,21 @@
 <div class="loading" style="width:100%;height:900px;background-color: azure;display:block;">
    <h1 style="text-align: center;padding-top:25%;">Загрузка...</h1>
 </div>
+  
+  
+<div class="final">
+    <img src="final.jpg">
+</div>
    
 <div class="scene scene1" style="display:none">
-    <div class="ground"> </div>
+   <div class="bookIcon">
+       <p>1/4</p>
+   </div>
+<div class="keyIcon"></div>
+  
+  
+   <div class="sceneobj">
+       <div class="ground"> </div>
     <div class="object"></div>
    
       <div class="player">
@@ -39,14 +51,18 @@
        
        <div class="key"></div>
        
-       <div class="bookIcon"></div>
+       
        
        <div class="stone"></div>
        
        <div class="tree"></div>
        
-       <div class="keyIcon"></div>
        
+       
+       <div class="lAction"></div>
+       
+   </div>
+    
     
 </div>
        
@@ -61,13 +77,16 @@
      
      
         
-        var position = 800;
+        var position = 700;
         var moveLeft=false;
         var moveRight=false;
         var mops=false;
         var book=false;
         var key=false;
+        var lighthouse=false;
         var pieces=1;
+     var diary=false;
+     var final=false;
         
         
         function checkBorderLeft(){
@@ -110,7 +129,12 @@
        
         
         
-
+        function animateBook(){
+        $(".bookIcon").addClass("magictime spaceInDown");
+        setTimeout('$(".bookIcon").removeClass("magictime spaceInDown");',1000);
+        }
+        
+        
         event = event || window.event; // IE-ism
 
 
@@ -133,6 +157,9 @@
         
         
         function playerMove(){
+            
+             position = event.clientX;
+            
               $(".player").css("background-image","url('перс.gif')");
         if (mops)$(".pug").css("background-image","url('pugRun.gif')");
             
@@ -141,7 +168,7 @@
           $(".love").css("left",x-80)
             if(mops)$(".pug").css("left",x-80);   
             
-             position = event.clientX;
+            
             
             if (moveLeft){
                  $(".player").css("transform","scaleX(1)");
@@ -163,6 +190,8 @@
             $(".key").hide(300);
             $(".keyIcon").show(500);
             pieces=3;
+            $(".bookIcon p").text("3/4");
+            animateBook();
         }
         
         
@@ -194,6 +223,8 @@
             $(".love").show(500);
                 mops=true;
                 pieces=2;
+                $(".bookIcon p").text("2/4");
+                animateBook();
              
              setInterval(function(){ 
 	$('.love').toggleClass('magictime puffOut');
@@ -208,17 +239,41 @@
         
         
         $( ".book" ).click(function() {         
-            
+            diary=true;
             checkLeftRight();
             playerMove();
             setTimeout(bookDisplay,2000);
         });
         
         
-        $( ".book" ).click(function() {         
+         $("#bScr").click(function() { 
+             if(final) $(".final").show(1500);
+        });
+        
+         $( ".lAction" ).click(function() {         
+             pieces=4;
+             animateBook();
+             $(".bookIcon").addClass("pulsate");
+             $(".bookIcon p").text("4/4");
+             $(".object").css("background-image","url('lighthouseOn.png')");
+             final=true;
+             setTimeout('$(".sceneobj").css("top", 0);',2000);
+             
+             
+        });
+        
+        
+        
+        
+        $( ".object" ).click(function() {         
             checkLeftRight();
             playerMove();
-            setTimeout(bookDisplay,2000);
+            
+            if (key && lighthouse==false && book==true){
+                $(".sceneobj").css("top",500);
+                lighthouse=true;
+            } 
+           
         });
         
         
@@ -228,6 +283,8 @@
             playerMove();
             setTimeout(addKey,2000);
         });
+        
+        
         
         
         $(".bookIcon").click(function(){

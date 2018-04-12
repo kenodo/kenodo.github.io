@@ -21,11 +21,57 @@ padding-left:60px;
 
 
 
+.sceneobj{
+    top:0px;
+    position: absolute;
+    width:100%;
+    height: 100%;
+    overflow:visible;
+    transition:top 2s;
+}
 
 .scene{
-  
-    height:70%;
+    position: absolute;
+    height:100%;
     width:100%;
+    top:auto;
+    transition:2s;
+}
+
+.bookIcon{
+    overflow: visible;
+    transform:scale(1.5);
+}
+
+.keyIcon{
+    transform:scale(1.5);
+}
+
+.bookIcon p{
+    color:white;
+    background-color: red;
+    border:1px white;
+    border-radius: 10px;
+    width:50%;
+    margin-top:30px;
+    font-family:'Gaegu',cursive;
+    
+}
+
+.final{
+    background-image: url(final.jpg);
+    background-size: cover;
+    width:100%;
+    height:100%;
+    display:none;
+    z-index: 200;
+}
+
+.final img{
+    width:100%;
+    height:-webkit-fill-available;
+    height:fill;
+    z-index: 200;
 }
 
 
@@ -39,14 +85,38 @@ padding-left:60px;
     overflow: hidden;
 }
 
+
+.pulsate{
+    animation:pulsate 1s ease-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulsate {
+    0% {transform: scale(1.5);}
+    50% {transform: scale(1);}
+    100% {transform: scale(1.5);}
+}
+
+
+.lAction{
+     position:absolute;
+    height:135px;
+    width:135px;
+    top:-280px;
+    
+    left:480px;
+}
+
 .object{
     position:absolute;
-    height:900px;
-    width:300px;
-    top:-450px;
-    left:400px;
+    height:406px;
+    width:135px;
+    top:-150px;
+    transform:scale(2);
+    left:480px;
     background-image: url(%D0%BC%D0%B0%D1%8F%D0%BA.png);
     background-size: cover;
+    transition:1s;
 }
 
 .player{
