@@ -1,322 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Маяк</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="magic.css">
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-</head>
-<body>
-  
-  
-<div class="loading" style="width:100%;height:900px;background-color: azure;display:block;">
-   <h1 style="text-align: center;padding-top:25%;">Загрузка...</h1>
-</div>
-  
-  
-<div class="final">
-    <img src="final.jpg">
-</div>
-   
-<div class="scene scene1" style="display:none">
-   <div class="bookIcon">
-       <p>1/4</p>
-   </div>
-<div class="keyIcon"></div>
-  
-  
-   <div class="sceneobj">
-       <div class="ground"> </div>
-    <div class="object"></div>
-   
-      <div class="player">
-            <p style="color: white;"></p>
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Creative - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/creative.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Новая Эра</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">О нас</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#services">Подробнее</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#portfolio">Клиенты</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Контакты</a>
+            </li>
+          </ul>
         </div>
-       
-       
-       <div class="pug">
+      </div>
+    </nav>
+
+    <header class="masthead text-white d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-7">
+            <h1 class="text-uppercase">
+              <strong style="font-size:2.7rem;">Производство и распределение пара, обеспечение <bl style="color:#44e2ff">теплосетей</bl>.</strong>
+            </h1>            
+          </div>
           
-       </div>
-       
-        <div class="love"></div>
-       
-       <div class="book"></div>
-       
-       <div class="bookScreen">
-           <img id="bScr" src="diary/1.png">
-           <h1 id="pieces">1/4</h1>
-       </div>
-       
-       <div class="key"></div>
-       
-       
-       
-       <div class="stone"></div>
-       
-       <div class="tree"></div>
-       
-       
-       
-       <div class="lAction"></div>
-       
-   </div>
-    
-    
-</div>
-       
-      
- <script>
-     
-     
-     window.onload = function(){
-         console.log("loaded");
-         setTimeout('$(".scene").show();$(".loading").hide();',1000);
-};
-     
-     
-        
-        var position = 700;
-        var moveLeft=false;
-        var moveRight=false;
-        var mops=false;
-        var book=false;
-        var key=false;
-        var lighthouse=false;
-        var pieces=1;
-     var diary=false;
-     var final=false;
-        
-        
-        function checkBorderLeft(){
-        
-            ////
-        
-        }
-        
-        
-        
-        function checkBorderRight(){
-        
-            ///
+          <div class="col-lg-12">            
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about" style="margin-top:50px;">Подробнее</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="bg-primary" id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h2 class="section-heading"><strong>О <bl style="color:#44e2ff">КОМПАНИИ</bl></strong></h2>
+            <div class="divider">
+                <div class="graypart"><br></div>
+                <div class="bluepart"><br></div>
+            </div>
+            <p class="text-faded mb-4">Основное направление деятельности:<br><br>
+
+блочно-модульные котельные; кондиционирование, вентиляция, сплит системы</p>
+           
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+           <p class="text-faded mb-4">
+                Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. 
+            </p>
             
-        }
-        
-        
-        function mopsNormal(){
+            <p class="text-faded mb-4">
+                Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. 
+            </p>
             
             
-            
-            $(".pug").css("background-image","url('pugStand.gif')");
-        }
-        
-        
-        function normalStateImage(){
-             $(".player").css("background-image","url('перс.png')");
+            <p class="text-faded mb-4">
+                Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. 
+            </p>
             
             
-           if(mops) setTimeout(mopsNormal,1000);
-        }
-    
- 
-        
-        
-        
-(function() {
-    document.onmousemove = handleMouseMove;
-    function handleMouseMove(event) {
-       
-        
-        
-        function animateBook(){
-        $(".bookIcon").addClass("magictime spaceInDown");
-        setTimeout('$(".bookIcon").removeClass("magictime spaceInDown");',1000);
-        }
-        
-        
-        event = event || window.event; // IE-ism
+            <p class="text-faded mb-4">
+                Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. 
+            </p> 
+            
+            
+          </div>
+          
+          <div class="col-lg-6 imageBlock">
+              <img class="img-fluid" src="img/image.jpg" alt="">
+              <img class="img-fluid" src="img/image.jpg" alt="">
+              <img class="img-fluid" src="img/image.jpg" alt="">
+          </div>
+          
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="p-0" id="portfolio">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h2 class="section-heading"><strong>НАШИ <bl style="color:#44e2ff">КЛИЕНТЫ</bl></strong></h2>
+            <div class="divider">
+                <div class="graypart"><br></div>
+                <div class="bluepart"><br></div>
+            </div>
+            <p class="text-faded mb-4">Основное направление деятельности:<br><br>
+
+блочно-модульные котельные; кондиционирование, вентиляция, сплит системы</p>
+           
+          </div>
+        </div>
+      </div>
+    </section>
 
 
-        // Use event.pageX / event.pageY here
-        
-         var x=event.clientX;
-         var y=event.clientY; 
-        
-        function checkLeftRight(){
-           if (event.clientX>position){
-                moveLeft=false;
-                moveRight=true;
-            }
-            
-            else if (event.clientX<position){
-                moveLeft=true;
-                moveRight=false;
-            }          
-        }
-        
-        
-        function playerMove(){
-            
-             position = event.clientX;
-            
-              $(".player").css("background-image","url('перс.gif')");
-        if (mops)$(".pug").css("background-image","url('pugRun.gif')");
-            
-            
-          $(".player").css("left",x);
-          $(".love").css("left",x-80)
-            if(mops)$(".pug").css("left",x-80);   
-            
-            
-            
-            if (moveLeft){
-                 $(".player").css("transform","scaleX(1)");
-                  if (mops) $(".pug").css("transform","scaleX(1)");
-            }
-            
-            if (moveRight){
-                 $(".player").css("transform","scaleX(-1)");
-                  if(mops)$(".pug").css("transform","scaleX(-1)");
-            }
-            
-            
-            setTimeout(normalStateImage,2000);
-        }
-        
-        
-        function addKey(){
-            key=true;
-            $(".key").hide(300);
-            $(".keyIcon").show(500);
-            pieces=3;
-            $(".bookIcon p").text("3/4");
-            animateBook();
-        }
-        
-        
-        
-        $( ".ground" ).click(function() {
-            
-          $(".bookScreen").hide(1000);         
-            
-           checkLeftRight();
-           playerMove();
-            
-        });
-        
-        
-        
-        function bookDisplay(){
-            $(".bookScreen").show(1000);
-            book=true;
-            $(".book").hide(500);
-            $(".bookIcon").show(100);
-        }
-        
-        
-        function mopsLove(){
-            
-            if(!mops){
-                
-                 $(".love").css("left",160);
-            $(".love").show(500);
-                mops=true;
-                pieces=2;
-                $(".bookIcon p").text("2/4");
-                animateBook();
-             
-             setInterval(function(){ 
-	$('.love').toggleClass('magictime puffOut');
-}, 1000 );
-              setInterval(function(){ 
-	$('.love').toggleClass('magictime puffIn');
-}, 2000 );
-            }
-            
-           
-        }
-        
-        
-        $( ".book" ).click(function() {         
-            diary=true;
-            checkLeftRight();
-            playerMove();
-            setTimeout(bookDisplay,2000);
-        });
-        
-        
-         $("#bScr").click(function() { 
-             if(final){
-              $(".final").show(1500);
-              $(".scene").hide();
-                 
-             } 
-        });
-        
-         $( ".lAction" ).click(function() {         
-             pieces=4;
-             animateBook();
-             $(".bookIcon").addClass("pulsate");
-             $(".bookIcon p").text("4/4");
-             $(".object").css("background-image","url('lighthouseOn.png')");
-             final=true;
-             setTimeout('$(".sceneobj").css("top", 0);',2000);
-             
-             
-        });
-        
-        
-        
-        
-        $( ".object" ).click(function() {         
-            checkLeftRight();
-            playerMove();
-            
-            if (key && lighthouse==false && book==true){
-                $(".sceneobj").css("top",500);
-                lighthouse=true;
-            } 
-           
-        });
-        
-        
-         $( ".key" ).click(function() {         
-            
-            checkLeftRight();
-            playerMove();
-            setTimeout(addKey,2000);
-        });
-        
-        
-        
-        
-        $(".bookIcon").click(function(){
-            console.log(pieces);
-            $("#bScr").attr("src", "diary/" + pieces + ".png");
-            $("#pieces").text(pieces+"/4");
-            
-            
-             $(".bookScreen").show(1000);
-                mops=true;
-        });
-        
-         $(".pug").click(function(){
-             
-        
-               
-            
-            checkLeftRight();
-            playerMove();
-            setTimeout(mopsLove,2000);
-     
-         
-         
-         });
-        //
-    }
-})();
-    
-    </script>
-</body>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/creative.min.js"></script>
+
+  </body>
+
 </html>
