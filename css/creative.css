@@ -284,6 +284,17 @@ header.masthead p {
   }
 }
 
+@media screen and (max-width:990px){
+    #portfolio{
+        margin-top: 0;
+    }
+    
+    .imageBlock{
+        top: 0;
+        text-align: center;
+    }
+}
+
 @media (min-width: 992px) {
   header.masthead {
     height: 100vh;
@@ -293,7 +304,8 @@ header.masthead p {
   }
   header.masthead h1 {
     font-size: 3rem;
-  }
+  }    
+    
 }
 
 @media (min-width: 1200px) {
