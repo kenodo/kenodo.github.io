@@ -84,9 +84,16 @@ section {
   padding: 8rem 0;
 }
 
+.clientLogo {
+    width:127px;
+    height:127px;
+    margin-left:40px;
+}
+
 
 .section-heading {
   margin-top: 0;
+  color:#c0c0c0;
 }
 
 ::-moz-selection {
@@ -123,7 +130,7 @@ img::-moz-selection {
 #mainNav .navbar-brand {
   font-weight: 700;
   text-transform: uppercase;
-  color: #F05F40;
+  color: #44e2ff;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -135,7 +142,7 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-  color: #f05f40;
+  color: #44e2ff;
 }
 
 #mainNav .navbar-nav > li.nav-item > a.nav-link,
@@ -148,7 +155,7 @@ img::-moz-selection {
 
 #mainNav .navbar-nav > li.nav-item > a.nav-link:hover,
 #mainNav .navbar-nav > li.nav-item > a.nav-link:focus:hover {
-  color: #F05F40;
+  color: #44e2ff;
 }
 
 #mainNav .navbar-nav > li.nav-item > a.nav-link.active,
@@ -195,7 +202,7 @@ img::-moz-selection {
     color: #44e2ff;
   }
   #mainNav.navbar-shrink .navbar-brand:focus, #mainNav.navbar-shrink .navbar-brand:hover {
-    color: #f05f40;
+    color: #44e2ff;
   }
   #mainNav.navbar-shrink .navbar-nav > li.nav-item > a.nav-link,
   #mainNav.navbar-shrink .navbar-nav > li.nav-item > a.nav-link:focus {
@@ -249,8 +256,7 @@ header.masthead hr {
 
 #portfolio{
     margin-top:-100px;
-    
-    
+    padding-bottom:20rem !important;
 }
 
 
