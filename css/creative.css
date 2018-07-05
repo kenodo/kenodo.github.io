@@ -253,10 +253,14 @@ header.masthead hr {
     color:#5d5d5d;
 }
 
-
+.socialIcons img{
+    width:58px;
+    height:58px;
+    cursor:pointer;
+}
 #portfolio{
     margin-top:-100px;
-    padding-bottom:20rem !important;
+    padding-bottom:2rem !important;
 }
 
 
