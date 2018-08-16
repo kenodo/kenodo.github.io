@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
+
+
+<script>
+  let app = new PIXI.Application({ 
+    width: 800, 
+    height: 600,                       
+    antialias: true, 
+    transparent: false, 
+    resolution: 1,
+    backgroundColor:0x51b1cd
+  }
+);
+
+//Add the canvas that Pixi automatically created for you to the HTML document
+document.body.appendChild(app.view);
+
+//load an image and run the `setup` function when it's done
+PIXI.loader
+  .add("sand.jpg")
+  .load(setup);
+    
+
+
+
+//This `setup` function will run when the image has loaded
+function setup() {
+    var sand = [,];
+    var leftBlock = 0;
+    
+    let container = new PIXI.Container();
+   
+    
+    function generateLTR(){
+         for(var i=0;i<25;i++){
+        var randY = 400+Math.random()*16;
+        sand[i,randY]=new PIXI.Sprite(PIXI.loader.resources["sand.jpg"].texture);
+        sand[i,randY].x=i*32;
+        sand[i,randY].y=randY;
+        sand[i,randY].width=32;       
+        sand[i,randY].height=32;
+        container.addChild(sand[i,randY]);
+        
+        
+        while(randY<600){
+            randY+=32;
+            console.log('randY: ' + randY);
+            sand[i,randY]=new PIXI.Sprite(PIXI.loader.resources["sand.jpg"].texture);
+            sand[i,randY].x=i*32;
+            sand[i,randY].y=randY;
+            sand[i,randY].width=32;       
+            sand[i,randY].height=32;
+           container.addChild(sand[i,randY]);
+        }
+        
+        
+        
+        
+    }
+    
+    app.stage.addChild(container);
+    }
+    
+    
+     function generateRTL(){
+         
+         for(var i=0;i<25;i++){
+             console.log("leftBlock = " + leftBlock);
+        leftBlock-=32;
+        var genX=leftBlock;
+        var randY = 400+Math.random()*16;
+        sand[genX,randY]=new PIXI.Sprite(PIXI.loader.resources["sand.jpg"].texture);
+        sand[genX,randY].x=genX;
+        sand[genX,randY].y=randY;
+        sand[genX,randY].width=32;       
+        sand[genX,randY].height=32;
+        container.addChild(sand[genX,randY]);
+        
+        
+        while(randY<600){
+            randY+=32;
+            sand[genX,randY]=new PIXI.Sprite(PIXI.loader.resources["sand.jpg"].texture);
+            sand[genX,randY].x=genX;
+            sand[genX,randY].y=randY;
+            sand[genX,randY].width=32;       
+            sand[genX,randY].height=32;
+           container.addChild(sand[genX,randY]);
+        }
+        
+        
+        
+        
+    }
+    
+    app.stage.addChild(container);
+    }
+    
+    
+    generateLTR();
+    
+    
+    function checkForEdges(){
+        if (container.x%300==0){
+           generateRTL();
+            console.log("Достраиваем границу");
+           
+        }
+    }
+
+    var edgeCheck=false; 
+    
+    
+  app.ticker.add(function() {
+  container.x+=1;
+      if (edgeCheck==false) {
+          console.log(true);
+          checkForEdges();
+      }
+  
+   
+});
+
+    
+    
+
+}
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>
