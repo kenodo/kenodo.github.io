@@ -4,9 +4,69 @@
     <meta charset="UTF-8">
     <title>Хостел HOMI</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet">
     
 </head>
 <body>
+ 
+ <style>
+
+        
+        
+        body{
+        font-family: 'Roboto', sans-serif;    
+        }
+        
+        
+        .img{
+            padding:0;
+            margin:0;
+            width:130px;
+            height:130px;
+            background-color: darkorange;
+            margin-bottom:5px;
+        }
+        
+        .img-circle{
+            border-radius:500px;
+            
+            width:80%;
+            margin-left:10%;
+        }
+        
+        .sideText{
+            padding-top:10%;
+            
+        }
+        
+        .mainScreen{
+            background-image: url("back.jpg");
+            background-size: cover;
+            background-position:left;
+            background-attachment: fixed;
+            
+        }
+        
+        
+        .sideText h2{
+        font-size:6vw;
+        }
+        
+       
+        
+        
+        
+        
+        
+        
+        .aboutText{
+            position: relative;
+            font-size:50pt;left:-220px;background-color:white;padding:20px;
+          
+        }
+        
+        
+    </style>
   
   
   
@@ -44,59 +104,7 @@
   
     
     
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Rubik+Mono+One');
-        
-        
-        
-        .img{
-            padding:0;
-            margin:0;
-            width:130px;
-            height:130px;
-            background-color: darkorange;
-            margin-bottom:5px;
-        }
-        
-        .img-circle{
-            border-radius:500px;
-            
-            width:80%;
-            margin-left:10%;
-        }
-        
-        .sideText{
-            padding-top:10%;
-        }
-        
-        .mainScreen{
-            background-image: url("back.jpg");
-            background-size: cover;
-            background-position:left;
-            background-attachment: fixed;
-            
-        }
-        
-        
-        .sideText h2{
-        font-size:6vw;
-        }
-        
-       
-        
-        
-        
-        
-        
-        
-        .aboutText{
-            position: relative;
-            font-size:45pt;left:-240px;background-color:white;padding:20px;
-          
-        }
-        
-        
-    </style>
+    
     
        
   
@@ -107,14 +115,14 @@
                     <h2 style="font-size:10vw;">HOMI.</h2> 
                </div>  
                
-                 <div class="col-12 col-md-3 col-lg-2 gridContainer">
-                     <div class="img"></div>
-                     <div class="img"></div>
-                     <div class="img"></div>
-                     <div class="img"></div>
+                 <div class="col-8 col-md-4 col-lg-2">
+                   <img class="img" src="about.jpg" alt="">
+                   <img class="img" src="about.jpg" alt="">
+                   <img class="img" src="about.jpg" alt="">
+                   <img class="img" src="about.jpg" alt="">
                  </div>  
                  
-                 <div class="col-4 offset-sm-5 offset-md-0 col-md-3 col-lg-2 offers" style="text-align: center">
+                 <div class="col-4 col-md-2 col-lg-2 offers" style="text-align: center">
                      <h5 style="text-align: center"><b>Актуальные предложения</b></h5>
                      <div class="img img-circle"></div>
                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -132,7 +140,7 @@
     
     <section class="about">
         
-        <div class="container-fluid" style="padding-top:73px" >
+        <div class="container" style="padding-top:73px" >
             <div class="row">
                 <div class="col-6">
                     <img class="img-fluid" src="about.jpg" alt="">
@@ -252,17 +260,130 @@ box-shadow: 6px 6px 0px 1px rgba(0,0,0,0.75);">Забронировать</p>
            
             </div>
      </div>
- </section>   
+ </section>  
+
+
+<section>
+   
+   <div class="container">
+       <div class="row">
+           <div class="d-flex ml-auto"><h2 style="font-size:5rem;font-family:'Roboto', monospace;letter-spacing: 30px;">Услуги</h2></div>
+       </div>
+       
+       <style>
+           .servicesBlock{
+               width:100%;
+               height:225px;
+               background-color:darkorange;
+               margin-bottom:10px;
+               
+           }
+           
+           .servicesBlock h3{
+               line-height: 225px;
+               font-size:30pt;
+           }
+       </style>
+       
+       
+       <div class="row" style="margin-top:4rem;">
+           <div class="col-12 col-md-5 servicesBlock "><h3>Услуга 1</h3></div>
+           
+           
+       <div class="col-12 col-md-5 offset-md-6 servicesBlock "><h3>Услуга 2</h3></div>
+       
+       <div class="col-12 col-md-5 servicesBlock "><h3>Услуга 3</h3></div>
+       
+       <div class="col-12 col-md-5 offset-md-6 servicesBlock "><h3>Услуга 4</h3></div>
+       </div>
+       
+   </div>
+   
+   
     
-  
+</section>
+
+
+
+<style>
     
-      
+    
+    .pb0 {
+    padding-bottom: 0 !important;
+}
+    
+    .projects{
+            padding: 96px 0;
+    position: relative;
+    overflow: hidden;
+    }
+    
+    .cc2{
+        position: relative;
         
+    }
+    </style>
 
 
 
 
+<section class="projects pb0" style="background-color:#0e1015">
+			<div class="container cc2">
+          <div class="row">
+              <div class="col">
+                  <div class="d-flex mr-auto"><h2 style="font-size:5rem;font-family:'Roboto', monospace;letter-spacing: 30px;padding-left:5px;color:lightgray;">Комнаты</h2></div>
+                  <h3 style="color:darkgray">Взгляните на наши комнаты</h3>
+                  
+              </div>
+               
+           </div>
+				
+				
+				
+				
+				<div class="container">
+  <div class="row">
+      <div class="col-12 col-md-4 imgcol">
+          <img class="img-fluid" src="image2.jpg" alt="">
+           <img class="img-fluid" src="image2.jpg" alt="">
+            <img class="img-fluid" src="image2.jpg" alt="">
+             <img class="img-fluid" src="image2.jpg" alt="">
+      </div>
+      
+      <div class="col-12 col-md-4 imgcol">
+          <img class="img-fluid" src="about.jpg" alt="">
+           <img class="img-fluid" src="image2.jpg" alt="">
+            <img class="img-fluid" src="image2.jpg" alt="">
+             <img class="img-fluid" src="image2.jpg" alt="">
+      </div>
+      
+      <div class="col-12 col-md-4 imgcol">
+          <img class="img-fluid" src="image2.jpg" alt="">
+           <img class="img-fluid" src="image2.jpg" alt="">
+            <img class="img-fluid" src="image2.jpg" alt="">
+             <img class="img-fluid" src="image2.jpg" alt="">
+      </div>
+      
+      
+  </div>
+</div>
 
+    <style>
+        .imgcol{
+padding:15px;
+        margin:0;
+        }
+        
+        .imgcol img{
+            padding-bottom:15px;
+        }
+    </style>
+			</div>
+			
+                                            
+                                            
+                                            
+												</section>
 
 
 
