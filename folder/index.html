@@ -28,7 +28,7 @@ document.body.appendChild(app.view);
 
 //load an image and run the `setup` function when it's done
 PIXI.loader
-  .add("sand.jpg")
+  .add("s.jpg")
   .load(setup);
     
 
@@ -38,32 +38,61 @@ PIXI.loader
 function setup() {
     var sand = [,];
     var leftBlock = 0;
+    var leftY = 608;
+    var rightY = 608;
+    var rightBlock=0;
     
     let container = new PIXI.Container();
+    var toDelete= [];
    
     
-    function generateLTR(){
+     function generateLTR(){
          for(var i=0;i<25;i++){
-        var randY = 400+Math.random()*16;
-        sand[i,randY]=new PIXI.Sprite(PIXI.loader.resources["sand.jpg"].texture);
-        sand[i,randY].x=i*32;
-        sand[i,randY].y=randY;
-        sand[i,randY].width=32;       
-        sand[i,randY].height=32;
-        container.addChild(sand[i,randY]);
+            var genX=0;
+       
+        var randY = 32*15-(Math.floor(Math.random() * 11))*32;
+      
+             
+        while(rightY!=randY){
+            console.log("rightY=" + rightY);
+            console.log("rightY=" + randY);
+        genX=rightBlock;
+        rightBlock+=32;     
         
+        sand[genX,rightY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+        sand[genX,rightY].x=genX;
+        var rightYToAdd=rightY;       
+                 
+        if(rightY<randY){
+          sand[genX,rightY].y=rightY;
+          rightY+=32;
+        }
+        else{
+            sand[genX,rightY].y=rightY;
+            rightY-=32;
+        }
         
-        while(randY<600){
-            randY+=32;
+                 
+        sand[genX,rightYToAdd].width=32;       
+        sand[genX,rightYToAdd].height=32;
+        container.addChild(sand[genX,rightYToAdd]);
+        toDelete.push(sand[genX,rightYToAdd]);
+        
+        var toBottomY=rightYToAdd;
+        while(toBottomY<700){
+            toBottomY+=32;
             console.log('randY: ' + randY);
-            sand[i,randY]=new PIXI.Sprite(PIXI.loader.resources["sand.jpg"].texture);
-            sand[i,randY].x=i*32;
-            sand[i,randY].y=randY;
-            sand[i,randY].width=32;       
-            sand[i,randY].height=32;
-           container.addChild(sand[i,randY]);
+            sand[genX,toBottomY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+            sand[genX,toBottomY].x=genX;
+            sand[genX,toBottomY].y=toBottomY;
+            sand[genX,toBottomY].width=32;       
+            sand[genX,toBottomY].height=32;
+           container.addChild(sand[genX,toBottomY]);
+            toDelete.push(sand[genX,toBottomY]);
         }
+                 
         
+             }
         
         
         
@@ -73,60 +102,152 @@ function setup() {
     }
     
     
-     function generateRTL(){
-         
+  function generateRTL(){
+        var genX=0;
+      
+     toDelete.forEach(function(item) {
+  item.visible=false;
+});
+      
          for(var i=0;i<25;i++){
-             console.log("leftBlock = " + leftBlock);
-        leftBlock-=32;
-        var genX=leftBlock;
-        var randY = 400+Math.random()*16;
-        sand[genX,randY]=new PIXI.Sprite(PIXI.loader.resources["sand.jpg"].texture);
-        sand[genX,randY].x=genX;
-        sand[genX,randY].y=randY;
-        sand[genX,randY].width=32;       
-        sand[genX,randY].height=32;
-        container.addChild(sand[genX,randY]);
         
+       
+        var randY = 32*15-(Math.floor(Math.random() * 11))*32;
+      
+             
+        while(leftY!=randY){
+            console.log("leftY=" + leftY);
+            console.log("leftY=" + leftY);
+        genX=leftBlock;
+        leftBlock-=32;     
         
-        while(randY<600){
-            randY+=32;
-            sand[genX,randY]=new PIXI.Sprite(PIXI.loader.resources["sand.jpg"].texture);
-            sand[genX,randY].x=genX;
-            sand[genX,randY].y=randY;
-            sand[genX,randY].width=32;       
-            sand[genX,randY].height=32;
-           container.addChild(sand[genX,randY]);
+        sand[genX,leftY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+        sand[genX,leftY].x=genX;
+        var leftYToAdd=leftY;       
+                 
+        if(leftY<randY){
+          sand[genX,leftY].y=leftY;
+          leftY+=32;
+        }
+        else{
+            sand[genX,leftY].y=leftY;
+            leftY-=32;
         }
         
+                 
+        sand[genX,leftYToAdd].width=32;       
+        sand[genX,leftYToAdd].height=32;
+        container.addChild(sand[genX,leftYToAdd]);
+        toDelete.push(sand[genX,leftYToAdd]);
+        var toBottomY=leftYToAdd;
+        while(toBottomY<700){
+            toBottomY+=32;
+            console.log('randY: ' + randY);
+            sand[genX,toBottomY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+            sand[genX,toBottomY].x=genX;
+            sand[genX,toBottomY].y=toBottomY;
+            sand[genX,toBottomY].width=32;       
+            sand[genX,toBottomY].height=32;
+           container.addChild(sand[genX,toBottomY]);
+        toDelete.push(sand[genX,toBottomY]);
+        }
+                 
+        
+             }
         
         
         
     }
     
     app.stage.addChild(container);
+    
     }
     
     
+    function keyboard(keyCode) {
+  let key = {};
+  key.code = keyCode;
+  key.isDown = false;
+  key.isUp = true;
+  key.press = undefined;
+  key.release = undefined;
+  //The `downHandler`
+  key.downHandler = event => {
+    if (event.keyCode === key.code) {
+      if (key.isUp && key.press) key.press();
+      key.isDown = true;
+      key.isUp = false;
+    }
+    event.preventDefault();
+  };
+
+  //The `upHandler`
+  key.upHandler = event => {
+    if (event.keyCode === key.code) {
+      if (key.isDown && key.release) key.release();
+      key.isDown = false;
+      key.isUp = true;
+    }
+    event.preventDefault();
+  };
+
+  //Attach event listeners
+  window.addEventListener(
+    "keydown", key.downHandler.bind(key), false
+  );
+  window.addEventListener(
+    "keyup", key.upHandler.bind(key), false
+  );
+  return key;
+}
+    
+    
+    generateRTL();
     generateLTR();
     
     
-    function checkForEdges(){
-        if (container.x%300==0){
-           generateRTL();
-            console.log("Достраиваем границу");
+    function checkForEdges(side=""){
+        
+        
+        
+        
+            
+            if (side=="right"){
+                
+                
+                
+                
+                if(container.x<((-1*rightBlock)+800)){
+                    generateLTR(); 
+                }
+                
+               
+            }
+            else if (side=="left"){
+                 if(container.x>((-1*leftBlock)-400)){
+                    generateRTL(); 
+                }
+            }
            
-        }
+           
+           
+        
     }
 
-    var edgeCheck=false; 
+
     
     
   app.ticker.add(function() {
-  container.x+=1;
-      if (edgeCheck==false) {
-          console.log(true);
-          checkForEdges();
-      }
+  
+      container.x+=11;
+      console.log("container X = " + container.x);
+      console.log("left = " + (leftBlock-800));
+      
+      
+      checkForEdges('left');
+       
+  
+  
   
    
 });
