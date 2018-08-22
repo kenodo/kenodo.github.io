@@ -9,7 +9,7 @@
     
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
-
+<script src="bump.js"></script>
 
 <script>
   let app = new PIXI.Application({ 
@@ -29,66 +29,79 @@ document.body.appendChild(app.view);
 //load an image and run the `setup` function when it's done
 PIXI.loader
   .add("s.jpg")
+  .add("cat.png")
   .load(setup);
+    
+PIXI.TRANSFORM_MODE.DEFAULT = PIXI.TRANSFORM_MODE.DYNAMIC;
     
 
 
 
 //This `setup` function will run when the image has loaded
 function setup() {
-    var sand = [,];
-    var leftBlock = 0;
-    var leftY = 608;
-    var rightY = 608;
-    var rightBlock=0;
+    var sand = new Array();
     
+    var leftBlock = 0;
+    var leftY = 256;
+    var rightY = 256;
+    var rightBlock=0;
+    var catY=0;
+    let pers = new PIXI.Container();
     let container = new PIXI.Container();
     var toDelete= [];
+    
+    
    
     
-     function generateLTR(){
+  function generateLTR(){
          for(var i=0;i<25;i++){
             var genX=0;
        
-        var randY = 32*15-(Math.floor(Math.random() * 11))*32;
-      
+        
+        var randY = 16*15-(Math.floor(Math.random() * 10))*16;
              
         while(rightY!=randY){
             console.log("rightY=" + rightY);
             console.log("rightY=" + randY);
         genX=rightBlock;
-        rightBlock+=32;     
+        sand[genX] = new Array();
+        rightBlock+=16;     
         
-        sand[genX,rightY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
-        sand[genX,rightY].x=genX;
+        sand[genX][rightY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+            
+        sand[genX][rightY].x=genX;
         var rightYToAdd=rightY;       
                  
         if(rightY<randY){
-          sand[genX,rightY].y=rightY;
-          rightY+=32;
+          sand[genX][rightY].y=rightY;
+          rightY+=16;
         }
         else{
-            sand[genX,rightY].y=rightY;
-            rightY-=32;
+            sand[genX][rightY].y=rightY;
+            rightY-=16;
         }
         
                  
-        sand[genX,rightYToAdd].width=32;       
-        sand[genX,rightYToAdd].height=32;
-        container.addChild(sand[genX,rightYToAdd]);
-        toDelete.push(sand[genX,rightYToAdd]);
+        sand[genX][rightYToAdd].width=16;       
+        sand[genX][rightYToAdd].height=16;
+        container.addChild(sand[genX][rightYToAdd]);
+            
+            
+            
+        toDelete.push(sand[genX][rightYToAdd]);
         
         var toBottomY=rightYToAdd;
-        while(toBottomY<700){
-            toBottomY+=32;
+       while(toBottomY<700){
+            toBottomY+=16;
             console.log('randY: ' + randY);
-            sand[genX,toBottomY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
-            sand[genX,toBottomY].x=genX;
-            sand[genX,toBottomY].y=toBottomY;
-            sand[genX,toBottomY].width=32;       
-            sand[genX,toBottomY].height=32;
-           container.addChild(sand[genX,toBottomY]);
-            toDelete.push(sand[genX,toBottomY]);
+            sand[genX][toBottomY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+            
+            sand[genX][toBottomY].x=genX;
+            sand[genX][toBottomY].y=toBottomY;
+            sand[genX][toBottomY].width=16;       
+            sand[genX][toBottomY].height=16;
+           container.addChild(sand[genX][toBottomY]);
+        toDelete.push(sand[genX][toBottomY]);
         }
                  
         
@@ -103,53 +116,62 @@ function setup() {
     
     
   function generateRTL(){
+       
         var genX=0;
+      /*
       
      toDelete.forEach(function(item) {
   item.visible=false;
 });
-      
+      */
          for(var i=0;i<25;i++){
+             
+        
         
        
-        var randY = 32*15-(Math.floor(Math.random() * 11))*32;
+        var randY = 16*15-(Math.floor(Math.random() * 10))*16;
+        //var randY=64;
+        
       
              
         while(leftY!=randY){
             console.log("leftY=" + leftY);
             console.log("leftY=" + leftY);
         genX=leftBlock;
-        leftBlock-=32;     
+        sand[genX] = new Array();
+        leftBlock-=16;  
         
-        sand[genX,leftY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
-        sand[genX,leftY].x=genX;
+        sand[genX][leftY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+     
+        sand[genX][leftY].x=genX;
         var leftYToAdd=leftY;       
                  
         if(leftY<randY){
-          sand[genX,leftY].y=leftY;
-          leftY+=32;
+          sand[genX][leftY].y=leftY;
+          leftY+=16;
         }
         else{
-            sand[genX,leftY].y=leftY;
-            leftY-=32;
+            sand[genX][leftY].y=leftY;
+            leftY-=16;
         }
         
                  
-        sand[genX,leftYToAdd].width=32;       
-        sand[genX,leftYToAdd].height=32;
-        container.addChild(sand[genX,leftYToAdd]);
-        toDelete.push(sand[genX,leftYToAdd]);
+        sand[genX][leftYToAdd].width=16;       
+        sand[genX][leftYToAdd].height=16;
+        container.addChild(sand[genX][leftYToAdd]);
+        toDelete.push(sand[genX][leftYToAdd]);
         var toBottomY=leftYToAdd;
         while(toBottomY<700){
-            toBottomY+=32;
+            toBottomY+=16;
             console.log('randY: ' + randY);
-            sand[genX,toBottomY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
-            sand[genX,toBottomY].x=genX;
-            sand[genX,toBottomY].y=toBottomY;
-            sand[genX,toBottomY].width=32;       
-            sand[genX,toBottomY].height=32;
-           container.addChild(sand[genX,toBottomY]);
-        toDelete.push(sand[genX,toBottomY]);
+            sand[genX][toBottomY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+           
+            sand[genX][toBottomY].x=genX;
+            sand[genX][toBottomY].y=toBottomY;
+            sand[genX][toBottomY].width=16;       
+            sand[genX][toBottomY].height=16;
+           container.addChild(sand[genX][toBottomY]);
+        toDelete.push(sand[genX][toBottomY]);
         }
                  
         
@@ -159,9 +181,59 @@ function setup() {
         
     }
     
-    app.stage.addChild(container);
+   
     
     }
+    
+    
+    
+    
+    function floatGrnd(){
+       
+        var genX=0;
+      /*
+      
+     toDelete.forEach(function(item) {
+  item.visible=false;
+});
+      */
+         for(var i=0;i<200;i++){
+             
+        genX+=16;
+        sand[genX] = new Array();
+        
+        
+       
+        var randY = 256;
+      
+        
+          
+        var sandBlock = new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+             
+        sand[genX][randY]=sandBlock;
+        sand[genX][randY].x=genX;
+        sand[genX][randY].y=randY;
+        sand[genX][randY].width=16;       
+        sand[genX][randY].height=16;
+        container.addChild(sand[genX][randY]);
+        console.log(sand[genX][randY]);
+        console.log("block = " + genX + '|' + randY);
+        console.log("coords = " + sand[genX][randY].x + "|" + sand[genX][randY].y);
+             console.log('gen');
+       
+                 
+        
+             }
+        
+        
+        
+    
+    
+   
+    
+    }
+    
+    
     
     
     function keyboard(keyCode) {
@@ -202,8 +274,32 @@ function setup() {
 }
     
     
+    let left = keyboard(37),
+      up = keyboard(38),
+      right = keyboard(39),
+      down = keyboard(40);
+    
+    pers.y=0;
+    cat=new PIXI.Sprite(PIXI.loader.resources["cat.png"].texture);
+    cat.anchor.set(0.5);
+    cat.y=0;
+    cat.x=256;
+    console.log(cat.getGlobalPosition());
+    catY=160;
+    cat.width=80;
+    cat.height=70;
+    
+    
+    container.addChild(cat);
+    
+    //container.addChild(cat);
+    app.stage.addChild(container);
+    
+    
     generateRTL();
     generateLTR();
+    //floatGrnd();
+  
     
     
     function checkForEdges(side=""){
@@ -218,14 +314,14 @@ function setup() {
                 
                 
                 if(container.x<((-1*rightBlock)+800)){
-                    generateLTR(); 
+                    generateLTR();  
                 }
                 
                
             }
             else if (side=="left"){
-                 if(container.x>((-1*leftBlock)-400)){
-                    generateRTL(); 
+                 if(container.x>((-1*leftBlock))){
+                   generateRTL(); 
                 }
             }
            
@@ -233,18 +329,109 @@ function setup() {
            
         
     }
-
-
     
+    
+    var moveRight=false;
+    var moveLeft=false;
+    
+    right.press = () => {
+        moveRight=true;
+  };
+    
+    right.release = () =>{
+      moveRight=false;  
+    };
+    
+     left.press = () => {
+        moveLeft=true;
+  };
+    
+    left.release = () =>{
+      moveLeft=false;  
+    };
+
+
+    app.stage.scale.set(0.8);
+    //container.y=600;
+    
+  var sandBlock = new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture); 
+  var catFalling=true;
+    
+    
+    
+ function collide(object1, object2) {
+     try{
+        var isCollision = false;
+    if (object1.position.x < object2.position.x + object2.width && object1.position.x + object1.width > object2.position.x &&
+        object1.position.y < object2.position.y + object2.height && object1.position.y + object1.height > object2.position.y) {
+        isCollision = true;
+        catFalling=false;
+    }
+    return isCollision;
+    
+     }
+     catch {}
+     
+    
+ }
+         
+        
+         
     
   app.ticker.add(function() {
+            if (catFalling)cat.y+=1;
+      
+            
+           try{
+                 catFalling=true;
+                 b = new Bump(PIXI);
+                 let catVsBlocks = b.hit(
+  cat, 
+  sand[cat.x][cat.y+16], 
+  true, false, false, 
+  function(collision, platform){
+      console.log(collision);
+  }
+);
+                 
+                  
+               //collide(cat,sand[cat.x][cat.y+64]);
+           }   
+      catch {
+          console.log("pass colliding");
+  }
+         
+
+      
+      
+      
+         
+
+      
+      
+     
+      
   
-      container.x+=11;
-      console.log("container X = " + container.x);
-      console.log("left = " + (leftBlock-800));
       
+  if(moveRight){
+     
+      cat.x+=16;
       
+      container.x-=16;
+      checkForEdges('right');
+      cat.scale.x = -0.4;
+  }
+      
+  if(moveLeft){
+     
+      cat.x-=16;
+      container.x+=16;
+      console.log(cat.getGlobalPosition());
+      cat.scale.x = 0.4;
       checkForEdges('left');
+  }
+      
+      
        
   
   
