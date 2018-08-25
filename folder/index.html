@@ -30,6 +30,10 @@ document.body.appendChild(app.view);
 PIXI.loader
   .add("s.jpg")
   .add("cat.png")
+  .add("grass.png")
+  .add("g.png")
+  .add("back.png")
+  .add("cat2.png")
   .load(setup);
     
 PIXI.TRANSFORM_MODE.DEFAULT = PIXI.TRANSFORM_MODE.DYNAMIC;
@@ -58,16 +62,16 @@ function setup() {
             var genX=0;
        
         
-        var randY = 16*15-(Math.floor(Math.random() * 10))*16;
-             
+        var randY = 16*Math.round(Math.sin(leftBlock)+20)-(Math.floor(Math.random() * 10))*16;
+        
         while(rightY!=randY){
             console.log("rightY=" + rightY);
             console.log("rightY=" + randY);
         genX=rightBlock;
         sand[genX] = new Array();
         rightBlock+=16;     
-        
-        sand[genX][rightY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+        let sprite=new PIXI.Sprite(PIXI.loader.resources["grass.png"].texture);
+        sand[genX][rightY]=sprite;
             
         sand[genX][rightY].x=genX;
         var rightYToAdd=rightY;       
@@ -92,9 +96,10 @@ function setup() {
         
         var toBottomY=rightYToAdd;
        while(toBottomY<700){
+           sprite = new PIXI.Sprite(PIXI.loader.resources["g.png"].texture);
             toBottomY+=16;
             console.log('randY: ' + randY);
-            sand[genX][toBottomY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+            sand[genX][toBottomY]=sprite;
             
             sand[genX][toBottomY].x=genX;
             sand[genX][toBottomY].y=toBottomY;
@@ -140,8 +145,9 @@ function setup() {
         genX=leftBlock;
         sand[genX] = new Array();
         leftBlock-=16;  
+        let sprite=new PIXI.Sprite(PIXI.loader.resources["grass.png"].texture);
         
-        sand[genX][leftY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+        sand[genX][leftY]=sprite;
      
         sand[genX][leftY].x=genX;
         var leftYToAdd=leftY;       
@@ -162,9 +168,10 @@ function setup() {
         toDelete.push(sand[genX][leftYToAdd]);
         var toBottomY=leftYToAdd;
         while(toBottomY<700){
+            sprite = new PIXI.Sprite(PIXI.loader.resources["g.png"].texture);
             toBottomY+=16;
             console.log('randY: ' + randY);
-            sand[genX][toBottomY]=new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+            sand[genX][toBottomY]=sprite;
            
             sand[genX][toBottomY].x=genX;
             sand[genX][toBottomY].y=toBottomY;
@@ -208,7 +215,7 @@ function setup() {
       
         
           
-        var sandBlock = new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture);
+        var sandBlock = new PIXI.Sprite(PIXI.loader.resources["grass.png"].texture);
              
         sand[genX][randY]=sandBlock;
         sand[genX][randY].x=genX;
@@ -232,6 +239,50 @@ function setup() {
    
     
     }
+    
+    
+    
+    function checkPhysics(arr) {
+      arr[1].y+=1;
+    
+      for(var i=-4;i<=2;i++){
+                
+                try{
+                
+                 
+                 b = new Bump(PIXI);
+                 let catVsBlocks = b.hit(
+  arr[1], 
+  sand[arr[1].x+(i*16)][arr[1].y+16], 
+  true, false, false, 
+  function(collision, platform){
+      console.log("CATS COLLIDE " + i);
+      console.log(collision);
+      
+      //cat.y-=7;
+      
+     if(i==-2|i==1){
+         
+         arr[1].y-=16
+     };
+      
+      return true;
+      
+  }
+                     
+                     
+);
+                 
+                  
+               //collide(cat,sand[cat.x][cat.y+64]);
+           }   
+      catch {
+         catFalling=true;
+  }
+            }
+     
+    
+ }
     
     
     
@@ -279,15 +330,45 @@ function setup() {
       right = keyboard(39),
       down = keyboard(40);
     
+    var cats=[];
     pers.y=0;
+          
+   let backCont = new PIXI.Container();
+    var background = new PIXI.Sprite(PIXI.loader.resources["back.png"].texture);
+    background.anchor.set(0);
+    background.y=0;
+    background.x=0;
+    background.width=1000;
+    background.height=600;
+    backCont.addChild(background);
+    app.stage.addChild(backCont);
+    
+          
     cat=new PIXI.Sprite(PIXI.loader.resources["cat.png"].texture);
     cat.anchor.set(0.5);
+    
+    cats[1]=new PIXI.Sprite(PIXI.loader.resources["cat2.png"].texture);
+    cats[1].anchor.set(0.5);
+    cats[1].y=0;
+    cats[1].x=464+(16*20);
+    cats[1].width=60;
+    cats[1].height=50;
+    container.addChild(cats[1]);
+    app.stage.addChild(container);
+    checkPhysics(cats);
+    
+          
+          
+    
+    
     cat.y=0;
-    cat.x=256;
+    container.y=200;
+    cat.x=464;
+    var roundedcatX=464;
     console.log(cat.getGlobalPosition());
     catY=160;
-    cat.width=80;
-    cat.height=70;
+    cat.width=60;
+    cat.height=50;
     
     
     container.addChild(cat);
@@ -359,18 +440,42 @@ function setup() {
     
     
     
- function collide(object1, object2) {
-     try{
-        var isCollision = false;
-    if (object1.position.x < object2.position.x + object2.width && object1.position.x + object1.width > object2.position.x &&
-        object1.position.y < object2.position.y + object2.height && object1.position.y + object1.height > object2.position.y) {
-        isCollision = true;
-        catFalling=false;
-    }
-    return isCollision;
-    
-     }
-     catch {}
+ function collide() {
+      for(var i=-4;i<=2;i++){
+                
+                try{
+                
+                 
+                 b = new Bump(PIXI);
+                 let catVsBlocks = b.hit(
+  cat, 
+  sand[roundedcatX+(i*16)][cat.y+16], 
+  true, false, false, 
+  function(collision, platform){
+      console.log("collide at " + i);
+      console.log(collision);
+      catFalling=false;
+      //cat.y-=7;
+      
+     if(i==-2|i==1){
+         
+         cat.y-=16
+     };
+      
+      return true;
+      
+  }
+                     
+                     
+);
+                 
+                  
+               //collide(cat,sand[cat.x][cat.y+64]);
+           }   
+      catch {
+         catFalling=true;
+  }
+            }
      
     
  }
@@ -379,27 +484,15 @@ function setup() {
          
     
   app.ticker.add(function() {
-            if (catFalling)cat.y+=1;
+            if(catFalling)cat.y+=1;
       
+            collide();
+      
+            checkPhysics(cats);
             
-           try{
-                 catFalling=true;
-                 b = new Bump(PIXI);
-                 let catVsBlocks = b.hit(
-  cat, 
-  sand[cat.x][cat.y+16], 
-  true, false, false, 
-  function(collision, platform){
-      console.log(collision);
-  }
-);
-                 
-                  
-               //collide(cat,sand[cat.x][cat.y+64]);
-           }   
-      catch {
-          console.log("pass colliding");
-  }
+           
+            
+           
          
 
       
@@ -414,20 +507,30 @@ function setup() {
   
       
   if(moveRight){
-     
-      cat.x+=16;
       
-      container.x-=16;
+      cat.x+=2;
+      
+      if ((cat.x%16)==0){
+          console.log("rndCat++");
+          roundedcatX+=16;
+      }
+
+      container.x-=2;
       checkForEdges('right');
-      cat.scale.x = -0.4;
+      cat.scale.x = -0.3;
   }
       
   if(moveLeft){
      
-      cat.x-=16;
-      container.x+=16;
+      cat.x-=2;
+      
+       if ((cat.x%16)==0){
+          roundedcatX=cat.x;
+      }
+      
+      container.x+=2;
       console.log(cat.getGlobalPosition());
-      cat.scale.x = 0.4;
+      cat.scale.x = 0.3;
       checkForEdges('left');
   }
       
