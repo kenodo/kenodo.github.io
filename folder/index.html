@@ -25,6 +25,11 @@
 
 //Add the canvas that Pixi automatically created for you to the HTML document
 document.body.appendChild(app.view);
+    
+    var text = new PIXI.Text('Загрузка котанов...',{fill : '#000000', font : '48px Arial',wordWrap : true, wordWrapWidth : 700});
+			text.x = 200;
+            text.y=230;
+			app.stage.addChild(text);
 
 //load an image and run the `setup` function when it's done
 PIXI.loader
@@ -32,7 +37,12 @@ PIXI.loader
   .add("cat.png")
   .add("grass.png")
   .add("g.png")
+  .add("tree.png")
+  .add("tree2.png")
+  .add("tree3.png")
+  .add("tree4.png")
   .add("back.png")
+  .add("flower.png")
   .add("cat2.png")
   .load(setup);
     
@@ -43,8 +53,13 @@ PIXI.TRANSFORM_MODE.DEFAULT = PIXI.TRANSFORM_MODE.DYNAMIC;
 
 //This `setup` function will run when the image has loaded
 function setup() {
-    var sand = new Array();
     
+    
+    
+    
+    
+    var sand = new Array();
+    var myStorageCounter=0;
     var leftBlock = 0;
     var leftY = 256;
     var rightY = 256;
@@ -52,17 +67,57 @@ function setup() {
     var catY=0;
     let pers = new PIXI.Container();
     let container = new PIXI.Container();
+    let tree=new PIXI.Container();
+    tree.y=50;
+    var treeArr=[];
+    let gcontainer=new PIXI.ParticleContainer(15000,0,20000,true);
     var toDelete= [];
     
     
-   
+  function addTree(genX, Ycoord){
+      var treeChance=Math.random()>=0.9;
+      var treeType=Math.random();
+      if (treeChance){
+                let tr;
+                let flower = new PIXI.Sprite(PIXI.loader.resources["flower.png"].texture);
+                
+                if(treeType>=0.3 & treeType<0.5){
+                    tr=new PIXI.Sprite(PIXI.loader.resources["tree.png"].texture);
+                }
+                else if(treeType>=0.5 & treeType<0.7){
+                    tr=new PIXI.Sprite(PIXI.loader.resources["tree2.png"].texture);
+                }
+                else if(treeType>=0.7){
+                    tr=new PIXI.Sprite(PIXI.loader.resources["tree3.png"].texture);
+                }
+                else{
+                    tr=new PIXI.Sprite(PIXI.loader.resources["tree4.png"].texture);
+                }
+                
+              tr.width=100;
+              tr.height=160;
+              tr.y=Ycoord-200;
+              flower.y=Ycoord-70;
+              flower.width=15;
+              flower.height=30;
+              flower.x=genX-32;
+                
+                
+              treeArr[genX]=tr;
+              treeArr[genX+500]=flower;
+              tree.addChild(treeArr[genX]);
+            tree.addChild(treeArr[genX+500]);
+              treeArr[genX].x=genX;
+            }
+      
+  }
     
   function generateLTR(){
          for(var i=0;i<25;i++){
             var genX=0;
        
         
-        var randY = 16*Math.round(Math.sin(leftBlock)+20)-(Math.floor(Math.random() * 10))*16;
+        var randY = 16*Math.round(Math.sin(rightBlock)+20)-(Math.floor(Math.random() * 10))*16;
         
         while(rightY!=randY){
             console.log("rightY=" + rightY);
@@ -75,10 +130,13 @@ function setup() {
             
         sand[genX][rightY].x=genX;
         var rightYToAdd=rightY;       
-                 
+            
+        var randbool = Math.random() >= 0.9;
+            
         if(rightY<randY){
+          addTree(genX,rightY);
           sand[genX][rightY].y=rightY;
-          rightY+=16;
+          if(randbool)rightY+=16;
         }
         else{
             sand[genX][rightY].y=rightY;
@@ -89,6 +147,8 @@ function setup() {
         sand[genX][rightYToAdd].width=16;       
         sand[genX][rightYToAdd].height=16;
         container.addChild(sand[genX][rightYToAdd]);
+        
+            
             
             
             
@@ -105,7 +165,8 @@ function setup() {
             sand[genX][toBottomY].y=toBottomY;
             sand[genX][toBottomY].width=16;       
             sand[genX][toBottomY].height=16;
-           container.addChild(sand[genX][toBottomY]);
+           gcontainer.addChild(sand[genX][toBottomY]);
+           
         toDelete.push(sand[genX][toBottomY]);
         }
                  
@@ -116,7 +177,7 @@ function setup() {
         
     }
     
-    app.stage.addChild(container);
+    app.stage.addChild(gcontainer);
     }
     
     
@@ -129,16 +190,16 @@ function setup() {
   item.visible=false;
 });
       */
-         for(var i=0;i<25;i++){
+         for(var i=0;i<10;i++){
              
         
         
        
-        var randY = 16*15-(Math.floor(Math.random() * 10))*16;
-        //var randY=64;
+       var randY = 16*Math.round(Math.sin(leftBlock)+20)-(Math.floor(Math.random() * 10))*16;
+  
         
       
-             
+        
         while(leftY!=randY){
             console.log("leftY=" + leftY);
             console.log("leftY=" + leftY);
@@ -151,10 +212,22 @@ function setup() {
      
         sand[genX][leftY].x=genX;
         var leftYToAdd=leftY;       
-                 
+        var randbool = Math.random() >= 0.9;
+       
+            
         if(leftY<randY){
           sand[genX][leftY].y=leftY;
-          leftY+=16;
+          addTree(genX,leftY);
+            
+          
+        
+          if(randbool){
+              
+              leftY+=16;
+            
+              
+ 
+          }
         }
         else{
             sand[genX][leftY].y=leftY;
@@ -165,8 +238,15 @@ function setup() {
         sand[genX][leftYToAdd].width=16;       
         sand[genX][leftYToAdd].height=16;
         container.addChild(sand[genX][leftYToAdd]);
+        
+        
+        
         toDelete.push(sand[genX][leftYToAdd]);
-        var toBottomY=leftYToAdd;
+        toBottom();
+       
+            
+            function toBottom(){
+                 var toBottomY=leftYToAdd;
         while(toBottomY<700){
             sprite = new PIXI.Sprite(PIXI.loader.resources["g.png"].texture);
             toBottomY+=16;
@@ -178,8 +258,10 @@ function setup() {
             sand[genX][toBottomY].width=16;       
             sand[genX][toBottomY].height=16;
            container.addChild(sand[genX][toBottomY]);
+           
         toDelete.push(sand[genX][toBottomY]);
         }
+            }
                  
         
              }
@@ -193,9 +275,7 @@ function setup() {
     }
     
     
-    
-    
-    function floatGrnd(){
+  function floatGrnd(){
        
         var genX=0;
       /*
@@ -231,13 +311,6 @@ function setup() {
                  
         
              }
-        
-        
-        
-    
-    
-   
-    
     }
     
     
@@ -256,8 +329,7 @@ function setup() {
   sand[arr[1].x+(i*16)][arr[1].y+16], 
   true, false, false, 
   function(collision, platform){
-      console.log("CATS COLLIDE " + i);
-      console.log(collision);
+      
       
       //cat.y-=7;
       
@@ -277,7 +349,7 @@ function setup() {
                //collide(cat,sand[cat.x][cat.y+64]);
            }   
       catch {
-         catFalling=true;
+      
   }
             }
      
@@ -363,6 +435,7 @@ function setup() {
     
     cat.y=0;
     container.y=200;
+    gcontainer.y=200;
     cat.x=464;
     var roundedcatX=464;
     console.log(cat.getGlobalPosition());
@@ -372,15 +445,17 @@ function setup() {
     
     
     container.addChild(cat);
+    container.addChild(tree);
     
     //container.addChild(cat);
     app.stage.addChild(container);
     
     
+   
+       
     generateRTL();
     generateLTR();
-    //floatGrnd();
-  
+    
     
     
     function checkForEdges(side=""){
@@ -394,14 +469,14 @@ function setup() {
                 
                 
                 
-                if(container.x<((-1*rightBlock)+800)){
+                if(gcontainer.x<((-1*rightBlock)+800)){
                     generateLTR();  
                 }
                 
                
             }
             else if (side=="left"){
-                 if(container.x>((-1*leftBlock))){
+                 if(gcontainer.x>((-1*leftBlock))){
                    generateRTL(); 
                 }
             }
@@ -441,7 +516,7 @@ function setup() {
     
     
  function collide() {
-      for(var i=-4;i<=2;i++){
+      for(var i=-5;i<=2;i++){
                 
                 try{
                 
@@ -449,6 +524,7 @@ function setup() {
                  b = new Bump(PIXI);
                  let catVsBlocks = b.hit(
   cat, 
+  //sand[464][272], 
   sand[roundedcatX+(i*16)][cat.y+16], 
   true, false, false, 
   function(collision, platform){
@@ -457,10 +533,15 @@ function setup() {
       catFalling=false;
       //cat.y-=7;
       
-     if(i==-2|i==1){
+        
+         if(i==0|i==-1){
+             cat.y-=2;
+         }
+      else{
+          cat.y-=9;
+      }
          
-         cat.y-=16
-     };
+     
       
       return true;
       
@@ -473,20 +554,36 @@ function setup() {
                //collide(cat,sand[cat.x][cat.y+64]);
            }   
       catch {
-         catFalling=true;
+         console.log("block [" + roundedcatX + "]["+cat.y+"]" + "undefined");
+         
   }
             }
      
     
  }
-         
+        
+          
+           
+          
+           
+      
+       
+        
+
         
          
     
   app.ticker.add(function() {
-            if(catFalling)cat.y+=1;
       
-            collide();
+      
+          
+      
+            if(catFalling){
+                cat.y+=1;
+                collide();
+            }
+      
+            
       
             checkPhysics(cats);
             
@@ -509,27 +606,31 @@ function setup() {
   if(moveRight){
       
       cat.x+=2;
+      collide();
       
       if ((cat.x%16)==0){
           console.log("rndCat++");
           roundedcatX+=16;
+          catFalling=true;
       }
-
       container.x-=2;
+      gcontainer.x-=2;
       checkForEdges('right');
       cat.scale.x = -0.3;
   }
       
   if(moveLeft){
-     
+      
       cat.x-=2;
+      collide();
       
        if ((cat.x%16)==0){
           roundedcatX=cat.x;
+           catFalling=true;
       }
       
       container.x+=2;
-      console.log(cat.getGlobalPosition());
+      gcontainer.x+=2;
       cat.scale.x = 0.3;
       checkForEdges('left');
   }
