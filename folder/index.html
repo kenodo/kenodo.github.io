@@ -41,6 +41,7 @@ PIXI.loader
   .add("tree2.png")
   .add("tree3.png")
   .add("tree4.png")
+  .add("riding.png")
   .add("back.png")
   .add("flower.png")
   .add("cat2.png")
@@ -53,8 +54,21 @@ PIXI.TRANSFORM_MODE.DEFAULT = PIXI.TRANSFORM_MODE.DYNAMIC;
 
 //This `setup` function will run when the image has loaded
 function setup() {
+    var catRiding;
+    var riding=false;
+    var fall=false;
+    var fallingTrees = [];
     
-    
+      function fallTree(){
+          fall=true;
+               fallingTrees.forEach(function(item,i,arr) {
+  item.rotation += 0.02;
+  item.y+=0.8;
+  if(item.rotation>1.2){
+      delete fallingTrees[i];
+  }
+});
+       } 
     
     
     
@@ -93,27 +107,41 @@ function setup() {
                 else{
                     tr=new PIXI.Sprite(PIXI.loader.resources["tree4.png"].texture);
                 }
-                
+              Ycoord+=150;
               tr.width=100;
               tr.height=160;
               tr.y=Ycoord-200;
-              flower.y=Ycoord-70;
+              flower.y=Ycoord-220;
               flower.width=15;
               flower.height=30;
               flower.x=genX-32;
                 
                 
               treeArr[genX]=tr;
+              treeArr[genX].anchor.set(1);
+          
+               
+          
               treeArr[genX+500]=flower;
               tree.addChild(treeArr[genX]);
             tree.addChild(treeArr[genX+500]);
               treeArr[genX].x=genX;
+           treeArr[genX].interactive = true;
+                treeArr[genX].click = function(){
+                    fallingTrees.push(treeArr[genX]);
+                    fallTree();
+                }
             }
       
   }
     
+ 
+  
+   
+    
+
   function generateLTR(){
-         for(var i=0;i<25;i++){
+         for(var i=0;i<3;i++){
             var genX=0;
        
         
@@ -127,6 +155,10 @@ function setup() {
         rightBlock+=16;     
         let sprite=new PIXI.Sprite(PIXI.loader.resources["grass.png"].texture);
         sand[genX][rightY]=sprite;
+            sand[genX][rightY].interactive = true;
+        sand[genX][rightY].click = function(e) {
+         sand[genX][rightY].visible=false;
+ }
             
         sand[genX][rightY].x=genX;
         var rightYToAdd=rightY;       
@@ -147,6 +179,11 @@ function setup() {
         sand[genX][rightYToAdd].width=16;       
         sand[genX][rightYToAdd].height=16;
         container.addChild(sand[genX][rightYToAdd]);
+            sand[genX][rightYToAdd].interactive = true;
+             sand[genX][rightYToAdd].click = function(e) {
+         this.visible=false;
+         this.y-=64;       
+ }
         
             
             
@@ -190,7 +227,7 @@ function setup() {
   item.visible=false;
 });
       */
-         for(var i=0;i<10;i++){
+         for(var i=0;i<3;i++){
              
         
         
@@ -318,7 +355,7 @@ function setup() {
     function checkPhysics(arr) {
       arr[1].y+=1;
     
-      for(var i=-4;i<=2;i++){
+      for(var i=-4;i<=3;i++){
                 
                 try{
                 
@@ -335,7 +372,7 @@ function setup() {
       
      if(i==-2|i==1){
          
-         arr[1].y-=16
+         arr[1].y-=4
      };
       
       return true;
@@ -427,6 +464,22 @@ function setup() {
     cats[1].height=50;
     container.addChild(cats[1]);
     app.stage.addChild(container);
+    cats[1].interactive=true;
+    
+    cats[1].click = function(){
+        container.x-=cats[1].x-cat.x;
+        gcontainer.x-=cats[1].x-cat.x;
+                    cat.x=cats[1].x;
+                    cat.y=cats[1].y-=16;
+                    cats[1].texture=PIXI.loader.resources["riding.png"].texture;
+                    cats[1].height+=10;
+                    cat.visible=false;
+                    riding=true;
+                    catRiding=cats[1];
+                    fallTree();
+                }
+    
+    
     checkPhysics(cats);
     
           
@@ -576,7 +629,7 @@ function setup() {
   app.ticker.add(function() {
       
       
-          
+          if(fall)fallTree();
       
             if(catFalling){
                 cat.y+=1;
@@ -605,34 +658,80 @@ function setup() {
       
   if(moveRight){
       
+      
+      if(riding){
+         cat.x+=16;
+         cat.y=catRiding.y-16;
+         roundedcatX+=16;
+         catRiding.x+=16;
+         collide();
+          container.x-=16;
+          gcontainer.x-=16;
+          catRiding.scale.x=-0.3;
+      }
+      else{
       cat.x+=2;
       collide();
+      container.x-=2;
+      gcontainer.x-=2;
+      }
+      
+      
       
       if ((cat.x%16)==0){
           console.log("rndCat++");
           roundedcatX+=16;
-          catFalling=true;
+          if(riding){
+            catFalling=false;  
+          }
+          else{
+              catFalling=true;
+          }
+          
       }
-      container.x-=2;
-      gcontainer.x-=2;
+     
       checkForEdges('right');
       cat.scale.x = -0.3;
+      
   }
       
-  if(moveLeft){
+   if(moveLeft){
       
+      
+      if(riding){
+         //cat.x-=4;
+         cat.y=catRiding.y+16;
+         roundedcatX-=16;
+         catRiding.x-=16;
+         collide();
+          container.x+=16;
+          gcontainer.x+=16;
+          catRiding.scale.x=0.3;
+      }
+      else{
       cat.x-=2;
       collide();
-      
-       if ((cat.x%16)==0){
-          roundedcatX=cat.x;
-           catFalling=true;
-      }
-      
       container.x+=2;
       gcontainer.x+=2;
-      cat.scale.x = 0.3;
+      }
+      
+      
+      
+      if ((cat.x%16)==0){
+          console.log("rndCat++");
+          roundedcatX-=16;
+          if(riding){
+            catFalling=false;  
+          }
+          else{
+              catFalling=true;
+          }
+          
+      }
+     
       checkForEdges('left');
+      cat.scale.x = 0.3;
+      
   }
       
       
