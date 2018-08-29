@@ -42,9 +42,11 @@ PIXI.loader
   .add("tree3.png")
   .add("tree4.png")
   .add("riding.png")
+  .add("gb.png")
   .add("back.png")
   .add("flower.png")
   .add("cat2.png")
+  .add("stone.png")
   .load(setup);
     
 PIXI.TRANSFORM_MODE.DEFAULT = PIXI.TRANSFORM_MODE.DYNAMIC;
@@ -155,6 +157,7 @@ function setup() {
         rightBlock+=16;     
         let sprite=new PIXI.Sprite(PIXI.loader.resources["grass.png"].texture);
         sand[genX][rightY]=sprite;
+        
             sand[genX][rightY].interactive = true;
         sand[genX][rightY].click = function(e) {
          sand[genX][rightY].visible=false;
@@ -192,8 +195,28 @@ function setup() {
         toDelete.push(sand[genX][rightYToAdd]);
         
         var toBottomY=rightYToAdd;
+        var toStone=0;
+            
        while(toBottomY<700){
-           sprite = new PIXI.Sprite(PIXI.loader.resources["g.png"].texture);
+           
+           if(toStone>=8){
+                
+                sprite = new PIXI.Sprite(PIXI.loader.resources["stone.png"].texture);
+                
+           }
+           else{
+               sprite = new PIXI.Sprite(PIXI.loader.resources["g.png"].texture);
+               
+               var bonesChance = Math.random() >= 0.97;
+               
+               if (bonesChance){
+                 sprite = new PIXI.Sprite(PIXI.loader.resources["gb.png"].texture);  
+               }
+               
+           }
+           
+           
+           
             toBottomY+=16;
             console.log('randY: ' + randY);
             sand[genX][toBottomY]=sprite;
@@ -202,7 +225,8 @@ function setup() {
             sand[genX][toBottomY].y=toBottomY;
             sand[genX][toBottomY].width=16;       
             sand[genX][toBottomY].height=16;
-           gcontainer.addChild(sand[genX][toBottomY]);
+           container.addChild(sand[genX][toBottomY]);
+           toStone+=1;
            
         toDelete.push(sand[genX][toBottomY]);
         }
@@ -350,32 +374,73 @@ function setup() {
              }
     }
     
+   
+     function addCat(){
+         alert("triggered;")
+        var n=2+Math.round(Math.random()*3);
+        
+        for(var i=1;i<n;i++){
+            alert("add cat " + i);
+          cats[i]=new PIXI.Sprite(PIXI.loader.resources["cat2.png"].texture);
+    cats[i].anchor.set(0.5);
+    cats[i].y=0;
+    cats[i].x=cat.x+(16*(Math.round(Math.random()*20)));
+    cats[i].width=60;
+    cats[i].height=50;
+    container.addChild(cats[i]);
+    app.stage.addChild(container);
+    cats[i].interactive=true;
+    cats[i].falling=true;   
+
+    
+    cats[1].click = function(){
+        container.x-=cats[1].x-cat.x;
+        gcontainer.x-=cats[1].x-cat.x;
+                    cat.x=cats[1].x;
+                    cat.y=cats[1].y-=16;
+                    cats[1].texture=PIXI.loader.resources["riding.png"].texture;
+                    cats[1].height+=10;
+                    cat.visible=false;
+                    riding=true;
+                    catRiding=cats[1];
+                    //fallTree();
+                }  
+        }
+        
+    
+    }
+    
     
     
     function checkPhysics(arr) {
-      arr[1].y+=1;
-    
-      for(var i=-4;i<=3;i++){
+        
+        
+        arr.forEach(function(item,i) {
+  if(arr[i].falling){
+      arr[i].y+=1;
+  }
+    for(var m=-4;m<=3;m++){
                 
                 try{
                 
                  
                  b = new Bump(PIXI);
                  let catVsBlocks = b.hit(
-  arr[1], 
-  sand[arr[1].x+(i*16)][arr[1].y+16], 
+  arr[i], 
+  sand[arr[i].x+(m*16)][arr[i].y+16], 
   true, false, false, 
   function(collision, platform){
       
       
       //cat.y-=7;
       
-     if(i==-2|i==1){
+     if(m==-2|m==1){
          
-         arr[1].y-=4
+         arr[i].y-=4;
+         arr[i].falling=false;
      };
       
-      return true;
+  
       
   }
                      
@@ -388,8 +453,10 @@ function setup() {
       catch {
       
   }
-            }
-     
+            }         
+            
+  
+});     
     
  }
     
@@ -455,32 +522,11 @@ function setup() {
           
     cat=new PIXI.Sprite(PIXI.loader.resources["cat.png"].texture);
     cat.anchor.set(0.5);
-    
-    cats[1]=new PIXI.Sprite(PIXI.loader.resources["cat2.png"].texture);
-    cats[1].anchor.set(0.5);
-    cats[1].y=0;
-    cats[1].x=464+(16*20);
-    cats[1].width=60;
-    cats[1].height=50;
-    container.addChild(cats[1]);
-    app.stage.addChild(container);
-    cats[1].interactive=true;
-    
-    cats[1].click = function(){
-        container.x-=cats[1].x-cat.x;
-        gcontainer.x-=cats[1].x-cat.x;
-                    cat.x=cats[1].x;
-                    cat.y=cats[1].y-=16;
-                    cats[1].texture=PIXI.loader.resources["riding.png"].texture;
-                    cats[1].height+=10;
-                    cat.visible=false;
-                    riding=true;
-                    catRiding=cats[1];
-                    fallTree();
-                }
-    
-    
-    checkPhysics(cats);
+          
+          
+   
+
+  
     
           
           
@@ -505,9 +551,10 @@ function setup() {
     
     
    
-       
+    addCat();
     generateRTL();
     generateLTR();
+    checkPhysics(cats);
     
     
     
@@ -560,7 +607,7 @@ function setup() {
     };
 
 
-    app.stage.scale.set(0.8);
+    app.stage.scale.set(1);
     //container.y=600;
     
   var sandBlock = new PIXI.Sprite(PIXI.loader.resources["s.jpg"].texture); 
@@ -569,7 +616,7 @@ function setup() {
     
     
  function collide() {
-      for(var i=-5;i<=2;i++){
+      for(var i=-3;i<=2;i++){
                 
                 try{
                 
@@ -587,12 +634,9 @@ function setup() {
       //cat.y-=7;
       
         
-         if(i==0|i==-1){
-             cat.y-=2;
-         }
-      else{
+       
           cat.y-=9;
-      }
+      
          
      
       
@@ -662,6 +706,7 @@ function setup() {
       if(riding){
          cat.x+=16;
          cat.y=catRiding.y-16;
+         cats[1].falling=true;
          roundedcatX+=16;
          catRiding.x+=16;
          collide();
@@ -671,7 +716,7 @@ function setup() {
       }
       else{
       cat.x+=2;
-      collide();
+      
       container.x-=2;
       gcontainer.x-=2;
       }
@@ -679,8 +724,10 @@ function setup() {
       
       
       if ((cat.x%16)==0){
+          
           console.log("rndCat++");
           roundedcatX+=16;
+          collide();
           if(riding){
             catFalling=false;  
           }
@@ -710,7 +757,7 @@ function setup() {
       }
       else{
       cat.x-=2;
-      collide();
+      
       container.x+=2;
       gcontainer.x+=2;
       }
@@ -720,6 +767,7 @@ function setup() {
       if ((cat.x%16)==0){
           console.log("rndCat++");
           roundedcatX-=16;
+          collide();
           if(riding){
             catFalling=false;  
           }
