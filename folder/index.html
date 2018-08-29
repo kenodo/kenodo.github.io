@@ -376,11 +376,11 @@ function setup() {
     
    
      function addCat(){
-         alert("triggered;")
+       
         var n=2+Math.round(Math.random()*3);
         
         for(var i=1;i<n;i++){
-            alert("add cat " + i);
+           
           cats[i]=new PIXI.Sprite(PIXI.loader.resources["cat2.png"].texture);
     cats[i].anchor.set(0.5);
     cats[i].y=0;
