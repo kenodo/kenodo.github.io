@@ -34,9 +34,13 @@ document.body.appendChild(app.view);
     
     
 
-  createjs.Sound.registerSound("step.mp3", "step");
-  createjs.Sound.registerSound("ambient.mp3", "ambient");
-
+  var stepSound=createjs.Sound.registerSound("step.mp3", "step");
+  console.log(stepSound);
+  var treeFallSound=createjs.Sound.registerSound("treefall.mp3", "treeFall");
+  console.log(treeFallSound);
+  var ambientSound=createjs.Sound.registerSound("ambient.mp3", "ambient");
+  console.log(ambientSound);
+    
 //load an image and run the `setup` function when it's done
 PIXI.loader
   .add("s.jpg")
@@ -74,12 +78,15 @@ function setup() {
     var jumpDisplacement=0;
     
       function fallTree(){
+          if(!fall)createjs.Sound.play("treeFall");
           fall=true;
+          
                fallingTrees.forEach(function(item,i,arr) {
   item.rotation += 0.02;
   item.y+=0.8;
   if(item.rotation>1.2){
       delete fallingTrees[i];
+      fall=false;
   }
 });
        } 
@@ -417,7 +424,6 @@ function setup() {
     cats[i].y=0;
     cats[i].x=cat.x+(16*(Math.round(Math.random()*20)));
     cats[i].rndx=cats[i].x;
-    alert("cats[i].rdnx=" + cats[i].rndx);
     cats[i].width=60;
     cats[i].height=50;
     container.addChild(cats[i]);
