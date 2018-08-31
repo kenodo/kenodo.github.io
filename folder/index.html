@@ -40,6 +40,8 @@ document.body.appendChild(app.view);
   console.log(treeFallSound);
   var ambientSound=createjs.Sound.registerSound("ambient.mp3", "ambient");
   console.log(ambientSound);
+  var popSound=createjs.Sound.registerSound("pop.mp3", "pop");
+  console.log(popSound);
     
 //load an image and run the `setup` function when it's done
 PIXI.loader
@@ -55,6 +57,7 @@ PIXI.loader
   .add("tree3.png")
   .add("tree4.png")
   .add("riding.png")
+  .add("snowg-resource.png")
   .add("gb.png")
   .add("snowgb.png")
   .add("back.png")
@@ -110,7 +113,7 @@ function setup() {
     var treeArr=[];
     let gcontainer=new PIXI.ParticleContainer(15000,0,20000,true);
     var toDelete= [];
-    
+    var resArr=[];  
     
   function addTree(genX, Ycoord,biom){
       var treeChance=Math.random()>=0.9;
@@ -165,7 +168,24 @@ function setup() {
     
  
   
-   
+ function addResource(xCoord, yCoord){
+    var res=new PIXI.Sprite(PIXI.loader.resources["snowg-resource.png"].texture);
+    //res.anchor.set(0.5);
+    res.y=yCoord-16;
+    res.x=xCoord;
+    res.initialY=yCoord;
+    res.width=16;
+    res.height=16;
+    res.jumpDisplacement=0;
+    res.jumping=true;
+    res.falling=false;
+    resArr[xCoord]=res;
+    container.addChild(res);
+    console.log(resArr);
+    app.stage.addChild(container);
+     
+    jumpRes(res);
+ }  
     
 
   function generateLTR(biom){
@@ -202,11 +222,13 @@ function setup() {
         let sprite=grassSprite;
             
         sand[genX][rightY]=new PIXI.Sprite(sprite.texture);
-        console.log(grassSprite);
+        
         
             sand[genX][rightY].interactive = true;
         sand[genX][rightY].click = function(e) {
          sand[genX][rightY].visible=false;
+         createjs.Sound.play("pop");
+         
  }
             
         sand[genX][rightY].x=genX;
@@ -230,9 +252,13 @@ function setup() {
         container.addChild(sand[genX][rightYToAdd]);
             sand[genX][rightYToAdd].interactive = true;
              sand[genX][rightYToAdd].click = function(e) {
-         this.visible=false;
-         this.y-=64;       
- }
+                
+                console.log("rightYToAdd clicked");
+                this.visible=false;
+                createjs.Sound.play("pop");
+                addResource(this.x,this.y);
+                this.y+=600;
+             }
         
             
             
@@ -264,13 +290,28 @@ function setup() {
            
            
             toBottomY+=16;
-            sand[genX][toBottomY]= new PIXI.Sprite(sprite.texture);;
+            sand[genX][toBottomY]= new PIXI.Sprite(sprite.texture);
             
+            
+           
             sand[genX][toBottomY].x=genX;
             sand[genX][toBottomY].y=toBottomY;
             sand[genX][toBottomY].width=16;       
             sand[genX][toBottomY].height=16;
+           
+           
+          
+           
            container.addChild(sand[genX][toBottomY]);
+            sand[genX][toBottomY].interactive = true;
+            sand[genX][toBottomY].click = function(e) {
+                
+               console.log("toBottomY clicked");
+                this.visible=false;
+                createjs.Sound.play("pop");
+                addResource(this.x,this.y);
+                this.y+=600;
+             }
            toStone+=1;
            
         toDelete.push(sand[genX][toBottomY]);
@@ -621,10 +662,12 @@ function setup() {
     
     right.press = () => {
         moveRight=true;
+        catFalling=true;
   };
     
     right.release = () =>{
       moveRight=false;  
+      catFalling=true;
     };
     
      left.press = () => {
@@ -665,6 +708,24 @@ function jump(){
             jumping=false;
             catFalling=true;
             jumpDisplacement=0;
+        }
+    }
+        
+        
+function jumpRes(res){
+        
+        res.falling=false;
+    
+        if(res.jumping){
+            res.y-=(2+res.jumpDisplacement/2);
+            res.jumpDisplacement+=2;
+        }
+      
+        
+        if(res.jumpDisplacement>15){
+            res.jumping=false;
+            res.falling=true;
+            res.jumpDisplacement=0;
         }
     }
     
@@ -798,7 +859,7 @@ function jump(){
   function playAmbient(){
       if(!ambientPlaying){
          console.log("playambient");
-         var ambientProps = new createjs.PlayPropsConfig().set({interrupt: createjs.Sound.INTERRUPT_ANY, loop: 1, volume: 0.8});
+         var ambientProps = new createjs.PlayPropsConfig().set({interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 0.8});
          if(createjs.Sound.play("ambient",ambientProps)) ambientPlaying=true; 
         
       }
@@ -807,6 +868,12 @@ function jump(){
          
     
   app.ticker.add(function() {
+      
+      
+         resArr.forEach(function(item,i,arr) {
+          if(item.jumping)jumpRes(item);
+          else if(item.falling & item.y<item.initialY)item.y+=1;
+});
       
          
      
