@@ -114,7 +114,6 @@ function setup() {
     let gcontainer=new PIXI.ParticleContainer(15000,0,20000,true);
     var toDelete= [];
     var resArr=[];  
-    
   function addTree(genX, Ycoord,biom){
       var treeChance=Math.random()>=0.9;
       if (biom=="forest"){
@@ -180,12 +179,32 @@ function setup() {
     res.jumping=true;
     res.falling=false;
     resArr[xCoord]=res;
+    
     container.addChild(res);
     console.log(resArr);
     app.stage.addChild(container);
-     
+    
     jumpRes(res);
- }  
+ }
+    
+    
+    
+  function collectResources(){
+       b = new Bump(PIXI);
+      
+      
+      resArr.forEach(function(item,i) {
+        console.log("item:" + item);
+        if(b.hitTestRectangle(item,cat)){
+            console.log("collected");
+            item.visible=false;
+            cat.blocks+=1;
+            console.log(cat.blocks);
+            item.y+=600;
+  }
+  });
+                  }
+                  
     
 
   function generateLTR(biom){
@@ -603,6 +622,7 @@ function setup() {
     cat=new PIXI.Sprite(PIXI.loader.resources["cat.png"].texture);
     cat.anchor.set(0.5);
     cat.y=0;
+    cat.blocks=0;
     container.y=200;
     gcontainer.y=200;
     cat.x=464;
@@ -868,7 +888,8 @@ function jumpRes(res){
          
     
   app.ticker.add(function() {
-      
+        
+        
       
          resArr.forEach(function(item,i,arr) {
           if(item.jumping)jumpRes(item);
@@ -876,7 +897,7 @@ function jumpRes(res){
 });
       
          
-     
+        
           cat.rndx=Math.floor((cat.x/16))*16;
           if(fall)fallTree();
       
@@ -933,7 +954,7 @@ function jumpRes(res){
       
       
       if ((cat.x%16)==0){
-          
+          collectResources();
           console.log("rndCat++");
           collide();
           
@@ -970,6 +991,7 @@ function jumpRes(res){
       
       
       if ((cat.x%16)==0){
+          collectResources();
           console.log("rndCat++");
          // cat.rndx-=16;
           collide();
