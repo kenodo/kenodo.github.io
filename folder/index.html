@@ -23,6 +23,8 @@
     roundPixels: true
   }
 );
+    
+    var renderer = PIXI.autoDetectRenderer(800, 600,{backgroundColor : 0x1099bb})
 
 //Add the canvas that Pixi automatically created for you to the HTML document
 document.body.appendChild(app.view);
@@ -48,6 +50,8 @@ PIXI.loader
   .add("s.jpg")
   .add("cat.png")
   .add("grass.png")
+  .add("women.png")
+  .add("wood.png")
   .add("snowgrass.png")
   .add("snowtree.png")
   .add("g.png")
@@ -75,6 +79,7 @@ PIXI.TRANSFORM_MODE.DEFAULT = PIXI.TRANSFORM_MODE.DYNAMIC;
 //This `setup` function will run when the image has loaded
 function setup() {
     var catRiding;
+    var mouseDisplacement=0;
     var riding=false;
     var fall=false;
     var fallingTrees = [];
@@ -180,6 +185,8 @@ function setup() {
                     fallingTrees.push(treeArr[genX]);
                     fallTree();
                 }
+                
+                
             }
       
   }
@@ -228,6 +235,25 @@ function setup() {
   }
   });
                   }
+    
+    
+function isRightClick(e) {
+  return e.which === 3;
+}
+    
+
+
+  this.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    console.log("RightClick");
+    addBlock(e.clientX, e.clientY);
+    
+  });
+
+
+    
+    
+//rightClick(this);
                   
     
 
@@ -303,6 +329,18 @@ function setup() {
                 console.log("added resource " + this.x + "|" + this.y);
                 this.y+=600;
              }
+             
+              sand[genX][rightYToAdd].on("mouseover", function(e){  
+  console.log('Навели на блок');
+  sand[this.x][this.y].tint = 0xADADC1;
+  
+});
+            
+             sand[genX][rightYToAdd].on("mouseout", function(e){  
+  console.log('Убрали с блока на блок');
+  sand[this.x][this.y].tint = 0xFFFFFF;
+  
+});
         
             
             
@@ -357,6 +395,18 @@ function setup() {
                 this.y+=600;
              }
            toStone+=1;
+           
+           sand[genX][toBottomY].on("mouseover", function(e){  
+  console.log('Навели на блок');
+  sand[this.x][this.y].tint = 0xADADC1;
+  
+});
+            
+             sand[genX][toBottomY].on("mouseout", function(e){  
+  console.log('Убрали с блока на блок');
+  sand[this.x][this.y].tint = 0xFFFFFF;
+  
+});
            
         toDelete.push(sand[genX][toBottomY]);
         }
@@ -440,6 +490,20 @@ function setup() {
                 this.y+=600;
              }
             
+              sand[genX][leftYToAdd].on("mouseover", function(e){  
+  console.log('Навели на блок');
+  sand[this.x][this.y].tint = 0xffd187;
+  
+});
+            
+             sand[genX][leftYToAdd].on("mouseout", function(e){  
+  console.log('Убрали с блока на блок');
+  sand[this.x][this.y].tint = 0xFFFFFF;
+  
+});
+            
+            
+            
             
             
             
@@ -492,6 +556,21 @@ function setup() {
                 
                 this.y+=600;
              }
+            
+            
+             sand[genX][toBottomY].on("mouseover", function(e){  
+  console.log('Навели на блок');
+  sand[this.x][this.y].tint = 0xADADC1;
+  
+});
+            
+             sand[genX][toBottomY].on("mouseout", function(e){  
+  console.log('Убрали с блока на блок');
+  sand[this.x][this.y].tint = 0xFFFFFF;
+  
+});
+            
+            
            toStone+=1;
            
         toDelete.push(sand[genX][toBottomY]);
@@ -541,9 +620,49 @@ function setup() {
         
              }
     }
+  
     
+    
+  function addBlock(xC, yC){
+      
+    
+      
+      var rnX=(Math.floor(xC/16)*16)+mouseDisplacement;
+      var rnY=(Math.floor(yC/16)*16)-208;
+      console.log(sand[rnX]);
+      if(sand[rnX][rnY]){
+         sand[rnX][rnY].visible=false;
+         delete sand[rnX][rnY];
+      }
+      
+      if(sand[rnX]){
+         sand[rnX][rnY]=new PIXI.Sprite(PIXI.loader.resources["wood.png"].texture); 
+      }
+      else{
+          sand[rnX] = new Array(); 
+          sand[rnX][rnY]=new PIXI.Sprite(PIXI.loader.resources["wood.png"].texture); 
+      }
+      
+      
+        
+         sand[rnX][rnY].interactive = true;
+      
+         sand[rnX][rnY].click = function(e) {
+         sand[rnX][rnY].y+=1000;
+         sand[rnX][rnY].visible=false;
+         createjs.Sound.play("pop");
+         }
+            
+        sand[rnX][rnY].x=rnX;
+        sand[rnX][rnY].y=rnY;
+                 
+         sand[rnX][rnY].width=16;       
+         sand[rnX][rnY].height=16;
+        container.addChild(sand[rnX][rnY]);
+        
+  }
    
-     function addCat(obType){
+  function addCat(obType){
        
         var n=5+Math.floor(Math.random()*3);
         
@@ -587,7 +706,7 @@ function setup() {
     
     
     
-    function keyboard(keyCode) {
+  function keyboard(keyCode) {
   let key = {};
   key.code = keyCode;
   key.isDown = false;
@@ -644,7 +763,7 @@ function setup() {
     app.stage.addChild(backCont);
     
           
-    cat=new PIXI.Sprite(PIXI.loader.resources["cat.png"].texture);
+    cat=new PIXI.Sprite(PIXI.loader.resources["women.png"].texture);
     cat.anchor.set(0.5);
     cat.y=0;
     cat.blocks=0;
@@ -915,7 +1034,7 @@ function jumpRes(res){
   
      
     if(obj.secondsToGo==undefined){
-              obj.secondsToGo=Math.floor(Math.random()*5)*100+500;
+              obj.secondsToGo=1*(Math.floor(Math.random()*5)*100);
               obj.direction=(Math.random()>0.5);
           }
         else if(obj.secondsToGo){
@@ -932,13 +1051,13 @@ function jumpRes(res){
             
             obj.rndx=Math.floor((obj.x/16))*16;
             obj.secondsToGo-=1;
-            console.log(obj.secondsToGo);
+            //console.log(obj.secondsToGo);
             collide(obj);
             }
             else{
                 //obj.moving=false;
                 obj.direction=(Math.random()>0.5);
-                obj.secondsToGo=Math.floor(Math.random()*5)*200;
+                obj.secondsToGo=1*(Math.floor(Math.random()*5)*200)+500;
             }
         } 
  }    
@@ -960,9 +1079,13 @@ function jumpRes(res){
      
   }
          
+app.stage.interactive = true;
+     
     
-  app.ticker.add(function() {
 
+     
+  app.ticker.add(function() {
+     
           
                cats.forEach(function(item,i,arr) {
                    randomWalk(item);
@@ -1022,7 +1145,6 @@ function jumpRes(res){
       }
       else{
       cat.x+=2;
-      
       container.x-=2;
       gcontainer.x-=2;
       }
@@ -1032,6 +1154,7 @@ function jumpRes(res){
       if ((cat.x%16)==0){
           collectResources();
           collide(cat);
+          mouseDisplacement+=16;
           
       }
      
@@ -1059,7 +1182,6 @@ function jumpRes(res){
       }
       else{
       cat.x-=2;
-      
       container.x+=2;
       gcontainer.x+=2;
       }
@@ -1069,6 +1191,7 @@ function jumpRes(res){
       if ((cat.x%16)==0){
           collectResources();
           collide(cat);
+          mouseDisplacement-=16;
           
       }
      
