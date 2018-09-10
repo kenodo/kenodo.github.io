@@ -29,7 +29,7 @@
 //Add the canvas that Pixi automatically created for you to the HTML document
 document.body.appendChild(app.view);
     
-    var text = new PIXI.Text('Загрузка котанов...',{fill : '#000000', font : '48px Arial',wordWrap : true, wordWrapWidth : 700});
+    var text = new PIXI.Text('Загрузка котанов...',{fill : '#000000', font : '48px Arial',wordWrap : true, wordWrapWidth : 800});
 			text.x = 200;
             text.y=230;
 			app.stage.addChild(text);
@@ -99,6 +99,14 @@ function setup() {
   item.y+=0.8;
   if(item.rotation>1.2){
       delete fallingTrees[i];
+      addResource(item.x,item.y-16,"wood");
+      addResource(item.x-16,item.y-16,"wood");
+      addResource(item.x+32,item.y-16,"wood");
+      addResource(item.x+32+32,item.y-16,"wood");
+      addResource(item.x+32+32+32,item.y-16,"wood");
+      createjs.Sound.play("pop");
+      item.visible=false;
+      delete item;
       fall=false;
   }
 });
@@ -207,6 +215,7 @@ function setup() {
     res.jumping=true;
     res.falling=false;
     res.type="res";
+    res.resourceType=type;
     physics.push(res);
     resArr[xCoord]=res;
     
@@ -230,12 +239,14 @@ function setup() {
        
         if(b.hitTestRectangle(item,cat)){
             console.log("collected");
-           
-            updateInterface();
+            
             item.visible=false;
-            cat.blocks+=1;
-            console.log(cat.blocks);
+            cat.inventory[1]=item.resourceType;
+            cat.inventory[1].count+=1;
+            console.log(cat.inventory[1]);
+            updateInterface();
             item.y+=600;
+            delete item;
   }
   });
                   }
@@ -676,9 +687,12 @@ this.addEventListener('mousemove', (e) => {
          sand[rnX][rnY].interactive = true;
       
          sand[rnX][rnY].click = function(e) {
+         addResource(this.x,this.y,"wood");
+          
          sand[rnX][rnY].y+=1000;
          sand[rnX][rnY].visible=false;
          createjs.Sound.play("pop");
+         
          delete sand[rnX][rnY];
          }
             
@@ -783,7 +797,7 @@ this.addEventListener('mousemove', (e) => {
     var cats=[];
     pers.y=0;
           
-   let backCont = new PIXI.Container();
+    let backCont = new PIXI.Container();
     var background = new PIXI.Sprite(PIXI.loader.resources["back.png"].texture);
     background.anchor.set(0);
     background.y=0;
@@ -794,10 +808,11 @@ this.addEventListener('mousemove', (e) => {
     app.stage.addChild(backCont);
     
           
-    cat=new PIXI.Sprite(PIXI.loader.resources["women.png"].texture);
+    cat=new PIXI.Sprite(PIXI.loader.resources["cat.png"].texture);
     cat.anchor.set(0.5);
     cat.y=0;
     cat.blocks=0;
+    cat.inventory=[];
     container.y=200;
     gcontainer.y=200;
     cat.x=464;
@@ -1144,7 +1159,7 @@ function userInterface(){
 }
      
 function updateInterface(){
-    item=new PIXI.Sprite(PIXI.loader.resources["snowg-resource.png"].texture);
+    item=new PIXI.Sprite(PIXI.loader.resources[cat.inventory[1]+".png"].texture);
     item.width=20;
     item.height=20;
     item.x=interface[1].x+10;
@@ -1170,17 +1185,17 @@ function updateInterface(){
      
   }
          
-userInterface();
+
      
     
-
+userInterface();
      
   app.ticker.add(function() {
      
-     
+       
        
                cats.forEach(function(item,i,arr) {
-                   randomWalk(item);
+                   //randomWalk(item);
 });
     
       
