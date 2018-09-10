@@ -55,6 +55,8 @@ PIXI.loader
   .add("snowgrass.png")
   .add("snowtree.png")
   .add("g.png")
+  .add("cursor.png")
+  .add("item.png")
   .add("snowg.png")
   .add("tree.png")
   .add("tree2.png")
@@ -193,8 +195,8 @@ function setup() {
     
  
   
- function addResource(xCoord, yCoord){
-    var res=new PIXI.Sprite(PIXI.loader.resources["snowg-resource.png"].texture);
+ function addResource(xCoord, yCoord,type){
+    var res=new PIXI.Sprite(PIXI.loader.resources[type+".png"].texture);
     //res.anchor.set(0.5);
     res.y=yCoord;
     res.x=xCoord;
@@ -228,6 +230,8 @@ function setup() {
        
         if(b.hitTestRectangle(item,cat)){
             console.log("collected");
+           
+            updateInterface();
             item.visible=false;
             cat.blocks+=1;
             console.log(cat.blocks);
@@ -247,6 +251,12 @@ function isRightClick(e) {
     e.preventDefault();
     console.log("RightClick");
     addBlock(e.clientX, e.clientY);
+    
+  });
+    
+this.addEventListener('mousemove', (e) => {
+    container.removeChild(curs);
+    cursor(e.clientX, e.clientY);
     
   });
 
@@ -318,6 +328,7 @@ function isRightClick(e) {
                  
         sand[genX][rightYToAdd].width=16;       
         sand[genX][rightYToAdd].height=16;
+        sand[genX][rightYToAdd].type="grass";
         container.addChild(sand[genX][rightYToAdd]);
             sand[genX][rightYToAdd].interactive = true;
              sand[genX][rightYToAdd].click = function(e) {
@@ -325,7 +336,7 @@ function isRightClick(e) {
                 console.log("rightYToAdd clicked");
                 this.visible=false;
                 createjs.Sound.play("pop");
-                addResource(this.x,this.y);
+                addResource(this.x,this.y,this.type);
                 console.log("added resource " + this.x + "|" + this.y);
                 this.y+=600;
              }
@@ -380,7 +391,7 @@ function isRightClick(e) {
             sand[genX][toBottomY].y=toBottomY;
             sand[genX][toBottomY].width=16;       
             sand[genX][toBottomY].height=16;
-           
+           sand[genX][toBottomY].type="g";
            
           
            
@@ -391,7 +402,7 @@ function isRightClick(e) {
                console.log("toBottomY clicked");
                 this.visible=false;
                 createjs.Sound.play("pop");
-                addResource(this.x,this.y);
+                addResource(this.x,this.y,this.type);
                 this.y+=600;
              }
            toStone+=1;
@@ -478,6 +489,8 @@ function isRightClick(e) {
                  
         sand[genX][leftYToAdd].width=16;       
         sand[genX][leftYToAdd].height=16;
+        sand[genX][leftYToAdd].type="grass";
+            
         container.addChild(sand[genX][leftYToAdd]);
             sand[genX][leftYToAdd].interactive = true;
             sand[genX][leftYToAdd].click = function(e) {
@@ -485,7 +498,7 @@ function isRightClick(e) {
                 console.log("leftYToAdd clicked");
                 this.visible=false;
                 createjs.Sound.play("pop");
-                addResource(this.x,this.y);
+                addResource(this.x,this.y,this.type);
                 console.log("added resource " + this.x + "|" + this.y);
                 this.y+=600;
              }
@@ -541,6 +554,7 @@ function isRightClick(e) {
             sand[genX][toBottomY].y=toBottomY;
             sand[genX][toBottomY].width=16;       
             sand[genX][toBottomY].height=16;
+            sand[genX][toBottomY].type="g";
            
            
           
@@ -552,7 +566,7 @@ function isRightClick(e) {
                console.log("toBottomY clicked");
                 this.visible=false;
                 createjs.Sound.play("pop");
-                addResource(this.x,this.y);
+                addResource(this.x,this.y,this.type);
                 
                 this.y+=600;
              }
@@ -620,20 +634,34 @@ function isRightClick(e) {
         
              }
     }
-  
     
+    var curs=undefined;
+    
+  function cursor(xC,yC){
+      var cattX=Math.floor(cat.x/16)*16;
+      var rnX=(Math.floor(xC/16)*16)+(cattX-16*30);
+      var rnY=(Math.floor(yC/16)*16)-208;
+        curs = new PIXI.Sprite(PIXI.loader.resources["cursor.png"].texture);
+        curs.x=rnX;
+        curs.y=rnY;
+        curs.width=16;
+        curs.height=16;
+        container.addChild(curs);
+  }
     
   function addBlock(xC, yC){
       
-    
+      //if (cat.blocks<=0)return;
       
-      var rnX=(Math.floor(xC/16)*16)+mouseDisplacement;
+      var cattX=Math.floor(cat.x/16)*16;
+      var rnX=(Math.floor(xC/16)*16)+(cattX-16*30);
       var rnY=(Math.floor(yC/16)*16)-208;
       console.log(sand[rnX]);
       if(sand[rnX][rnY]){
          sand[rnX][rnY].visible=false;
          delete sand[rnX][rnY];
       }
+      
       
       if(sand[rnX]){
          sand[rnX][rnY]=new PIXI.Sprite(PIXI.loader.resources["wood.png"].texture); 
@@ -651,6 +679,7 @@ function isRightClick(e) {
          sand[rnX][rnY].y+=1000;
          sand[rnX][rnY].visible=false;
          createjs.Sound.play("pop");
+         delete sand[rnX][rnY];
          }
             
         sand[rnX][rnY].x=rnX;
@@ -659,6 +688,8 @@ function isRightClick(e) {
          sand[rnX][rnY].width=16;       
          sand[rnX][rnY].height=16;
         container.addChild(sand[rnX][rnY]);
+      
+      cat.blocks-=1;
         
   }
    
@@ -775,6 +806,8 @@ function isRightClick(e) {
     cat.width=60;
     cat.height=50;
     cat.type="player";
+    cat.ableToMoveLeft=true;
+    cat.ableToMoveRight=true;
     physics.push(cat);
     
     
@@ -789,7 +822,7 @@ function isRightClick(e) {
     addCat("rabbit");
     
     generateRTL();
-    generateLTR("forest");
+    generateLTR();
     addCat("cat2");
   
     
@@ -902,9 +935,14 @@ function jumpRes(res){
  function collide(obj) {
      
      try{
-        var collideLeft=sand[obj.rndx-32][obj.y];
+         
+     var collideLeft=sand[obj.rndx-16][obj.y];
+     var leftWall=sand[obj.rndx-16][obj.y-32];
+         
      var collideRight=sand[obj.rndx+16][obj.y];
-     var collideUp=sand[obj.rndx][obj.y];
+     var rightWall=sand[obj.rndx+16][obj.y-32];   
+         
+     var collideUp=sand[obj.rndx][obj.y-16];
      var collideBottom=sand[obj.rndx][obj.y+16]; 
      }
      catch{
@@ -914,6 +952,35 @@ function jumpRes(res){
      
      if(!collideBottom)obj.falling=true;
     
+     if (leftWall){
+         console.log("leftwall");
+         //leftWall.tint=0xC5F3D4;
+         obj.ableToMoveLeft=false;
+         //mouseDisplacement+=2;
+         obj.x+=2;
+         obj.y-=2;
+         if (obj.type=="player")container.x-=2;
+         else if(obj.type=="animal"){
+             if(obj.direction==0)obj.direction=1;
+             else obj.direction=0;
+         }
+         
+         return;
+     }
+     
+     if (rightWall){
+         console.log("rightWall");
+         //rightWall.tint=0xC5F3D4;
+         obj.ableToMoveRight=false;
+         obj.x-=2;
+         obj.y-=2;
+         if (obj.type=="player")container.x+=2;
+          else if(obj.type=="animal"){
+             if(obj.direction==0)obj.direction=1;
+             else obj.direction=0;
+         }
+         return;
+     }
      
      
      
@@ -1064,12 +1131,36 @@ function jumpRes(res){
            
           
            
-  var ambientPlaying=false;
+ var ambientPlaying=false;
+  var interface = [];    
+function userInterface(){
+   
+    interface[1] = new PIXI.Sprite(PIXI.loader.resources["item.png"].texture); 
+    interface[1].width=40;
+    interface[1].height=40;
+    interface[1].x=280;
+    interface[1].y=540;
+    app.stage.addChild(interface[1]);
+}
+     
+function updateInterface(){
+    item=new PIXI.Sprite(PIXI.loader.resources["snowg-resource.png"].texture);
+    item.width=20;
+    item.height=20;
+    item.x=interface[1].x+10;
+    item.y=interface[1].y+5;
+    app.stage.addChild(item);
+    
+     var text = new PIXI.Text(cat.blocks,{fill : '#000000', font : '12px Arial',wordWrap : true, wordWrapWidth : 800});
+			text.x = item.x+2;
+            text.y=item.y+15;
+			app.stage.addChild(text);
+}
          
        
        
 
-  function playAmbient(){
+ function playAmbient(){
       if(!ambientPlaying){
          console.log("playambient");
          var ambientProps = new createjs.PlayPropsConfig().set({interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 0.8});
@@ -1079,22 +1170,19 @@ function jumpRes(res){
      
   }
          
-app.stage.interactive = true;
+userInterface();
      
     
 
      
   app.ticker.add(function() {
      
-          
+     
+       
                cats.forEach(function(item,i,arr) {
                    randomWalk(item);
 });
-         //randomWalk(cats[1]);
-         //randomWalk(cats[2]);
-      
-          //cats[1].rndx=Math.floor((cats[1].x/16))*16;
-          //collide(cats[1]);
+    
       
       
           cat.rndx=Math.floor((cat.x/16))*16;
@@ -1107,25 +1195,7 @@ app.stage.interactive = true;
       
             if(jumping)jump();
       
-            
-      
-         
-            
-           
-            
-           
-         
 
-      
-      
-      
-         
-
-      
-      
-     
-   
-  
       
   if(moveRight){
       
@@ -1144,9 +1214,12 @@ app.stage.interactive = true;
           catRiding.scale.x=-0.3;
       }
       else{
-      cat.x+=2;
-      container.x-=2;
-      gcontainer.x-=2;
+       if(cat.ableToMoveRight){
+            cat.x+=2;
+            container.x-=2;
+            gcontainer.x-=2;
+            cat.ableToMoveLeft=true;
+        }
       }
       
       
@@ -1181,9 +1254,13 @@ app.stage.interactive = true;
           catRiding.scale.x=0.3;
       }
       else{
-      cat.x-=2;
-      container.x+=2;
-      gcontainer.x+=2;
+        if(cat.ableToMoveLeft){
+            cat.x-=2;
+            container.x+=2;
+            gcontainer.x+=2;
+            cat.ableToMoveRight=true;
+        }
+      
       }
       
       
