@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Игра</title>
 </head>
 <body>
     
@@ -10,9 +10,12 @@
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
 <script src="bump.js"></script>
+<script src="circular-json.js"></script>
 <script src="https://code.createjs.com/soundjs-0.6.2.min.js"></script>
 
 <script>
+    const JSON = CircularJSON;
+    
   let app = new PIXI.Application({ 
     width: 800, 
     height: 600,                       
@@ -54,6 +57,9 @@ PIXI.loader
   .add("wood.png")
   .add("snowgrass.png")
   .add("snowtree.png")
+  .add("snowtree2.png")
+  .add("snowtree3.png")
+  .add("snowtree4.png")  
   .add("g.png")
   .add("cursor.png")
   .add("item.png")
@@ -150,9 +156,10 @@ function setup() {
     var resArr=[];  
   function addTree(genX, Ycoord,biom){
       var treeChance=Math.random()>=0.9;
-      if (biom=="forest"){
+      if (biom=="snow"){
       treeChance=Math.random()>=0.93;  
       }
+      else if(biom==undefined)biom="";
       
       var treeType=Math.random();
       if (treeChance){
@@ -160,17 +167,18 @@ function setup() {
                 let flower = new PIXI.Sprite(PIXI.loader.resources["flower.png"].texture);
                 
                 if(treeType>=0.3 & treeType<0.5){
-                    tr=new PIXI.Sprite(PIXI.loader.resources["tree.png"].texture);
+                    tr=new PIXI.Sprite(PIXI.loader.resources[biom+"tree.png"].texture);
                 }
                 else if(treeType>=0.5 & treeType<0.7){
-                    tr=new PIXI.Sprite(PIXI.loader.resources["tree2.png"].texture);
+                    tr=new PIXI.Sprite(PIXI.loader.resources[biom+"tree2.png"].texture);
                 }
                 else if(treeType>=0.7){
-                    tr=new PIXI.Sprite(PIXI.loader.resources["tree3.png"].texture);
+                    tr=new PIXI.Sprite(PIXI.loader.resources[biom+"tree3.png"].texture);
                 }
                 else{
-                    tr=new PIXI.Sprite(PIXI.loader.resources["tree4.png"].texture);
+                    tr=new PIXI.Sprite(PIXI.loader.resources[biom+"tree4.png"].texture);
                 }
+
               Ycoord+=150;
               tr.width=100;
               tr.height=160;
@@ -231,8 +239,8 @@ function setup() {
     
    
     
-  function collectResources(){
-       b = new Bump(PIXI);
+function collectResources(){
+      b = new Bump(PIXI);
       
       
       resArr.forEach(function(item,i) {
@@ -240,13 +248,49 @@ function setup() {
         if(b.hitTestRectangle(item,cat)){
             console.log("collected");
             
-            item.visible=false;
-            cat.inventory[1]=item.resourceType;
-            cat.inventory[1].count+=1;
-            console.log(cat.inventory[1]);
-            updateInterface();
-            item.y+=600;
-            delete item;
+            
+            for(var i=1;i<=5;i++){
+                try{
+                    
+                console.log(cat.inventory[i]);
+                if(cat.inventory[i].name & cat.inventory[i].name!=item.resourceType){
+                   console.log("Слот занят");
+                
+                }  
+                else if(cat.inventory[i].name==item.resourceType){
+                    console.log("else");
+                    item.visible=false;
+                    cat.inventory[i].name=item.resourceType;
+                    cat.inventory[i].count+=1;
+                    console.log(cat.inventory[i]);
+                    userInterface();
+                    updateInterface();
+                    item.y+=600;
+                    delete item; 
+                    break;
+                    }
+                else if(!cat.inventory[i].name){
+                    console.log("undef")
+                    item.visible=false;
+                    cat.inventory[i].name=item.resourceType;
+                    cat.inventory[i].count+=1;
+                    console.log(cat.inventory[i]);
+                    userInterface();
+                    //updateInterface();
+                    item.y+=600;
+                    delete item;
+                    break;
+                   
+                }
+                }
+                catch(err){
+                   console.log(err);
+                   updateInterface();
+                }
+               
+            }
+            
+           
   }
   });
                   }
@@ -258,7 +302,7 @@ function isRightClick(e) {
     
 
 
-  this.addEventListener('contextmenu', (e) => {
+this.addEventListener('contextmenu', (e) => {
     e.preventDefault();
     console.log("RightClick");
     addBlock(e.clientX, e.clientY);
@@ -279,13 +323,13 @@ this.addEventListener('mousemove', (e) => {
     
 
  function generateLTR(biom){
-    
+      
       let grassSprite=new PIXI.Sprite(PIXI.loader.resources["grass.png"].texture);
       let groundSprite=new PIXI.Sprite(PIXI.loader.resources["g.png"].texture);
       let groundBonesSprite=new PIXI.Sprite(PIXI.loader.resources["gb.png"].texture);  
       
       
-          if(biom=="forest"){
+          if(biom=="snow"){
              grassSprite=new PIXI.Sprite(PIXI.loader.resources["snowgrass.png"].texture);
              groundSprite=new PIXI.Sprite(PIXI.loader.resources["snowg.png"].texture);
              groundBonesSprite=new PIXI.Sprite(PIXI.loader.resources["snowgb.png"].texture);
@@ -339,7 +383,7 @@ this.addEventListener('mousemove', (e) => {
                  
         sand[genX][rightYToAdd].width=16;       
         sand[genX][rightYToAdd].height=16;
-        sand[genX][rightYToAdd].type="grass";
+        sand[genX][rightYToAdd].type=biom+"grass";
         container.addChild(sand[genX][rightYToAdd]);
             sand[genX][rightYToAdd].interactive = true;
              sand[genX][rightYToAdd].click = function(e) {
@@ -402,7 +446,7 @@ this.addEventListener('mousemove', (e) => {
             sand[genX][toBottomY].y=toBottomY;
             sand[genX][toBottomY].width=16;       
             sand[genX][toBottomY].height=16;
-           sand[genX][toBottomY].type="g";
+           sand[genX][toBottomY].type=biom+"g";
            
           
            
@@ -451,7 +495,7 @@ this.addEventListener('mousemove', (e) => {
       let groundBonesSprite=new PIXI.Sprite(PIXI.loader.resources["gb.png"].texture);  
       
       
-          if(biom=="forest"){
+          if(biom=="snow"){
              grassSprite=new PIXI.Sprite(PIXI.loader.resources["snowgrass.png"].texture);
              groundSprite=new PIXI.Sprite(PIXI.loader.resources["snowg.png"].texture);
              groundBonesSprite=new PIXI.Sprite(PIXI.loader.resources["snowgb.png"].texture);
@@ -500,7 +544,7 @@ this.addEventListener('mousemove', (e) => {
                  
         sand[genX][leftYToAdd].width=16;       
         sand[genX][leftYToAdd].height=16;
-        sand[genX][leftYToAdd].type="grass";
+        sand[genX][leftYToAdd].type=biom+"grass";
             
         container.addChild(sand[genX][leftYToAdd]);
             sand[genX][leftYToAdd].interactive = true;
@@ -565,7 +609,7 @@ this.addEventListener('mousemove', (e) => {
             sand[genX][toBottomY].y=toBottomY;
             sand[genX][toBottomY].width=16;       
             sand[genX][toBottomY].height=16;
-            sand[genX][toBottomY].type="g";
+            sand[genX][toBottomY].type=biom+"g";
            
            
           
@@ -646,7 +690,7 @@ this.addEventListener('mousemove', (e) => {
              }
     }
     
-    var curs=undefined;
+  var curs=undefined;
     
   function cursor(xC,yC){
       var cattX=Math.floor(cat.x/16)*16;
@@ -663,6 +707,8 @@ this.addEventListener('mousemove', (e) => {
   function addBlock(xC, yC){
       
       //if (cat.blocks<=0)return;
+      var blockType=cat.inventory[cat.selectedItem].name;
+      
       
       var cattX=Math.floor(cat.x/16)*16;
       var rnX=(Math.floor(xC/16)*16)+(cattX-16*30);
@@ -675,11 +721,11 @@ this.addEventListener('mousemove', (e) => {
       
       
       if(sand[rnX]){
-         sand[rnX][rnY]=new PIXI.Sprite(PIXI.loader.resources["wood.png"].texture); 
+         sand[rnX][rnY]=new PIXI.Sprite(PIXI.loader.resources[blockType + ".png"].texture); 
       }
       else{
           sand[rnX] = new Array(); 
-          sand[rnX][rnY]=new PIXI.Sprite(PIXI.loader.resources["wood.png"].texture); 
+          sand[rnX][rnY]=new PIXI.Sprite(PIXI.loader.resources[blockType + ".png"].texture); 
       }
       
       
@@ -687,7 +733,7 @@ this.addEventListener('mousemove', (e) => {
          sand[rnX][rnY].interactive = true;
       
          sand[rnX][rnY].click = function(e) {
-         addResource(this.x,this.y,"wood");
+         addResource(this.x,this.y,blockType);
           
          sand[rnX][rnY].y+=1000;
          sand[rnX][rnY].visible=false;
@@ -709,7 +755,7 @@ this.addEventListener('mousemove', (e) => {
    
   function addCat(obType){
        
-        var n=5+Math.floor(Math.random()*3);
+        var n=3+cats.length+Math.floor(Math.random()*5);
         
         for(var i=cats.length+1;i<n;i++){
            
@@ -792,6 +838,11 @@ this.addEventListener('mousemove', (e) => {
     let left = keyboard(37),
       up = keyboard(38),
       right = keyboard(39),
+      one = keyboard(49),
+      two = keyboard(50),
+      three = keyboard(51),
+      four = keyboard(52),
+      five = keyboard(53),
       down = keyboard(40);
     
     var cats=[];
@@ -819,8 +870,15 @@ this.addEventListener('mousemove', (e) => {
     cat.rndx=464;
     catY=160;
     cat.width=60;
+    cat.selectedItem=0;
     cat.height=50;
     cat.type="player";
+    for(var i=1;i<=5;i++){
+        cat.inventory[i] = new Object();
+        cat.inventory[i].count=0;
+    }
+    
+    
     cat.ableToMoveLeft=true;
     cat.ableToMoveRight=true;
     physics.push(cat);
@@ -837,7 +895,7 @@ this.addEventListener('mousemove', (e) => {
     addCat("rabbit");
     
     generateRTL();
-    generateLTR();
+    generateLTR("snow");
     addCat("cat2");
   
     
@@ -878,12 +936,39 @@ this.addEventListener('mousemove', (e) => {
     right.press = () => {
         moveRight=true;
         cat.falling=true;
-  };
+    };
     
     right.release = () =>{
       moveRight=false;  
       cat.falling=true;
     };
+    
+    one.press = () => {
+        cat.selectedItem=1;
+        console.log("cat.selected=" + cat.selectedItem);
+    };
+    
+    
+    two.press = () => {
+        cat.selectedItem=2;
+        console.log("cat.selected=" + cat.selectedItem);
+    };
+    
+    three.press = () => {
+        cat.selectedItem=3;
+        console.log("cat.selected=" + cat.selectedItem);
+    };
+    
+    four.press = () => {
+        cat.selectedItem=4;
+        console.log("cat.selected=" + cat.selectedItem);
+    };
+    
+    five.press = () => {
+        cat.selectedItem=5;
+        console.log("cat.selected=" + cat.selectedItem);
+    };
+    
     
      left.press = () => {
         moveLeft=true;
@@ -1044,6 +1129,7 @@ function jumpRes(res){
             
              createjs.Sound.play("step",props);
              console.log("=====BOTTOM=====");
+             if(collideBottom.type=="snowgrass")console.log("Стоим на холодном блоке.");
          }
      }
          
@@ -1147,35 +1233,48 @@ function jumpRes(res){
           
            
  var ambientPlaying=false;
-  var interface = [];    
+ var interface = [];    
+     
+     
 function userInterface(){
-   
-    interface[1] = new PIXI.Sprite(PIXI.loader.resources["item.png"].texture); 
-    interface[1].width=40;
-    interface[1].height=40;
-    interface[1].x=280;
-    interface[1].y=540;
-    app.stage.addChild(interface[1]);
+    for(var i=1;i<=5;i++){
+        interface[i] = new PIXI.Sprite(PIXI.loader.resources["item.png"].texture); 
+        interface[i].width=40;
+        interface[i].height=40;
+        interface[i].x=280+i*45;
+        interface[i].y=540;
+        app.stage.addChild(interface[i]);  
+    }
+    
 }
      
 function updateInterface(){
-    item=new PIXI.Sprite(PIXI.loader.resources[cat.inventory[1]+".png"].texture);
-    item.width=20;
-    item.height=20;
-    item.x=interface[1].x+10;
-    item.y=interface[1].y+5;
-    app.stage.addChild(item);
     
-     var text = new PIXI.Text(cat.blocks,{fill : '#000000', font : '12px Arial',wordWrap : true, wordWrapWidth : 800});
-			text.x = item.x+2;
-            text.y=item.y+15;
+    var inv=[];
+    for(var i=1;i<=5;i++){
+        if(cat.inventory[i].name){
+            inv[i]=new PIXI.Sprite(PIXI.loader.resources[cat.inventory[i].name+".png"].texture);
+            inv[i].width=20;
+            inv[i].height=20;
+            inv[i].x=interface[i].x+10;
+            inv[i].y=interface[i].y+5;
+            app.stage.addChild(inv[i]); 
+            var text = new PIXI.Text(cat.inventory[i].count,{fill : '#000000', font : '12px Arial',wordWrap : true, wordWrapWidth : 800});
+			text.x = inv[i].x+2;
+            text.y=inv[i].y+15;
 			app.stage.addChild(text);
-}
+            
+        }
+    }
+    
+    
+     //var stringJSON=JSON.stringify(sand);
+   }
          
        
        
 
- function playAmbient(){
+function playAmbient(){
       if(!ambientPlaying){
          console.log("playambient");
          var ambientProps = new createjs.PlayPropsConfig().set({interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 0.8});
@@ -1193,10 +1292,11 @@ userInterface();
   app.ticker.add(function() {
      
        
-       
+       /*
                cats.forEach(function(item,i,arr) {
                    //randomWalk(item);
 });
+*/
     
       
       
@@ -1291,21 +1391,12 @@ userInterface();
       cat.scale.x = 0.3;
       
   }
-      
-      
-       
-  
-  
-  
-   
-});
 
-    
-    
+});
 
 }
     
-    
+
     
 
     
