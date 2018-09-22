@@ -52,7 +52,10 @@ document.body.appendChild(app.view);
 PIXI.loader
   .add("s.jpg")
   .add("cat.png")
+  .add("water.png")
   .add("grass.png")
+  .add("chicken.png")
+  .add("chickenres.png")
   .add("women.png")
   .add("wood.png")
   .add("snowgrass.png")
@@ -94,6 +97,7 @@ function setup() {
     var jumping=false;
     var jumpDisplacement=0;
     var physics = [];
+    var waterPhysics = [];
     
     
     function fallTree(){
@@ -134,6 +138,81 @@ function setup() {
 });
     }
     
+    function waterPhysicsController(){
+        
+        function put(block){
+            console.log(sand[block.originalX][block.originalY]);
+            delete sand[block.originalX][block.originalY];
+            if(sand[block.x]){
+                sand[block.x][block.y]=new PIXI.Sprite(PIXI.loader.resources["water.png"].texture); 
+            }
+              else{
+                  sand[block.x] = new Array(); 
+                  sand[block.x][block.y]=new PIXI.Sprite(PIXI.loader.resources["water.png"].texture); 
+              }
+            sand[block.x][block.y].x=block.x;
+            sand[block.x][block.y].y=block.y;
+             sand[block.x][block.y].originalX=block.x;
+             sand[block.x][block.y].originalY=block.y;
+            sand[block.x][block.y].width=16;
+            sand[block.x][block.y].height=16;
+            sand[block.x][block.y].liquid=true;
+            container.addChild(sand[block.x][block.y]);
+            waterPhysics.push(sand[block.x][block.y]);
+            delete block;
+        }
+        
+        function onLiquid(block){
+            var chance=Math.random()>=0.5;
+            
+            if(block.direction==undefined){
+               block.direction=chance;
+               }
+            
+            if(block.direction){
+                block.x+=16;
+            }
+            else block.x-=16;
+            
+            
+        }
+                
+        waterPhysics.forEach(function(item) {
+            if(sand[item.x][item.y+16]==undefined){
+              item.y+=2;
+              item.direction=undefined;
+          }
+          
+          if(sand[item.x][item.y+16]){
+              if (sand[item.x][item.y+16].liquid)
+              {   // Если прямо под блоком - жидкий блок
+                  onLiquid(item);
+                  if(sand[item.x][item.y]==undefined)put(item);
+              }
+              else {
+                  // Если прямо под блоком - твёрдый блок
+                // console.log("solid block");
+                 if(sand[item.x][item.y]==undefined)put(item);
+              }
+          }
+            
+            
+            
+            
+            
+            
+         
+          
+       
+            
+          
+});
+        
+        
+    }
+    
+    
+    
     
     
     
@@ -154,6 +233,10 @@ function setup() {
     let gcontainer=new PIXI.ParticleContainer(15000,0,20000,true);
     var toDelete= [];
     var resArr=[];  
+    
+    
+    
+    
   function addTree(genX, Ycoord,biom){
       var treeChance=Math.random()>=0.9;
       if (biom=="snow"){
@@ -227,7 +310,9 @@ function setup() {
     physics.push(res);
     resArr[xCoord]=res;
     
-    container.addChild(res);
+  
+     
+    container.addChild(resArr[xCoord]);
     
     app.stage.addChild(container);
     
@@ -241,12 +326,11 @@ function setup() {
     
 function collectResources(){
       b = new Bump(PIXI);
-      
-      
-      resArr.forEach(function(item,i) {
-       
-        if(b.hitTestRectangle(item,cat)){
-            console.log("collected");
+      let item=resArr[cat.x];
+     // console.log(resArr);
+      if(resArr[cat.x]){
+          if(resArr[cat.x].y-cat.y<=32){
+              console.log("collected");
             
             
             for(var i=1;i<=5;i++){
@@ -288,11 +372,10 @@ function collectResources(){
                    updateInterface();
                 }
                
-            }
-            
-           
-  }
-  });
+            } 
+          }
+      }
+   
                   }
     
     
@@ -305,7 +388,19 @@ function isRightClick(e) {
 this.addEventListener('contextmenu', (e) => {
     e.preventDefault();
     console.log("RightClick");
-    addBlock(e.clientX, e.clientY);
+    
+    if(cat.inventory[cat.selectedItem].name=="chickenres"){
+     console.log("Сьели курицу");
+     cat.inventory[cat.selectedItem].count--;
+     if(cat.inventory[cat.selectedItem].count<=0)cat.inventory[cat.selectedItem].name=undefined;
+     userInterface();
+     updateInterface();
+    }
+    else {
+     addBlock(e.clientX, e.clientY); 
+    }
+    
+    
     
   });
     
@@ -327,7 +422,7 @@ this.addEventListener('mousemove', (e) => {
       let grassSprite=new PIXI.Sprite(PIXI.loader.resources["grass.png"].texture);
       let groundSprite=new PIXI.Sprite(PIXI.loader.resources["g.png"].texture);
       let groundBonesSprite=new PIXI.Sprite(PIXI.loader.resources["gb.png"].texture);  
-      
+      if(biom==undefined)biom="";
       
           if(biom=="snow"){
              grassSprite=new PIXI.Sprite(PIXI.loader.resources["snowgrass.png"].texture);
@@ -394,16 +489,17 @@ this.addEventListener('mousemove', (e) => {
                 addResource(this.x,this.y,this.type);
                 console.log("added resource " + this.x + "|" + this.y);
                 this.y+=600;
+                delete this;
              }
              
               sand[genX][rightYToAdd].on("mouseover", function(e){  
-  console.log('Навели на блок');
+  //console.log('Навели на блок');
   sand[this.x][this.y].tint = 0xADADC1;
   
 });
             
              sand[genX][rightYToAdd].on("mouseout", function(e){  
-  console.log('Убрали с блока на блок');
+  //console.log('Убрали с блока на блок');
   sand[this.x][this.y].tint = 0xFFFFFF;
   
 });
@@ -463,13 +559,13 @@ this.addEventListener('mousemove', (e) => {
            toStone+=1;
            
            sand[genX][toBottomY].on("mouseover", function(e){  
-  console.log('Навели на блок');
+  //console.log('Навели на блок');
   sand[this.x][this.y].tint = 0xADADC1;
   
 });
             
              sand[genX][toBottomY].on("mouseout", function(e){  
-  console.log('Убрали с блока на блок');
+  //console.log('Убрали с блока на блок');
   sand[this.x][this.y].tint = 0xFFFFFF;
   
 });
@@ -493,7 +589,7 @@ this.addEventListener('mousemove', (e) => {
       let grassSprite=new PIXI.Sprite(PIXI.loader.resources["grass.png"].texture);
       let groundSprite=new PIXI.Sprite(PIXI.loader.resources["g.png"].texture);
       let groundBonesSprite=new PIXI.Sprite(PIXI.loader.resources["gb.png"].texture);  
-      
+      if(biom==undefined)biom="";
       
           if(biom=="snow"){
              grassSprite=new PIXI.Sprite(PIXI.loader.resources["snowgrass.png"].texture);
@@ -628,13 +724,13 @@ this.addEventListener('mousemove', (e) => {
             
             
              sand[genX][toBottomY].on("mouseover", function(e){  
-  console.log('Навели на блок');
+  //console.log('Навели на блок');
   sand[this.x][this.y].tint = 0xADADC1;
   
 });
             
              sand[genX][toBottomY].on("mouseout", function(e){  
-  console.log('Убрали с блока на блок');
+  //console.log('Убрали с блока на блок');
   sand[this.x][this.y].tint = 0xFFFFFF;
   
 });
@@ -680,7 +776,7 @@ this.addEventListener('mousemove', (e) => {
         sand[genX][randY].width=16;       
         sand[genX][randY].height=16;
         container.addChild(sand[genX][randY]);
-        console.log(sand[genX][randY]);
+       // console.log(sand[genX][randY]);
         console.log("block = " + genX + '|' + randY);
         console.log("coords = " + sand[genX][randY].x + "|" + sand[genX][randY].y);
              console.log('gen');
@@ -710,10 +806,12 @@ this.addEventListener('mousemove', (e) => {
       var blockType=cat.inventory[cat.selectedItem].name;
       
       
+      
+      
       var cattX=Math.floor(cat.x/16)*16;
       var rnX=(Math.floor(xC/16)*16)+(cattX-16*30);
       var rnY=(Math.floor(yC/16)*16)-208;
-      console.log(sand[rnX]);
+      //console.log(sand[rnX]);
       if(sand[rnX][rnY]){
          sand[rnX][rnY].visible=false;
          delete sand[rnX][rnY];
@@ -749,29 +847,59 @@ this.addEventListener('mousemove', (e) => {
          sand[rnX][rnY].height=16;
         container.addChild(sand[rnX][rnY]);
       
-      cat.blocks-=1;
+      if (blockType=="water") {
+          sand[rnX][rnY].falling=true;
+          sand[rnX][rnY].originalX=rnX;
+          sand[rnX][rnY].originalY=rnY;
+          waterPhysics.push(sand[rnX][rnY]);
+      }
+      
+      
+      //cat.blocks-=1;
         
   }
    
-  function addCat(obType){
+  function addCat(obType,count){
        
-        var n=3+cats.length+Math.floor(Math.random()*5);
+      
+        if(count)var n=count;
+        else var n=3+cats.length+Math.floor(Math.random()*5);
+        
         
         for(var i=cats.length+1;i<n;i++){
            
     cats[i]=new PIXI.Sprite(PIXI.loader.resources[obType + ".png"].texture);
     cats[i].anchor.set(0.5);
     cats[i].y=0;
+    
     cats[i].x=cat.x+(16*(Math.round(Math.random()*20)));
     cats[i].rndx=cats[i].x;
     cats[i].width=60;
     cats[i].height=50;
-    container.addChild(cats[i]);
-    app.stage.addChild(container);
     cats[i].interactive=true;
     cats[i].falling=true;
+    cats[i].sound=true;
     cats[i].type="animal";
+            
+    if(obType=="chicken")cats[i].eat=true;
     physics.push(cats[i]);
+            
+    cats[i].click = function(e) {
+                if(this.eat){
+                    console.log("animal clicked");                
+                    container.removeChild(this);
+                    this.interactive=false;
+                    createjs.Sound.play("pop");
+                    addResource(this.rndx,this.y,obType+"res");
+                }
+                
+                //console.log("added resource " + this.x + "|" + this.y);
+        
+                //delete this;
+             }
+    
+    container.addChild(cats[i]);
+    app.stage.addChild(container);
     
 
     /*
@@ -870,6 +998,7 @@ this.addEventListener('mousemove', (e) => {
     cat.rndx=464;
     catY=160;
     cat.width=60;
+    cat.sound=true;
     cat.selectedItem=0;
     cat.height=50;
     cat.type="player";
@@ -891,12 +1020,8 @@ this.addEventListener('mousemove', (e) => {
     app.stage.addChild(container);
     
     
-   
-    addCat("rabbit");
     
-    generateRTL();
-    generateLTR("snow");
-    addCat("cat2");
+    
   
     
     
@@ -1047,7 +1172,7 @@ function jumpRes(res){
      }
      catch{
          
- }
+        }
      
      
      if(!collideBottom)obj.falling=true;
@@ -1096,9 +1221,10 @@ function jumpRes(res){
          {
           if(obj.type=="animal")obj.y-=20;
           else obj.y-=16;
-          console.log("=======LEFT======");
+          //console.log("=======LEFT======");
           obj.falling=false;
-          createjs.Sound.play("step",props);
+          if(obj.sound)createjs.Sound.play("step",props);
+          
          }
      }
      
@@ -1108,10 +1234,10 @@ function jumpRes(res){
          if (cr){
             if(obj.type=="animal")obj.y-=20;
             else obj.y-=16;
-            console.log("=======RIGHT======");
+            //console.log("=======RIGHT======");
             obj.falling=false;
             
-            createjs.Sound.play("step",props);
+            if(obj.sound)createjs.Sound.play("step",props);
          }
      }
      if (collideUp)
@@ -1127,8 +1253,8 @@ function jumpRes(res){
              //if(obj.type=="player")obj.y-=10;
              //if(obj.type=="animal" & obj.moving==true & obj.falling==true)obj.y-=5;
             
-             createjs.Sound.play("step",props);
-             console.log("=====BOTTOM=====");
+             if(obj.sound)createjs.Sound.play("step",props);
+             //console.log("=====BOTTOM=====");
              if(collideBottom.type=="snowgrass")console.log("Стоим на холодном блоке.");
          }
      }
@@ -1208,11 +1334,11 @@ function jumpRes(res){
         else if(obj.secondsToGo){
             if (obj.secondsToGo>1){
                 if(obj.direction){
-                    obj.x+=0.8;
+                    obj.x+=0.6;
                     obj.scale.x=-0.3;
                 }
                 else{
-                    obj.x-=0.8;
+                    obj.x-=0.6;
                     obj.scale.x=0.3;
                 }
                 
@@ -1289,20 +1415,59 @@ function playAmbient(){
     
 userInterface();
      
+addCat("rabbit");
+addCat("chicken");
+//addCat("cat2");
+generateRTL();
+generateLTR();
+     
+
+
+   cat.inventory[5].name="water";
+   cat.inventory[5].count=5;
+
+   userInterface();
+   updateInterface();
+     
   app.ticker.add(function() {
      
        
-       /*
-               cats.forEach(function(item,i,arr) {
-                   //randomWalk(item);
+                
+          sand.forEach(function(item,i,arr) {
+            item.forEach(function(it,i,arr) {
+                 if(it.x>cat.x+350|it.x<cat.x-480){
+                       it.visible=false;
+                    
+                   }
+                   else{
+                       it.visible=true;
+                       
+                   }
+            });
+                   
+                 // console.log(this.worldTransform);
+                  
 });
-*/
+      
+      
+               cats.forEach(function(item,i,arr) {
+                   randomWalk(item);
+                   if(item.x>cat.x+350|item.x<cat.x-480){
+                       item.visible=false;
+                       item.sound=false;
+                   }
+                   else{
+                       item.visible=true;
+                       item.sound=true;
+                   }
+});
+
     
       
       
           cat.rndx=Math.floor((cat.x/16))*16;
           if(fall)fallTree();
-      
+          waterPhysicsController();
           physicsController();
           
       
