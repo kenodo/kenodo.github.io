@@ -58,7 +58,7 @@
 		if (!window.redconnect.uiVersion)
 			window.redconnect.uiVersion = val(2);
 
-		redconnect.countryCode = redconnect.countryCode || val("RU");
+		redconnect.countryCode = redconnect.countryCode || val("");
 
 		redconnect.deviceType = redconnect.deviceType || val("DESKTOP");
 
