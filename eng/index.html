@@ -373,6 +373,51 @@
            padding-right:30px;
        }
        
+       @media screen and (max-width:990px){
+           .bannerPhoto{
+               display: none;
+           }
+           
+           .advs{
+               padding-left:0 !important;
+           }
+           
+           .courseInfoFull{
+               display:none !important;
+           }
+           
+           .courseInfoMob{
+               display:block !important;
+           }
+       }
+       
+       
+       @media screen and (max-width:990px){
+           .bannerInfo{
+               height:auto !important;
+           }
+           .courseInfoFull{
+               display:block;
+           }
+           
+           .courseInfoMob{
+               display:none;
+           }
+           
+           .btnCourse {
+            margin-left: 0; 
+            padding-bottom: 50px;
+            }
+           
+           .hello p{
+               margin-left:30px !important;
+           }
+           
+           .aboutPhoto{
+               padding-left:30px !important;
+           }
+       }
+       
        
     </style>
     
@@ -446,8 +491,8 @@
 
   
   <section>
-      <div class="row" style="height:500px;overflow: hidden;">
-          <div class="col-6 hello">
+      <div class="row bannerInfo" style="height:500px;overflow: hidden;">
+          <div class="col-lg-6 col-sm-12 hello">
              <p style="margin-left:60px;"> Привет!<br>
 Я - Максимова Татьяна и я научу Вас:</p>
              
@@ -480,7 +525,7 @@
                
             
           </div>
-          <div class="col-6" style="padding:0;">
+          <div class="col-lg-6 bannerPhoto" style="padding:0;">
               <img class="img-fluid" style="position:relative;top:-50px;" src="img/banner.jpeg" alt="">
           </div>
       </div>
@@ -497,8 +542,8 @@
          
          
          
-          <div class="col-4" style="padding-left:80px;z-index:1;"><img class="img-fluid" style="border-radius:50px;" src="img/IMG_7366.jpeg" alt=""></div>
-          <div class="col-8 aboutText" style="padding-left:20px;">
+          <div class="col-lg-4 col-sm-8 offset-sm-1 aboutPhoto" style="padding-left:80px;z-index:1;"><img class="img-fluid" style="border-radius:50px;" src="img/IMG_7366.jpeg" alt=""></div>
+          <div class="col-lg-8 col-sm-12 aboutText" style="padding-left:20px;">
               <p><i>Я - Максимова Татьяна. <br>
 Основатель онлайн-школы английского языка. <br>
 <b>10 лет опыта и активной практики.</b><br>
@@ -527,12 +572,12 @@
       </div>
       
       <div class="row adv" style="margin:0;">
-          <div class="col-6" style="padding-left:130px;">
+          <div class="col-lg-6 col-sm-12 advs" style="padding-left:130px;">
               <img style="width:50%;float:left;padding:20px;" src="img/ten.png" alt="">
               <p class="adv">ЛЕТ ОПЫТА<br>И АКТИВНОЙ<br>ПРАКТИКИ</p>
           </div>
           
-           <div class="col-6" style="padding-left:130px;">
+           <div class="col-lg-6 col-sm-12 advs" style="padding-left:130px;">
               <img style="width:50%;float:left;padding:20px;" src="img/group.png" alt="">
               <p class="adv" style="line-height: .7em;margin-top:.6em;"><b style="font-size:80pt;line-height: .9em;">100+</b><br>УЧЕНИКОВ<br><span style="font-size:29.5pt;">ПРОШЛИ КУРС</span></p>
           </div>
@@ -549,11 +594,119 @@
       </div>
       
       <div class="row">
-          <div class="col-4 courseBlock" style="background-color:#fbf9f9;">
+          <div class="col-lg-4 col-sm-12 courseBlock" style="background-color:#fbf9f9;">
               <h2 style="padding-top:20px;padding-bottom:20px;">ДОСТУПНЫЕ КУРСЫ</h2>
               
               <div class="row">
                   <div class="col-12 courseItem selected"><h2>КУРС А1</h2></div>
+                  
+                  <div class="col-12 courseInfoMob" style="display:none;">
+                      <div class="col-12 courseInfo">
+              <div class="row" style="border-bottom: 2px solid #8f8686;padding-bottom: 30px;">
+                  <div class="col-12">
+                  <h2 style="float:left;">A1</h2>
+                  <p class="headP">Курс английского <br>языка</p>
+                  </div>
+                  
+                  <div class="col-12 price" style="line-height:0.2em;">
+                  <h2 style="text-align: left;">4500/6000 РУБ ЗА 2 МЕСЯЦА ОБУЧЕНИЯ</h2>
+                  </div>
+                  
+                  <div class="col-12">     
+                    <div class="text btnCourse" style="margin:0;"> 
+                        <input type="submit" style="margin-top:15px;height:50px;font-size:20pt !important;" size="90" name="name" id="name" value="ЗАПИСАТЬСЯ"> 
+                    </div>
+                  </div>
+              </div>
+              
+              <div class="row" style="font-family: 'vintage';">
+                  <div class="col-12"><p>Курс А1 состоит из <b>2 частей:</b></p></div>
+                  
+                  <br>
+                  
+                  <div class="col-6">
+                  <p style="background-color:#fbf9f9;padding:5px;">А1.1 - английский с нуля</p>
+                  </div>
+                  
+                    <div class="col-6">
+                  <p style="background-color:#fbf9f9;padding:5px;">А1.2 - английский азы</p>
+                  </div>
+                  
+                  <div class="col-12"><p><b>Продолжительность каждой части:</b></p></div>
+                  
+                  <div class="col-12">
+                      <p>
+                      4 недели (между которыми перерыв в 1 неделю) 
+                      <br>В день потребуется 30-40 минут 
+                     </p>
+                  </div>
+                  
+                  <div class="col-12"><p><b>Преимущества:</b></p></div>
+                  
+                 <div class="col-6 pr">
+                      <img class="img-fluid" src="img/operator.png" alt="">
+                      <h2>Поддержка</h2>
+                      <p>
+                        Я и мой ассистент
+                        всегда на связи
+                      </p>
+                  </div>
+                  
+                  <div class="col-6 pr">
+                      <img class="img-fluid" src="img/24.png" alt="">
+                      <h2>24 часа в сутки</h2>
+                      <p>
+                       Доступ к занятиям 
+                        в любое для вас время
+                      </p>
+                  </div>
+                  
+                  <div class="col-6 pr">
+                     <img class="img-fluid" src="img/www.png" alt="">
+                      <h2>ON-LINE</h2>
+                      <p>
+                        Возможность заниматься
+из любой точки мира
+                      </p>
+                  </div>
+                  
+                  <div class="col-6 pr">
+                      <img class="img-fluid" src="img/everyday.png" alt="">
+                      <h2>Регулярность</h2>
+                      <p>
+                        Занимайся каждый день
+                      </p>
+                  </div>
+                  
+                  
+                  
+                 
+                   <div class="col-12"><p><b> Расписание:</b></p></div>
+                      <div class="col-12">
+                          <p>5 дней учимся,<br> 
+                            2 отдыхаем.<br> 
+                            <br> Либо учитесь в выходные 
+                            - выбирайте свой вариант!
+                         </p>
+                      </div>
+                      
+                     
+                      
+                      <div class="col-12" style="padding-bottom:50px;">     
+                    <div class="text btnCourse" style="margin:0;"> 
+                        <button class="btn btn-secondary dropdown-toggle" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:20pt;border-radius:40px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           ПОДРОБНЕЕ
+                          </button> 
+                    </div>
+                  </div>
+                  
+                  
+              </div>
+          </div>
+                  </div>
+                  
+                  
+                  
                   <div class="col-12 courseItem"><h2>КУРС А2</h2></div>
                   <div class="col-12 courseItem"><h2>КУРС B1</h2></div>
                   <div class="col-12 courseItem"><h2>КУРС B2</h2></div>
@@ -561,7 +714,7 @@
                   <div class="col-12 courseItem"><h2>КУРС C2</h2></div>
               </div>
           </div>
-          <div class="col-8 courseInfo">
+          <div class="col-8 courseInfo courseInfoFull">
               <div class="row" style="border-bottom: 2px solid #8f8686;">
                   <div class="col-6">
                   <h2 style="float:left;">A1</h2>
@@ -679,13 +832,13 @@
       
       
       <div class="row">
-          <div class="col-6" style="padding-left:50px;padding-right:50px;">
+          <div class="col-sm-12 col-lg-6" style="padding-left:50px;padding-right:50px;">
               <input class="form-control" type="text" placeholder="ИМЯ">
               <input class="form-control" type="text" placeholder="ФАМИЛИЯ">
               <input class="form-control" type="text" placeholder="E-MAIL">
           </div>
           
-          <div class="col-6" style="padding-left:50px;padding-right:50px;">
+          <div class="col-sm-12 col-lg-6" style="padding-left:50px;padding-right:50px;">
               <input class="form-control" type="text" placeholder="СТРАНИЦА INSTAGRAM">
               <select class="sel" id="exampleFormControlSelect1">
               <option>Курс</option>
