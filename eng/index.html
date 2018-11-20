@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  
+  
+   <style>
+      
+      @font-face {
+        font-family: "Duke-Fill";
+        src: url("AA_Duke-Fill.ttf");
+        }
+      
+      @font-face {
+        font-family: "Vintage";
+        src: url("vintage.otf");
+        }
+       
+       @font-face {
+        font-family: "Captain";
+        src: url("American Captain.ttf");
+        }
+    
+      .nav-item{
+          font-family: "Duke-Fill";
+          padding-right:80px;          
+          font-size:25pt;
+      }
+       
+       .navbar-toggler-icon i{
+           font-size:25pt;
+           color:white;
+       }
+      
+      
+      
+      .nav-link{
+          color:white !important;
+          margin-top:5px !important;
+      }
+      
+      .social-link:first-child{
+          padding-right:30px;
+      }
+      
+      .form-group {
+        margin-bottom: .1rem;
+        }
+      
+      .social-link{
+          padding-right:80px;
+      }
+      
+      
+      
+      .navbar-brand{
+            margin: 0;
+            
+            padding-top: 15px;
+            padding-left:20px;
+            margin-left: 40px;
+            background-color: white;
+            color: #a48f82;
+            
+            height: 85px;
+            width:85px;
+            font-size:15pt;
+            font-family: 'Duke-Fill';
+      }
+      
+
+      
+      .navbar{
+          padding:0;
+          min-height: 50px;
+          background-color: #a48f82 !important;
+      }
+      
+      
+      .form-control-sm {
+        height: 20px;
+        
+        padding: 0;
+        margin-top: 7px;
+    }
+      
+      .text { 
+  margin-top:5px;
+  padding: 0; 
+  
+}
+       
+
+.text label { 
+  font-family: "Duke-Fill";
+  color:white;
+  margin: 0; 
+  padding: 0; 
+  display: block; 
+  padding-top: .1em; 
+  padding-right: .25em; 
+  width: 6em; 
+  text-align: right; 
+  float: left; 
+} 
+      
+      .text label{
+        font-size:16pt;
+        margin-top:-6px;
+      }
+
+.text input, 
+.text textarea { 
+  margin-top:10px;
+  padding: 0; 
+  border:0;
+  border-radius:30px;
+  display: block; 
+  font-size: 100%;
+  background-color:#e9e4e1;
+} 
+      
+      .login input{
+          padding-left:30px;
+          padding-right:30px;
+          margin-left:10px;
+          background-color:white;
+          color:#a48f82;
+          font-size:15pt;
+          line-height: 1.5rem;
+          font-family: 'Duke-Fill';
+          cursor: pointer;
+      }
+      
+      .forget{
+         font-family: 'Duke-Fill';
+          color:white;
+          font-size:16pt;
+          margin-left:10px;
+          margin-top:4px;
+          cursor: pointer;
+      }
+      
+      
+      .hello{
+          font-family: vintage;
+          color:#433f3d;
+          padding-top:50px;
+          padding-right:0;
+          padding-left:0;
+          font-size:14pt;
+          background-image:url(img/banner1.png);
+          background-size:auto;
+      }
+      
+      .hello li{
+          margin-bottom:20px;
+      }
+      
+      .btnCourse{
+          margin-left:20%;
+      }
+      
+      .btnCourse input{
+        border-radius: 50px;
+        font-size: 40pt !important;
+        line-height: normal;
+        margin-top:80px;      
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-left: 10px;
+        color: white;
+        background-color: #a48f82;
+        font-family: 'Duke-Fill';
+        cursor: pointer;
+        height:80px;
+      }
+       
+       .heading{
+            font-family: 'Duke-Fill';
+            font-size:45pt;
+            text-align: center;
+            color:#8f8686;
+            padding:50px;
+
+       }
+      
+       
+       .about{
+           background-color:#f8f5f4;
+       }
+       
+       .aboutText{
+           font-family: 'vintage';
+           color:#433f3d;
+           font-size:13pt;
+       }
+       
+    
+      
+       .lineUl{
+               list-style: none;
+                padding: 0;
+                font-style: italic;
+                background-color: black;
+                left: -54.5%;
+                position: relative;
+                width: 156.2%;
+                background-color:#a48f82;
+                color:white;
+       }
+       
+       .lineUl li{
+           margin-left:35%;
+       }
+       
+       .adv{
+          font-family: 'Captain';
+            font-size:40pt;
+            line-height: .9em;
+            margin-top:.8em;
+            color:#8f8686;
+          
+       }
+       
+       body{
+           padding-top:70px;
+       }
+       
+       .row{
+           margin-left:0;
+           margin-right:0;
+       }
+       
+       .services{
+           font-family: 'Duke-Fill';    
+       }
+       
+       .courseBlock{
+           padding:0;
+       }
+       
+       .courseBlock h2{
+           text-align: center;
+           color:#8f8686;
+           font-size:40pt;
+       }
+       
+       .courseItem{
+           margin-bottom:10px;
+           background-color:#d7cac2;
+       }
+       
+       .courseItem h2{
+           color:white;
+       }
+       
+       .courseBlock .selected{
+           background-color:white; 
+       }
+       
+       .courseBlock .selected h2{
+             color:#8f8686;
+       }
+    
+       
+       .courseInfo h2{
+           font-size:40pt;
+           color: #8f8686;
+           
+       }
+       
+       .courseInfo .headP{
+           font-size:19pt;
+           line-height: 0.9em;
+           color:#8f8686;
+           margin-top:12px;
+           padding-left:33px;
+       }
+       
+        .courseInfo .price h2{
+            font-size:25pt;
+            float:right;
+            font-family: 'Captain';
+            margin:0;
+    }
+       
+       .pr h2{
+           color: #433f3d;
+           text-align: center;
+           font-size:15pt;
+           font-weight: 700;
+       }
+       
+       .pr img{
+           padding:30px;
+       }
+       
+       .pr p{
+           text-align: center;
+           font-size: 11pt;
+       }
+       
+       .form-control{
+           font-family:'Duke-Fill';
+           font-size:30pt;
+           margin-bottom:10px;
+           padding:30px;
+           border:none;
+           text-align: center;
+           border-radius:50px;
+       }
+       
+       .form-control::placeholder{
+       color:#b4afaf; 
+       }
+       
+       .sel{
+           padding: 7px;
+            font-family: 'Duke-Fill';
+            font-size: 30pt;
+            margin-bottom: 10px;
+            /* padding: 30px; */
+            border: none;
+            text-align: center;
+            border-radius: 50px;
+            width: 100%;
+           text-align-last:center;
+           
+       }
+       
+       
+        .buy{
+           background-color:#a48f82 !important;
+           color:white;
+           cursor: pointer;
+       }
+       
+       footer{
+           background-color:white;
+           font-family: 'Duke-Fill';
+           padding-top:20px;
+           padding-bottom:40px;
+           font-size:16pt;
+           color:#8f8686;
+       }
+       
+       footer .brand{
+            margin-left:40px;
+           width:30%;
+           float:left;
+       }
+       
+       .footer-menu{
+           float:right;
+       }
+       
+       footer ul{
+           list-style: none;
+           font-family: 'Duke-Fill';
+       }
+       
+       footer ul li{
+           float:left;
+           padding-right:30px;
+       }
+       
+       
+    </style>
+    
+   
+   
+   
+   
+   <header>
+      <nav class="navbar fixed-top navbar-expand-lg bg-light">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+    <span class="brandSquare">ENGLISH<br>TEACHER</span>
+    </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><i class="fa fa-bars fa-1x"></i></span>
+  </button>
+  
+  
+ 
+  
+  <div class="collapse navbar-collapse" id="navbarNav" style="margin-left:5%">
+    <ul class="navbar-nav">
+     
+      <li class="nav-item social-link">
+        <a class="nav-link" href="#"><img style="width:37px;" src="img/vkLogo.png" alt=""></a>
+      </li>
+      
+      <li class="nav-item social-link">
+        <a class="nav-link" href="#"><img style="width:37px;" src="img/vkLogo.png" alt=""></a>
+      </li>
+     
+      <li class="nav-item active">
+        <a class="nav-link" href="#">ОБО МНЕ <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">УСЛУГИ</a>
+      </li>
+      <li class="nav-item" style="padding-right:0">
+        <a class="nav-link" href="#">ЗАПИСАТЬСЯ</a>
+      </li>
+      
+      <li>
+         
+<div class="text"> 
+    <label for="name">Логин:</label> 
+    <input type="text" size="15" name="name" id="name"/> 
+</div> 
+
+<div class="text"> 
+    <label for="email">Пароль:</label> 
+    <input type="password" size="15" name="email" id="email"/> 
+</div> 
+      
+
+      </li>
+      
+      <li>
+         <div class="text login"> 
+            <input type="submit" size="15" name="name" id="name" value="Войти"/> 
+        </div>
+        
+          <p class="forget">Забыли пароль?</p>  
+      </li>
+    </ul>
+  </div>
+      </div>
+ 
+</nav>       
+   </header>
+   
+
+  
+  <section>
+      <div class="row" style="height:500px;overflow: hidden;">
+          <div class="col-6 hello">
+             <p style="margin-left:60px;"> Привет!<br>
+Я - Максимова Татьяна и я научу Вас:</p>
+             
+                
+            <div class="textWrap" style="background-color:#a48f82;color:white;">
+                <p style="margin-left:60px;">
+                    - Легкому запоминанию слов, без зубрежки и страданий
+                </p>
+            </div>  
+            
+             
+                <p style="margin-left:60px;">
+                   - Говорить, используя готовые фразы и предложения
+                </p>
+                
+            <div class="textWrap" style="background-color:#a48f82;color:white;">
+                <p style="margin-left:60px;">
+                    - Красивой и правильной фонетике
+                </p>
+            </div>  
+              
+              <p style="margin-left:60px;">
+                   - Понимать на слух английскую речь
+                </p>
+               
+               
+        <div class="text btnCourse"> 
+            <input type="submit" size="90" name="name" id="name" value="ЗАПИСАТЬСЯ НА КУРС"/> 
+        </div>
+               
+            
+          </div>
+          <div class="col-6" style="padding:0;">
+              <img class="img-fluid" style="position:relative;top:-50px;" src="img/banner.jpeg" alt="">
+          </div>
+      </div>
+  </section>
+  
+  <section class="about" style="background-color:#fbf9f9;">
+      <div class="row" style="margin-left:0;margin-right:0;">
+          <div class="col-12" style="padding:0;">
+              <h2 class="heading">-ОБО МНЕ-</h2>
+          </div>
+      </div>
+      
+      <div class="row" style="margin-left:0;margin-right:0;padding-bottom:50px;">
+         
+         
+         
+          <div class="col-4" style="padding-left:80px;z-index:1;"><img class="img-fluid" style="border-radius:50px;" src="img/IMG_7366.jpeg" alt=""></div>
+          <div class="col-8 aboutText" style="padding-left:20px;">
+              <p><i>Я - Максимова Татьяна. <br>
+Основатель онлайн-школы английского языка. <br>
+<b>10 лет опыта и активной практики.</b><br>
+Всегда предлагаю интересные уроки с активным участием учеников.<br>
+Ведь язык не выучить молча!<br>
+Всеми своими знаниями я делюсь с учениками, которых научу:</i></p>
+         
+         <ul class="lineUl">
+           <b>
+               <li>- Легкому запоминанию слов, без зубрежки и страданий</li>
+                <li>- Говорить, используя готовые фразы и предложения</li>
+                <li>- Красивой и правильной фонетике</li>
+                <li>- Понимать на слух английскую речь</li>
+           </b>
+            
+
+         </ul>
+         
+         <p><i>Cо мной работает ассистентка.<br> 
+Валерия - моя ученица и выпускница лингвистического ВУЗа.<br>
+Она является моей правой рукой, в компетентности которой я ручаюсь на 100%.<br><br>
+<b>С нами учить английский легко и весело, гарантирую!<br> 
+Уже чуть больше 100 учеников прошли курс, присоединяйся и ты! </b>
+</i></p>
+          </div>
+      </div>
+      
+      <div class="row adv" style="margin:0;">
+          <div class="col-6" style="padding-left:130px;">
+              <img style="width:50%;float:left;padding:20px;" src="img/ten.png" alt="">
+              <p class="adv">ЛЕТ ОПЫТА<br>И АКТИВНОЙ<br>ПРАКТИКИ</p>
+          </div>
+          
+           <div class="col-6" style="padding-left:130px;">
+              <img style="width:50%;float:left;padding:20px;" src="img/group.png" alt="">
+              <p class="adv" style="line-height: .7em;margin-top:.6em;"><b style="font-size:80pt;line-height: .9em;">100+</b><br>УЧЕНИКОВ<br><span style="font-size:29.5pt;">ПРОШЛИ КУРС</span></p>
+          </div>
+          
+      </div>
+      
+  </section>
+  
+  <section class="services">
+      <div class="row" style="background-color:#f8f5f4;">
+          <div class="col-12" style="padding:0;">
+              <h2 class="heading">-УСЛУГИ-</h2>
+          </div>
+      </div>
+      
+      <div class="row">
+          <div class="col-4 courseBlock" style="background-color:#fbf9f9;">
+              <h2 style="padding-top:20px;padding-bottom:20px;">ДОСТУПНЫЕ КУРСЫ</h2>
+              
+              <div class="row">
+                  <div class="col-12 courseItem selected"><h2>КУРС А1</h2></div>
+                  <div class="col-12 courseItem"><h2>КУРС А2</h2></div>
+                  <div class="col-12 courseItem"><h2>КУРС B1</h2></div>
+                  <div class="col-12 courseItem"><h2>КУРС B2</h2></div>
+                  <div class="col-12 courseItem"><h2>КУРС C1</h2></div>
+                  <div class="col-12 courseItem"><h2>КУРС C2</h2></div>
+              </div>
+          </div>
+          <div class="col-8 courseInfo">
+              <div class="row" style="border-bottom: 2px solid #8f8686;">
+                  <div class="col-6">
+                  <h2 style="float:left;">A1</h2>
+                  <p class="headP">Курс английского <br>языка</p>
+                  </div>
+                  
+                  <div class="col-3 price" style="line-height:0.2em;">
+                  <h2>4500/6000 <span style="font-size:15pt;font-weight: 200;">РУБ</span></h2>
+                  <p class="headP" style="padding:0;float:right;">за 2 месяца обучения</p>
+                  </div>
+                  
+                  <div class="col-3">     
+                    <div class="text btnCourse" style="margin:0;"> 
+                        <input type="submit" style="margin-top:15px;height:50px;font-size:20pt !important;" size="90" name="name" id="name" value="ЗАПИСАТЬСЯ"/> 
+                    </div>
+                  </div>
+              </div>
+              
+              <div class="row" style="font-family: 'vintage';">
+                  <div class="col-12"><p>Курс А1 состоит из <b>2 частей:</b></p></div>
+                  
+                  <br>
+                  
+                  <div class="col-5 offset-1">
+                  <p style="background-color:#fbf9f9;padding:5px;">А1.1 - английский с нуля</p>
+                  </div>
+                  
+                    <div class="col-5 ">
+                  <p style="background-color:#fbf9f9;padding:5px;">А1.2 - английский азы</p>
+                  </div>
+                  
+                  <div class="col-12"><p><b>Продолжительность каждой части:</b></p></div>
+                  
+                  <div class="col-6 offset-1">
+                      <p>
+                      4 недели (между которыми перерыв в 1 неделю) 
+                      <br>В день потребуется 30-40 минут 
+                     </p>
+                  </div>
+                  
+                  <div class="col-12"><p><b>Преимущества:</b></p></div>
+                  
+                 <div class="col-3 pr">
+                      <img class="img-fluid" src="img/operator.png" alt="">
+                      <h2>Поддержка</h2>
+                      <p>
+                        Я и мой ассистент
+                        всегда на связи
+                      </p>
+                  </div>
+                  
+                  <div class="col-3 pr">
+                      <img class="img-fluid" src="img/24.png" alt="">
+                      <h2>24 часа в сутки</h2>
+                      <p>
+                       Доступ к занятиям 
+                        в любое для вас время
+                      </p>
+                  </div>
+                  
+                  <div class="col-3 pr">
+                     <img class="img-fluid" src="img/www.png" alt="">
+                      <h2>ON-LINE</h2>
+                      <p>
+                        Возможность заниматься
+из любой точки мира
+                      </p>
+                  </div>
+                  
+                  <div class="col-3 pr">
+                      <img class="img-fluid" src="img/everyday.png" alt="">
+                      <h2>Регулярность</h2>
+                      <p>
+                        Занимайся каждый день
+                      </p>
+                  </div>
+                  
+                  
+                  
+                 
+                   <div class="col-12"><p><b> Расписание:</b></p></div>
+                      <div class="col-3 offset-1">
+                          <p>5 дней учимся,<br> 
+                            2 отдыхаем.
+                         </p>
+                      </div>
+                      
+                      <div class="col-4">
+                          <p>Либо учитесь в выходные <br> 
+                            - выбирайте свой вариант! 
+                         </p>
+                      </div>
+                      
+                      <div class="col-3">     
+                    <div class="text btnCourse" style="margin:0;"> 
+                        <button class="btn btn-secondary dropdown-toggle" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:20pt;border-radius:40px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           ПОДРОБНЕЕ
+                          </button> 
+                    </div>
+                  </div>
+                  
+                  
+              </div>
+          </div>
+      </div>
+  </section>
+  
+  
+  <section class="sign" style="background-color:#f8f5f4;padding-bottom:200px;">
+       <div class="row" style="margin-left:0;margin-right:0;">
+          <div class="col-12" style="padding:0;padding-top:50px;">
+              <h2 class="heading">-ЗАПИСАТЬСЯ НА КУРС-</h2>
+          </div>
+      </div>
+      
+      
+      <div class="row">
+          <div class="col-6" style="padding-left:50px;padding-right:50px;">
+              <input class="form-control" type="text" placeholder="ИМЯ">
+              <input class="form-control" type="text" placeholder="ФАМИЛИЯ">
+              <input class="form-control" type="text" placeholder="E-MAIL">
+          </div>
+          
+          <div class="col-6" style="padding-left:50px;padding-right:50px;">
+              <input class="form-control" type="text" placeholder="СТРАНИЦА INSTAGRAM">
+              <select class="sel" id="exampleFormControlSelect1">
+              <option>Курс</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+              <input class="form-control buy" type="text" value="СОВЕРШИТЬ ПОКУПКУ">
+          </div>
+      </div>
+      
+  </section>
+  
+  
+  <footer>
+      <div class="brand">ENGLISH TEACHER</div>
+      <div class="footer-menu">
+          <ul>
+              <li>КОНФИДЕНЦИАЛЬНОСТЬ</li>
+              <li>РУССКИЙ</li>
+              <li>КОНТАКТНАЯ ИНФОРМАЦИЯ</li>
+              <li>ВСЕ ПРАВА ЗАЩИЩЕНЫ</li>
+              <li>2018</li>
+          </ul>
+      </div>
+  </footer>
+ 
+      
+ 
+   
+   
+   
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>   
+<script src="js/bootstrap.js"></script>    
+</body>
+</html>
