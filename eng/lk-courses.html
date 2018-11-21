@@ -246,7 +246,7 @@
        
        .courseBlock{
            padding:0;
-           padding-top:10%;
+           padding-top:12%;
            height:100%;
        }
        
@@ -388,9 +388,43 @@
           top:-75%;   
       }
       
+      .courseItem{
+          overflow: hidden;
+      }
+      
+      .courseItem a:hover{
+          text-decoration: none;
+      }
+      
+      
+      .courseItem h2:before{
+            content:">";
+            position: absolute;
+            top: -10px;
+            left: -30px;
+            transition: all 200ms ease;
+            font-size:60pt;
+      }
+      
+      .courseItem:hover > :before{
+          left:30px;
+      }
+      
       .social-link img{
           margin-top:18px;
       }
+      
+      .navbar-brand:hover{
+          color: #a48f82;;
+       }
+       
+       .navbar a:hover{
+           text-decoration: none;
+       }
+       
+       .navbar input{
+           outline: none;
+       }
       
      
       
@@ -410,9 +444,7 @@
               padding-bottom:50px;
           }
           
-          .lock img{
-              margin-left:16% !important;
-          }
+         
           
           footer{
               display:none;
@@ -576,13 +608,12 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                      <div class="col-12 col-md-6 courseIt">
                          <div class="row">
                              <div class="col-5 col-md-5">
-                                 <h2 class="courseIcon">A1</h2>
-                                 <div class="lock"><img style="height:60px;width:50px;position: absolute;top:14%;margin-left:22%;" src="img/lock.png" alt=""></div>
+                                  <img style="width:100px;height: 100px;" src="img/%D0%901.png" alt="">
                              </div>
                              <div class="col-7 col-md-7">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А1</h2>
                                  <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
-                           ПЕРЕЙТИ <b style="font-family:monospace;margin-left:20px;border:2px solid white;border-radius: 50px;padding-left:8px;padding-right:8px;">></b>
+                           <span style="padding-left:15px;">ПЕРЕЙТИ</span> <b style="margin-left:5px;font-family:monospace;border:2px solid white;border-radius: 50px;padding-left:8px;padding-right:8px;">></b>
                           </button> 
                              </div>
                          </div>
@@ -592,8 +623,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                      <div class="col-12 col-md-6 courseIt locked">
                          <div class="row">
                              <div class="col-5 col-md-5">
-                                 <h2 class="courseIcon">A1</h2>
-                                 <div class="lock"><img style="height:60px;width:50px;position: absolute;top:14%;margin-left:22%;" src="img/lock.png" alt=""></div>
+                                  <img style="width:100px;height: 100px;" src="img/locked.png" alt="">
                              </div>
                              <div class="col-7 col-md-7">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А2</h2>
@@ -607,8 +637,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                      <div class="col-12 col-md-6 courseIt locked">
                          <div class="row">
                              <div class="col-5 col-md-5">
-                                 <h2 class="courseIcon">A1</h2>
-                                 <div class="lock"><img style="height:60px;width:50px;position: absolute;top:14%;margin-left:22%;" src="img/lock.png" alt=""></div>
+                                  <img style="width:100px;height: 100px;" src="img/locked.png" alt="">
                              </div>
                              <div class="col-7 col-md-7">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс B1</h2>
@@ -622,8 +651,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                      <div class="col-12 col-md-6 courseIt locked">
                          <div class="row">
                              <div class="col-5 col-md-5">
-                                 <h2 class="courseIcon">A1</h2>
-                                 <div class="lock"><img style="height:60px;width:50px;position: absolute;top:14%;margin-left:22%;" src="img/lock.png" alt=""></div>
+                                  <img style="width:100px;height: 100px;" src="img/locked.png" alt="">
                              </div>
                              <div class="col-7 col-md-7">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс B2</h2>
@@ -637,8 +665,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                      <div class="col-12 col-md-6 courseIt locked">
                          <div class="row">
                              <div class="col-5 col-md-5">
-                                 <h2 class="courseIcon">A1</h2>
-                                 <div class="lock"><img style="height:60px;width:50px;position: absolute;top:14%;margin-left:22%;" src="img/lock.png" alt=""></div>
+                                  <img style="width:100px;height: 100px;" src="img/locked.png" alt="">
                              </div>
                              <div class="col-7 col-md-7">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс C1</h2>
@@ -652,8 +679,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                      <div class="col-12 col-md-6 courseIt locked">
                          <div class="row">
                              <div class="col-5 col-md-5">
-                                 <h2 class="courseIcon">A1</h2>
-                                 <div class="lock"><img style="height:60px;width:50px;position: absolute;top:14%;margin-left:22%;" src="img/lock.png" alt=""></div>
+                                 <img style="width:100px;height: 100px;" src="img/locked.png" alt="">
                              </div>
                              <div class="col-7 col-md-7">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс C2</h2>
@@ -690,13 +716,12 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                      <div class="col-6 courseIt">
                          <div class="row">
                              <div class="col-4">
-                                 <h2 class="courseIcon">A1</h2>
-                                 <div class="lock"><img style="height:60px;width:50px;position: absolute;top:14%;margin-left:22%;" src="img/lock.png" alt=""></div>
+                                <img style="width:100px;height: 100px;" src="img/%D0%901.png" alt="">
                              </div>
                              <div class="col-8">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А1</h2>
                                  <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
-                           ПЕРЕЙТИ <b style="font-family:monospace;margin-left:20px;border:2px solid white;border-radius: 50px;padding-left:8px;padding-right:8px;">></b>
+                           <span style="padding-left:15px;">ПЕРЕЙТИ</span> <b style="margin-left:5px;font-family:monospace;border:2px solid white;border-radius: 50px;padding-left:8px;padding-right:8px;">></b>
                           </button> 
                              </div>
                          </div>
@@ -707,8 +732,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                       <div class="col-6 courseIt locked">
                          <div class="row">
                              <div class="col-4">
-                                 <h2 class="courseIcon">A2</h2>
-                                 <div class="lock"><img style="height:60px;width:50px;position: absolute;top:14%;margin-left:22%;" src="img/lock.png" alt=""></div>
+                                <img style="width:100px;height: 100px;" src="img/locked.png" alt="">
                              </div>
                              <div class="col-8">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А1</h2>
@@ -723,8 +747,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                      <div class="col-6 courseIt locked">
                          <div class="row">
                              <div class="col-4">
-                                 <h2 class="courseIcon">B1</h2>
-                                 <div class="lock"><img style="height:60px;width:50px;position: absolute;top:14%;margin-left:22%;" src="img/lock.png" alt=""></div>
+                                  <img style="width:100px;height: 100px;" src="img/locked.png" alt="">
                              </div>
                              <div class="col-8">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А1</h2>
@@ -738,8 +761,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                       <div class="col-6 courseIt locked">
                          <div class="row">
                              <div class="col-4">
-                                 <h2 class="courseIcon">B2</h2>
-                                 <div class="lock"><img style="height:60px;width:50px;position: absolute;top:14%;margin-left:22%;" src="img/lock.png" alt=""></div>
+                                  <img style="width:100px;height: 100px;" src="img/locked.png" alt="">
                              </div>
                              <div class="col-8">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А1</h2>
@@ -754,8 +776,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                       <div class="col-6 courseIt locked">
                          <div class="row">
                              <div class="col-4">
-                                 <h2 class="courseIcon">C1</h2>
-                                 <div class="lock"><img style="height:60px;width:50px;position: absolute;top:14%;margin-left:22%;" src="img/lock.png" alt=""></div>
+                                 <img style="width:100px;height: 100px;" src="img/locked.png" alt="">
                              </div>
                              <div class="col-8">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А1</h2>
@@ -770,8 +791,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                       <div class="col-6 courseIt locked">
                          <div class="row">
                              <div class="col-4">
-                                 <h2 class="courseIcon">C2</h2>
-                                 <div class="lock"><img style="height:60px;width:50px;position: absolute;top:14%;margin-left:22%;" src="img/lock.png" alt=""></div>
+                                  <img style="width:100px;height: 100px;" src="img/locked.png" alt="">
                              </div>
                              <div class="col-8">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс C2</h2>

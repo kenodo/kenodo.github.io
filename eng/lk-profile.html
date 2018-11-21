@@ -385,9 +385,44 @@
           top:-75%;   
       }
       
+      .navbar-brand:hover{
+          color: #a48f82;;
+       }
+       
+       .navbar a:hover{
+           text-decoration: none;
+       }
+       
+       .navbar input{
+           outline: none;
+       }
+      
       .social-link img{
           margin-top:18px;
       }
+      
+      .courseItem{
+          overflow: hidden;
+      }
+      
+      .courseItem a:hover{
+          text-decoration: none;
+      }
+      
+      
+      .courseItem h2:before{
+            content:">";
+            position: absolute;
+            top: -10px;
+            left: -30px;
+            transition: all 200ms ease;
+            font-size:60pt;
+      }
+      
+      .courseItem:hover > :before{
+          left:30px;
+      }
+      
       
       @media screen and (max-width:990px){
            
@@ -401,6 +436,10 @@
           }
  .courseBlock{
              background-color: white; 
+          }
+          
+          .lRow{
+              border-bottom:none !important;
           }
           
           
@@ -490,7 +529,7 @@
           <div class="row" style="background-color:#f8f5f4;">
       </div>
       
-      <div class="row">
+      <div class="row lRow" style="border-bottom: 2px solid black;">
           <div class="col-sm-12 col-lg-4 courseBlock" style="background-color:#fbf9f9;">
               <div class="row">
                   <div class="col-12 courseItem selected" data-toggle="collapse" data-target="#infoMob1"
