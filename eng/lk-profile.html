@@ -396,6 +396,14 @@
               display:none;
           }
           
+           footer{
+              display:none;
+          }
+ .courseBlock{
+             background-color: white; 
+          }
+          
+          
           
            
           
@@ -411,6 +419,14 @@
               padding-right:0;
           }      
       }
+      
+      
+       @media screen and (max-width:420px){
+          #manlk{
+              margin:0 !important;
+          }
+      }
+      
       
       @media screen and (min-width:1100px){
           .social-link{
@@ -438,13 +454,11 @@
 
  <header>
       <nav class="navbar fixed-top navbar-expand-lg">
-      <div class="container-fluid">
+      <div class="container">
           <a class="navbar-brand" href="index.html">
     <span class="brandSquare">ENGLISH<br>TEACHER</span>
     </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"><i class="fa fa-bars fa-1x"></i></span>
-  </button>
+  
   
   
  
@@ -464,7 +478,7 @@
   </div>
      
   <h2 style="font-family: 'Duke-Fill';color:white;">Андрей Р.</h2>
-  <img style="width:50px;height:50px;margin-left:20px;margin-right:20px;" src="img/manLk.png" alt="">
+  <img id="manlk" style="width:50px;height:50px;margin-left:20px;margin-right:20px;" src="img/manLk.png" alt="">
   <h2 style="font-family: 'Duke-Fill';color:white;"><a class="nav-link" href="#">Выйти</a></h2>
       </div>
  
@@ -472,7 +486,8 @@
    </header>
    
   <section class="services">
-      <div class="row" style="background-color:#f8f5f4;">
+     <div class="container">
+          <div class="row" style="background-color:#f8f5f4;">
       </div>
       
       <div class="row">
@@ -495,11 +510,11 @@ aria-expanded="false"><h2>МОЙ ПРОФИЛЬ</h2></div>
               <div class="settings">
                   <div class="row" style="font-family: 'vintage';">
                        
-                  <div class="col-5">
+                  <div class="col-6">
                       <p style="color:#a48f82;float:right;">Имя:</p>
                   </div>
                   
-                  <div class="col-5">
+                  <div class="col-6">
                   <input type="text" value="Андрей" style="background-color:#fbf9f9;padding:5px;text-align: center;width:60%;color:#a48f82;border:none;">
                   <div class="delete edit"><img class="img-fluid" src="img/edit.png" alt=""></div>
                   </div>
@@ -509,11 +524,11 @@ aria-expanded="false"><h2>МОЙ ПРОФИЛЬ</h2></div>
               
                <div class="row" style="font-family: 'vintage';">
                        
-                  <div class="col-5">
+                  <div class="col-6">
                       <p style="color:#a48f82;float:right;">Фамилия:</p>
                   </div>
                   
-                  <div class="col-5">
+                  <div class="col-6">
                   <input type="text" value="Романов" style="background-color:#fbf9f9;padding:5px;text-align: center;width:60%;color:#a48f82;border:none;">
                   <div class="delete edit"><img class="img-fluid" src="img/edit.png" alt=""></div>
                   </div>
@@ -523,11 +538,11 @@ aria-expanded="false"><h2>МОЙ ПРОФИЛЬ</h2></div>
               
                <div class="row" style="font-family: 'vintage';">
                        
-                  <div class="col-5">
+                  <div class="col-6">
                       <p style="color:#a48f82;float:right;">Дата регистрации:</p>
                   </div>
                   
-                  <div class="col-5">
+                  <div class="col-6">
                   <p style="background-color:#fbf9f9;padding:5px;text-align: center;width:60%;color:#a48f82;">19.11.18</p>
                   </div>
                   
@@ -535,11 +550,11 @@ aria-expanded="false"><h2>МОЙ ПРОФИЛЬ</h2></div>
               
                <div class="row" style="font-family: 'vintage';">
                        
-                  <div class="col-5">
+                  <div class="col-6">
                       <p style="color:#a48f82;float:right;">Страница инстаграм:</p>
                   </div>
                   
-                  <div class="col-5">
+                  <div class="col-6">
                   <input type="text" value="user123456" style="background-color:#fbf9f9;padding:5px;text-align: center;width:60%;color:#a48f82;border:none;">
                   <div class="delete edit"><img class="img-fluid" src="img/edit.png" alt=""></div>
                   </div>
@@ -623,12 +638,15 @@ aria-expanded="false"><h2>МОЙ ПРОФИЛЬ</h2></div>
               
               
           </div>
-      </div>
+      </div>  
+     </div>
+     
   </section>
   
  
   <footer>
-      <div class="brand">ENGLISH TEACHER</div>
+     <div class="container">
+         <div class="brand">ENGLISH TEACHER</div>
       <div class="footer-menu">
           <ul>
               <li>КОНФИДЕНЦИАЛЬНОСТЬ</li>
@@ -637,7 +655,8 @@ aria-expanded="false"><h2>МОЙ ПРОФИЛЬ</h2></div>
               <li>ВСЕ ПРАВА ЗАЩИЩЕНЫ</li>
               <li>2018</li>
           </ul>
-      </div>
+      </div> 
+     </div>
   </footer>
  
       

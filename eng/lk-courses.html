@@ -73,6 +73,9 @@
             font-family: 'Duke-Fill';
       }
       
+      .btn-secondary{
+          border:none;
+      }
 
       
       .navbar{
@@ -389,6 +392,8 @@
           margin-top:18px;
       }
       
+     
+      
       
       @media screen and (max-width:990px){
            
@@ -408,6 +413,20 @@
           .lock img{
               margin-left:16% !important;
           }
+          
+          footer{
+              display:none;
+          }
+          
+          .lRow{
+              border-bottom:none !important;
+          }
+          
+          .courseBlock{
+             background-color: white; 
+          }
+          
+          
           
           
            
@@ -447,6 +466,16 @@
            
           
        }
+      
+       @media screen and (max-width:420px){
+          #manlk{
+              margin:0 !important;
+          }
+           
+           .lock{
+               margin-left:10% !important;
+           }
+      }
       
       .courseIcon{
           background-color:white;
@@ -491,7 +520,7 @@
 
  <header>
       <nav class="navbar fixed-top navbar-expand-lg">
-      <div class="container-fluid">
+      <div class="container">
           <a class="navbar-brand" href="index.html">
     <span class="brandSquare">ENGLISH<br>TEACHER</span>
     </a>
@@ -514,7 +543,7 @@
   </div>
      
   <h2 style="font-family: 'Duke-Fill';color:white;">Андрей Р.</h2>
-  <img style="width:50px;height:50px;margin-left:20px;margin-right:20px;" src="img/manLk.png" alt="">
+  <img id="manlk" style="width:50px;height:50px;margin-left:20px;margin-right:20px;" src="img/manLk.png" alt="">
   <h2 style="font-family: 'Duke-Fill';color:white;"><a class="nav-link" href="#">Выйти</a></h2>
       </div>
  
@@ -522,10 +551,12 @@
    </header>
    
   <section class="services">
-      <div class="row" style="background-color:#f8f5f4;">
+     
+     <div class="container">
+        <div class="row" style="background-color:#f8f5f4;">
       </div>
       
-      <div class="row">
+      <div class="row lRow" style="border-bottom: 2px solid black;">
           <div class="col-sm-12 col-lg-4 courseBlock" style="background-color:#fbf9f9;">
               <div class="row">
                   <div class="col-12 courseItem"><h2><a style="color:white" href="lk-profile.html">МОЙ ПРОФИЛЬ</a></h2></div>
@@ -550,7 +581,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                              </div>
                              <div class="col-7 col-md-7">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А1</h2>
-                                 <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:auto;" type="button" id="dropdownMenuButton">
+                                 <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
                            ПЕРЕЙТИ <b style="font-family:monospace;margin-left:20px;border:2px solid white;border-radius: 50px;padding-left:8px;padding-right:8px;">></b>
                           </button> 
                              </div>
@@ -566,8 +597,8 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                              </div>
                              <div class="col-7 col-md-7">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А2</h2>
-                                 <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:auto;" type="button" id="dropdownMenuButton">
-                           ПЕРЕЙТИ <b style="font-family:monospace;margin-left:20px;border:2px solid white;border-radius: 50px;padding-left:8px;padding-right:8px;">></b>
+                                 <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
+                           ПОДРОБНЕЕ
                           </button> 
                              </div>
                          </div>
@@ -581,8 +612,8 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                              </div>
                              <div class="col-7 col-md-7">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс B1</h2>
-                                 <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:auto;" type="button" id="dropdownMenuButton">
-                           ПЕРЕЙТИ <b style="font-family:monospace;margin-left:20px;border:2px solid white;border-radius: 50px;padding-left:8px;padding-right:8px;">></b>
+                                  <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
+                           ПОДРОБНЕЕ
                           </button> 
                              </div>
                          </div>
@@ -596,8 +627,8 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                              </div>
                              <div class="col-7 col-md-7">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс B2</h2>
-                                 <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:auto;" type="button" id="dropdownMenuButton">
-                           ПЕРЕЙТИ <b style="font-family:monospace;margin-left:20px;border:2px solid white;border-radius: 50px;padding-left:8px;padding-right:8px;">></b>
+                                  <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
+                           ПОДРОБНЕЕ
                           </button> 
                              </div>
                          </div>
@@ -611,8 +642,8 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                              </div>
                              <div class="col-7 col-md-7">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс C1</h2>
-                                 <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:auto;" type="button" id="dropdownMenuButton">
-                           ПЕРЕЙТИ <b style="font-family:monospace;margin-left:20px;border:2px solid white;border-radius: 50px;padding-left:8px;padding-right:8px;">></b>
+                                  <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
+                           ПОДРОБНЕЕ
                           </button> 
                              </div>
                          </div>
@@ -626,8 +657,8 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                              </div>
                              <div class="col-7 col-md-7">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс C2</h2>
-                                 <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:auto;" type="button" id="dropdownMenuButton">
-                           ПЕРЕЙТИ <b style="font-family:monospace;margin-left:20px;border:2px solid white;border-radius: 50px;padding-left:8px;padding-right:8px;">></b>
+                                 <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
+                           ПОДРОБНЕЕ
                           </button> 
                              </div>
                          </div>
@@ -664,7 +695,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                              </div>
                              <div class="col-8">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А1</h2>
-                                 <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:auto;" type="button" id="dropdownMenuButton">
+                                 <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
                            ПЕРЕЙТИ <b style="font-family:monospace;margin-left:20px;border:2px solid white;border-radius: 50px;padding-left:8px;padding-right:8px;">></b>
                           </button> 
                              </div>
@@ -681,7 +712,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                              </div>
                              <div class="col-8">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А1</h2>
-                                 <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:auto;" type="button" id="dropdownMenuButton">
+                                 <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
                            ПОДРОБНЕЕ
                           </button> 
                              </div>
@@ -697,7 +728,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                              </div>
                              <div class="col-8">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А1</h2>
-                                <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:auto;" type="button" id="dropdownMenuButton">
+                                <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
                            ПОДРОБНЕЕ
                           </button> 
                              </div>
@@ -712,7 +743,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                              </div>
                              <div class="col-8">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А1</h2>
-                                <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:auto;" type="button" id="dropdownMenuButton">
+                                <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
                            ПОДРОБНЕЕ
                           </button> 
                              </div>
@@ -728,7 +759,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                              </div>
                              <div class="col-8">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс А1</h2>
-                                <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:auto;" type="button" id="dropdownMenuButton">
+                                <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
                            ПОДРОБНЕЕ
                           </button> 
                              </div>
@@ -744,7 +775,7 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
                              </div>
                              <div class="col-8">
                                  <h2 class="title" style="color:#a48f82;font-size:30pt;">Курс C2</h2>
-                                  <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:auto;" type="button" id="dropdownMenuButton">
+                                  <button class="btn btn-secondary" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px;width:130px;" type="button" id="dropdownMenuButton">
                            ПОДРОБНЕЕ
                           </button> 
                              </div>
@@ -771,12 +802,15 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
               
               
           </div>
-      </div>
+      </div>  
+     </div>
+     
   </section>
   
  
   <footer>
-      <div class="brand">ENGLISH TEACHER</div>
+     <div class="container">
+         <div class="brand">ENGLISH TEACHER</div>
       <div class="footer-menu">
           <ul>
               <li>КОНФИДЕНЦИАЛЬНОСТЬ</li>
@@ -785,7 +819,9 @@ aria-expanded="false"><h2>МОИ КУРСЫ</h2></div>
               <li>ВСЕ ПРАВА ЗАЩИЩЕНЫ</li>
               <li>2018</li>
           </ul>
-      </div>
+      </div> 
+     </div>
+     
   </footer>
  
       
