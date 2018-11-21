@@ -1,0 +1,651 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+  <style>
+    
+      @font-face {
+        font-family: "Duke-Fill";
+        src: url("AA_Duke-Fill.ttf");
+        }
+      
+      @font-face {
+        font-family: "Vintage";
+        src: url("vintage.otf");
+        }
+       
+       @font-face {
+        font-family: "Captain";
+        src: url("American Captain.ttf");
+        }
+    
+      .nav-item{
+          font-family: "Duke-Fill";
+          padding-right:80px;          
+          font-size:25pt;
+      }
+       
+       .navbar-toggler-icon i{
+           font-size:25pt;
+           color:white;
+       }
+      
+      
+      
+      .nav-link{
+          color:white !important;
+          margin-top:5px !important;
+      }
+      
+      .social-link:first-child{
+          padding-right:30px;
+      }
+      
+      .form-group {
+        margin-bottom: .1rem;
+        }
+      
+      .social-link{
+          padding-right:80px;
+      }
+      
+      
+      
+      .navbar-brand{
+            margin: 0;
+            
+            padding-top: 15px;
+            padding-left:20px;
+            margin-left: 40px;
+            background-color: white;
+            color: #a48f82;
+            
+            height: 85px;
+            width:85px;
+            font-size:15pt;
+            font-family: 'Duke-Fill';
+      }
+      
+
+      
+      .navbar{
+          padding:0;
+          min-height: 50px;
+          background-color: #a48f82 !important;
+      }
+      
+      
+      .form-control-sm {
+        height: 20px;
+        
+        padding: 0;
+        margin-top: 7px;
+    }
+      
+      .text { 
+  margin-top:5px;
+  padding: 0; 
+  
+}
+       
+
+.text label { 
+  font-family: "Duke-Fill";
+  color:white;
+  margin: 0; 
+  padding: 0; 
+  display: block; 
+  padding-top: .1em; 
+  padding-right: .25em; 
+  width: 6em; 
+  text-align: right; 
+  float: left; 
+} 
+      
+      .text label{
+        font-size:16pt;
+        margin-top:-6px;
+      }
+
+.text input, 
+.text textarea { 
+  margin-top:10px;
+  padding: 0; 
+  border:0;
+  border-radius:30px;
+  display: block; 
+  font-size: 100%;
+  background-color:#e9e4e1;
+} 
+      
+      .login input{
+          padding-left:30px;
+          padding-right:30px;
+          margin-left:10px;
+          background-color:white;
+          color:#a48f82;
+          font-size:15pt;
+          line-height: 1.5rem;
+          font-family: 'Duke-Fill';
+          cursor: pointer;
+      }
+      
+      .forget{
+         font-family: 'Duke-Fill';
+          color:white;
+          font-size:16pt;
+          margin-left:10px;
+          margin-top:4px;
+          cursor: pointer;
+      }
+      
+      
+      .hello{
+          font-family: vintage;
+          color:#433f3d;
+          padding-top:50px;
+          padding-right:0;
+          padding-left:0;
+          font-size:14pt;
+          background-image:url(img/banner1.png);
+          background-size:auto;
+      }
+      
+      .hello li{
+          margin-bottom:20px;
+      }
+      
+      .btnCourse{
+          margin-left:20%;
+      }
+      
+      .btnCourse input{
+        border-radius: 50px;
+        font-size: 40pt !important;
+        line-height: normal;
+        margin-top:80px;      
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-left: 10px;
+        color: white;
+        background-color: #a48f82;
+        font-family: 'Duke-Fill';
+        cursor: pointer;
+        height:80px;
+      }
+       
+       .heading{
+            font-family: 'Duke-Fill';
+            font-size:45pt;
+            text-align: center;
+            color:#8f8686;
+            padding:50px;
+
+       }
+      
+       
+       .about{
+           background-color:#f8f5f4;
+       }
+       
+       .aboutText{
+           font-family: 'vintage';
+           color:#433f3d;
+           font-size:13pt;
+       }
+       
+    
+      
+       .lineUl{
+               list-style: none;
+                padding: 0;
+                font-style: italic;
+                background-color: black;
+                left: -54.5%;
+                position: relative;
+                width: 156.2%;
+                background-color:#a48f82;
+                color:white;
+       }
+       
+       .lineUl li{
+           margin-left:35%;
+       }
+       
+       .adv{
+          font-family: 'Captain';
+            font-size:40pt;
+            line-height: .9em;
+            margin-top:.8em;
+            color:#8f8686;
+          
+       }
+       
+       body{
+           padding-top:70px;
+       }
+       
+       .row{
+           margin-left:0;
+           margin-right:0;
+       }
+       
+       .services{
+           font-family: 'Duke-Fill';    
+       }
+       
+       .courseBlock{
+           padding:0;
+           padding-top:10%;
+           height:100%;
+       }
+       
+       .courseBlock h2{
+           text-align: center;
+           color:#8f8686;
+           font-size:40pt;
+       }
+       
+       .courseItem{
+           margin-bottom:10px;
+           background-color:#d7cac2;
+       }
+       
+       .courseItem h2{
+           color:white;
+       }
+       
+       .courseBlock .selected{
+           background-color:white; 
+       }
+       
+       .courseBlock .selected h2{
+             color:#8f8686;
+       }
+    
+       
+       .courseInfo h2{
+           font-size:40pt;
+           color: #8f8686;
+           
+       }
+       
+       .courseInfo .headP{
+           font-size:19pt;
+           line-height: 0.9em;
+           color:#8f8686;
+           margin-top:12px;
+           padding-left:33px;
+       }
+       
+        .courseInfo .price h2{
+            font-size:25pt;
+            float:right;
+            font-family: 'Captain';
+            margin:0;
+    }
+       
+       .pr h2{
+           color: #433f3d;
+           text-align: center;
+           font-size:15pt;
+           font-weight: 700;
+       }
+       
+       .pr img{
+           padding:30px;
+       }
+       
+       .pr p{
+           text-align: center;
+           font-size: 11pt;
+       }
+       
+       .form-control{
+           font-family:'Duke-Fill';
+           font-size:30pt;
+           margin-bottom:10px;
+           padding:30px;
+           border:none;
+           text-align: center;
+           border-radius:50px;
+       }
+       
+       .form-control::placeholder{
+       color:#b4afaf; 
+       }
+       
+       .sel{
+           padding: 7px;
+            font-family: 'Duke-Fill';
+            font-size: 30pt;
+            margin-bottom: 10px;
+            /* padding: 30px; */
+            border: none;
+            text-align: center;
+            border-radius: 50px;
+            width: 100%;
+           text-align-last:center;
+           
+       }
+       
+       
+        .buy{
+           background-color:#a48f82 !important;
+           color:white;
+           cursor: pointer;
+       }
+       
+       footer{
+           background-color:white;
+           font-family: 'Duke-Fill';
+           padding-top:20px;
+           padding-bottom:40px;
+           font-size:16pt;
+           color:#8f8686;
+       }
+       
+       footer .brand{
+            margin-left:40px;
+           width:30%;
+           float:left;
+       }
+       
+       .footer-menu{
+           float:right;
+       }
+       
+       footer ul{
+           list-style: none;
+           font-family: 'Duke-Fill';
+       }
+       
+       footer ul li{
+           float:left;
+           padding-right:30px;
+       }
+      
+      
+      .delete{
+          position:relative;
+          left:62%;
+          top:-80%;
+          width:20px;
+          height:20px;
+      }
+      
+      .edit{
+          top:-75%;   
+      }
+      
+      .social-link img{
+          margin-top:18px;
+      }
+      
+      @media screen and (max-width:990px){
+           
+          
+          #full{
+              display:none;
+          }
+          
+          
+           
+          
+       }
+      
+      
+      @media screen and (min-width:990px){
+          .social-link{
+              padding-right:0;
+          }
+          
+          .nav-item{
+              padding-right:0;
+          }      
+      }
+      
+      @media screen and (min-width:1100px){
+          .social-link{
+            padding-right:40px;
+          }
+      }
+      
+      @media screen and (min-width:1300px){
+          .nav-item{
+            padding-right:80px;
+          }
+      }
+      
+       @media screen and (min-width:990px){
+           
+           #infoMob1{
+               display:none !important;
+           }
+           
+          
+       }
+      
+      
+    </style>
+
+ <header>
+      <nav class="navbar fixed-top navbar-expand-lg">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+    <span class="brandSquare">ENGLISH<br>TEACHER</span>
+    </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><i class="fa fa-bars fa-1x"></i></span>
+  </button>
+  
+  
+ 
+  
+  <div class="collapse navbar-collapse" id="navbarNav" style="margin-left:50px;">
+    <ul class="navbar-nav">
+     
+      <li class="nav-item active">
+        <a class="nav-link" href="#">ЛИЧНЫЙ КАБИНЕТ<span class="sr-only">(current)</span></a>
+      </li>
+       
+    </ul>
+    
+   
+    
+    
+  </div>
+     
+  <h2 style="font-family: 'Duke-Fill';color:white;">Андрей Р.</h2>
+  <img style="width:50px;height:50px;margin-left:20px;margin-right:20px;" src="img/manLk.png" alt="">
+  <h2 style="font-family: 'Duke-Fill';color:white;"><a class="nav-link" href="#">Выйти</a></h2>
+      </div>
+ 
+</nav>       
+   </header>
+   
+  <section class="services">
+      <div class="row" style="background-color:#f8f5f4;">
+      </div>
+      
+      <div class="row">
+          <div class="col-sm-12 col-lg-4 courseBlock" style="background-color:#fbf9f9;">
+              <div class="row">
+                  <div class="col-12 courseItem selected" data-toggle="collapse" data-target="#infoMob1"
+aria-expanded="false"><h2>МОЙ ПРОФИЛЬ</h2></div>
+                 
+                  <div id="infoMob1" class="col-12 courseInfo">
+                      <div class="row">
+                  <div class="col-12" style="text-align: center;margin-top:10%;">
+                     <img src="img/manIcon.png" style="width:20%;" alt="">
+                     <div class="delete"><img class="img-fluid" src="img/cross.png" alt=""></div>
+                     <div class="delete edit"><img class="img-fluid" src="img/edit.png" alt=""></div>
+                  </div>
+                  
+                  
+              </div>
+              
+              <div class="settings">
+                  <div class="row" style="font-family: 'vintage';">
+                       
+                  <div class="col-5">
+                      <p style="color:#a48f82;float:right;">Имя:</p>
+                  </div>
+                  
+                  <div class="col-5">
+                  <input type="text" value="Андрей" style="background-color:#fbf9f9;padding:5px;text-align: center;width:60%;color:#a48f82;border:none;">
+                  <div class="delete edit"><img class="img-fluid" src="img/edit.png" alt=""></div>
+                  </div>
+                  
+              </div>
+              
+              
+               <div class="row" style="font-family: 'vintage';">
+                       
+                  <div class="col-5">
+                      <p style="color:#a48f82;float:right;">Фамилия:</p>
+                  </div>
+                  
+                  <div class="col-5">
+                  <input type="text" value="Романов" style="background-color:#fbf9f9;padding:5px;text-align: center;width:60%;color:#a48f82;border:none;">
+                  <div class="delete edit"><img class="img-fluid" src="img/edit.png" alt=""></div>
+                  </div>
+                  
+              </div>
+              
+              
+               <div class="row" style="font-family: 'vintage';">
+                       
+                  <div class="col-5">
+                      <p style="color:#a48f82;float:right;">Дата регистрации:</p>
+                  </div>
+                  
+                  <div class="col-5">
+                  <p style="background-color:#fbf9f9;padding:5px;text-align: center;width:60%;color:#a48f82;">19.11.18</p>
+                  </div>
+                  
+              </div>
+              
+               <div class="row" style="font-family: 'vintage';">
+                       
+                  <div class="col-5">
+                      <p style="color:#a48f82;float:right;">Страница инстаграм:</p>
+                  </div>
+                  
+                  <div class="col-5">
+                  <input type="text" value="user123456" style="background-color:#fbf9f9;padding:5px;text-align: center;width:60%;color:#a48f82;border:none;">
+                  <div class="delete edit"><img class="img-fluid" src="img/edit.png" alt=""></div>
+                  </div>
+                  
+              </div>
+              </div>
+              
+                  </div>
+                  <div class="col-12 courseItem"><h2><a style="color:white" href="lk-courses.html">МОИ КУРСЫ</a></h2></div>
+                  <div class="col-12 courseItem"><h2>ТРАНСЛЯЦИИ</h2></div>
+                  <div class="col-12 courseItem"><h2>ОТПРАВИТЬ ЗАДАНИЕ</h2></div>
+              </div>
+          </div>
+          <div id="full" class="col-lg-8 col-sm-12 courseInfo">
+              <div class="row">
+                  <div class="col-12" style="text-align: center;margin-top:10%;">
+                     <img src="img/manIcon.png" style="width:20%;" alt="">
+                     <div class="delete"><img class="img-fluid" src="img/cross.png" alt=""></div>
+                     <div class="delete edit"><img class="img-fluid" src="img/edit.png" alt=""></div>
+                  </div>
+                  
+                  
+              </div>
+              
+              <div class="settings">
+                  <div class="row" style="font-family: 'vintage';">
+                       
+                  <div class="col-5">
+                      <p style="color:#a48f82;float:right;">Имя:</p>
+                  </div>
+                  
+                  <div class="col-5">
+                  <input type="text" value="Андрей" style="background-color:#fbf9f9;padding:5px;text-align: center;width:60%;color:#a48f82;border:none;">
+                  <div class="delete edit"><img class="img-fluid" src="img/edit.png" alt=""></div>
+                  </div>
+                  
+              </div>
+              
+              
+               <div class="row" style="font-family: 'vintage';">
+                       
+                  <div class="col-5">
+                      <p style="color:#a48f82;float:right;">Фамилия:</p>
+                  </div>
+                  
+                  <div class="col-5">
+                  <input type="text" value="Романов" style="background-color:#fbf9f9;padding:5px;text-align: center;width:60%;color:#a48f82;border:none;">
+                  <div class="delete edit"><img class="img-fluid" src="img/edit.png" alt=""></div>
+                  </div>
+                  
+              </div>
+              
+              
+               <div class="row" style="font-family: 'vintage';">
+                       
+                  <div class="col-5">
+                      <p style="color:#a48f82;float:right;">Дата регистрации:</p>
+                  </div>
+                  
+                  <div class="col-5">
+                  <p style="background-color:#fbf9f9;padding:5px;text-align: center;width:60%;color:#a48f82;">19.11.18</p>
+                  </div>
+                  
+              </div>
+              
+               <div class="row" style="font-family: 'vintage';">
+                       
+                  <div class="col-5">
+                      <p style="color:#a48f82;float:right;">Страница инстаграм:</p>
+                  </div>
+                  
+                  <div class="col-5">
+                    <input type="text" value="user123456" style="background-color:#fbf9f9;padding:5px;text-align: center;width:60%;color:#a48f82;border:none;">
+                  <div class="delete edit"><img class="img-fluid" src="img/edit.png" alt=""></div>
+                  </div>
+                  
+              </div>
+              </div>
+              
+              
+              
+              
+          </div>
+      </div>
+  </section>
+  
+ 
+  <footer>
+      <div class="brand">ENGLISH TEACHER</div>
+      <div class="footer-menu">
+          <ul>
+              <li>КОНФИДЕНЦИАЛЬНОСТЬ</li>
+              <li>РУССКИЙ</li>
+              <li>КОНТАКТНАЯ ИНФОРМАЦИЯ</li>
+              <li>ВСЕ ПРАВА ЗАЩИЩЕНЫ</li>
+              <li>2018</li>
+          </ul>
+      </div>
+  </footer>
+ 
+      
+ 
+   
+   
+   
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>   
+<script src="js/bootstrap.js"></script>    
+</body>
+</html>
