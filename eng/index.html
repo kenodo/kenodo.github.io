@@ -32,12 +32,30 @@
       .nav-item{
           font-family: "Duke-Fill";
           padding-right:40px;          
-          font-size:24pt;
+          font-size: 20pt;
+    margin-top: 10px;
       }
        
        .navbar-toggler-icon i{
            font-size:25pt;
            color:white;
+       }
+       
+       .scrollLine{
+           position: absolute;
+            width: 60px;
+            right: -50px;
+            background-color: #fbf9f9;
+            height: 100%;
+       }
+       
+       .scrollLine .scroller{
+           width: 50%;
+           margin-top:20px;
+            margin-left: 25%;
+            height: 200px;
+            border-radius: 50px;
+            background-color: #ebe5e1;
        }
       
        
@@ -71,9 +89,11 @@
             margin-left: 40px;
             background-color: white;
             color: #a48f82;
-            
+            background-image: url(img/header.png);
+            -webkit-background-size: cover;
+            background-size: cover;
             height: 85px;
-            width:85px;
+            width:100px;
             font-size:15pt;
             font-family: 'Duke-Fill';
       }
@@ -499,8 +519,8 @@ text-align: center;
    <header>
       <nav class="navbar fixed-top navbar-expand-lg bg-light">
       <div class="container">
-          <a class="navbar-brand" href="#">
-    <span class="brandSquare">ENGLISH<br>TEACHER</span>
+          <a class="navbar-brand" style="background-image:url(img/header.png);background-size:cover;" href="#">
+   
     </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"><i class="fa fa-bars fa-1x"></i></span>
@@ -782,7 +802,7 @@ aria-expanded="false"><h2>КУРС А1</h2></div>
                       
                       <div class="col-12" style="padding-bottom:50px;">     
                     <div class="text btnCourse" style="margin:0;"> 
-                        <button class="btn btn-secondary dropdown-toggle" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:20pt;border-radius:40px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:20pt;border-radius:40px;border:none !important;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            ПОДРОБНЕЕ
                           </button> 
                     </div>
@@ -802,7 +822,10 @@ aria-expanded="false"><h2>КУРС А1</h2></div>
                   <div class="col-12 courseItem"><h2>КУРС C2</h2></div>
               </div>
           </div>
-          <div class="col-8 courseInfo courseInfoFull">
+          <div class="col-8 courseInfo courseInfoFull" style="background-color: white;">
+             <div class="scrollLine">
+                 <div class="scroller"></div>
+             </div>
               <div class="row" style="border-bottom: 2px solid #8f8686;">
                   <div class="col-5">
                   <h2 style="float:left;">A1</h2>
