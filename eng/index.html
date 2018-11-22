@@ -43,10 +43,10 @@
        
        .scrollLine{
            position: absolute;
-            width: 60px;
-            right: -50px;
-            background-color: #fbf9f9;
-            height: 100%;
+    width: 60px;
+    right: 0px;
+    background-color: #fbf9f9;
+    height: 100%;
        }
        
        .scrollLine .scroller{
@@ -76,10 +76,6 @@
       .form-group {
         margin-bottom: .1rem;
         }
-      
-     
-      
-      
       
       .navbar-brand{
             margin: 0;
@@ -116,6 +112,7 @@
           padding:0;
           min-height: 50px;
           background-color: #a48f82 !important;
+    
       }
       
       
@@ -265,9 +262,7 @@
           
        }
        
-       body{
-           padding-top:70px;
-       }
+    
        
        .row{
            margin-left:0;
@@ -359,7 +354,7 @@
        }
        
        .sel{
-           padding: 7px;
+           
             font-family: 'Duke-Fill';
             font-size: 30pt;
             margin-bottom: 10px;
@@ -377,14 +372,16 @@
            background-color:#a48f82 !important;
            color:white;
            cursor: pointer;
+           margin-top: 12px;
        }
        
        footer{
            background-color:white;
-           font-family: 'Duke-Fill';
+           font-family: 'captain';
            padding-top:20px;
            padding-bottom:40px;
-           font-size:16pt;
+           font-size:14pt;
+           font-weight: 200;
            color:#8f8686;
        }
        
@@ -400,13 +397,17 @@
        
        footer ul{
            list-style: none;
-           font-family: 'Duke-Fill';
+           font-family: 'captain';
+           font-size:11pt;
        }
        
        footer ul li{
            float:left;
            padding-right:30px;
        }
+       
+       
+       
        
        @media screen and (min-width:990px){
            .bannerPhoto{
@@ -486,6 +487,10 @@
            .aboutPhoto {
     padding-left: 20px !important;
 }
+           
+            .instaInput{
+               font-size:8vw;
+           }
                    
         
        }
@@ -496,6 +501,10 @@
                padding-right:0;
               font-size: 20pt;
            }
+           
+           .social-link:first-child {
+                padding-right: 0;
+            }
         
        }
        
@@ -509,6 +518,57 @@ text-align: center;
        }
        
        
+       .loginInputs{
+           margin: 0;
+    padding: 0;
+    left:auto;
+    position: relative;
+       }
+       
+       
+       @media screen and (max-width:990px){
+           .wrapper{
+           text-align: center;
+       }
+       
+       .wrapper .text{
+           display: inline-block;
+           left: -50px;
+           position: relative;
+       }
+       
+       .login input{
+           display: inline-block;
+       }
+           
+           .inputSign{
+               margin:0 !important;
+           }
+           
+          
+       }
+       
+       
+       .contentShadow .shadow{
+           box-shadow: 12px 0 15px -4px rgba(31, 73, 125, 0.8), -12px 0 8px -4px rgba(31, 73, 125, 0.8);
+       }
+       
+       .container .shadow{
+           margin:0;
+           padding:0;
+       }
+       
+       .container{
+           padding-left:0;
+           padding-right:0;
+       }
+      
+      
+       
+       .dropdown-toggle:after{
+            position: relative;
+            top: 3px;
+       }
        
     </style>
     
@@ -516,8 +576,15 @@ text-align: center;
    
    
    
-   <header>
-      <nav class="navbar fixed-top navbar-expand-lg bg-light">
+   
+   
+
+  <div class="contentShadow">
+    
+  <div class="container shadow">
+      
+  <header>
+      <nav class="navbar navbar-expand-lg bg-light">
       <div class="container">
           <a class="navbar-brand" style="background-image:url(img/header.png);background-size:cover;" href="#">
    
@@ -550,17 +617,21 @@ text-align: center;
         <a class="nav-link" href="#signIn">ЗАПИСАТЬСЯ</a>
       </li>
       
-      <li>
-         
-<div class="text"> 
-    <label for="name">Логин:</label> 
-    <input type="text" size="15" name="name" id="name"/> 
-</div> 
+      <li class="logininputs">
+        
+        <div class="wrapper">
+            <div class="text"> 
+                <label for="name">Логин:</label> 
+                <input type="text" size="15" name="name" id="name"/> 
+            </div> 
 
-<div class="text"> 
-    <label for="email">Пароль:</label> 
-    <input type="password" size="15" name="email" id="email"/> 
-</div> 
+            <div class="text"> 
+                <label for="email">Пароль:</label> 
+                <input type="password" size="15" name="email" id="email"/> 
+            </div> 
+        </div>
+         
+
       
 
       </li>
@@ -578,9 +649,7 @@ text-align: center;
  
 </nav>       
    </header>
-   
-
-  
+     
   <section>
      <div class="container" style="padding:0;">
       <div class="row bannerInfo" style="height:500px;overflow: hidden;">
@@ -632,7 +701,7 @@ text-align: center;
     
   <section class="about">
      
-     <div class="container"  style="background-color:#fbf9f9;padding:0;">
+     <div class="container"  style="background-color:#f9f6f5;padding:0;">
       <div class="row" style="margin-left:0;margin-right:0;">
           <div class="col-12" style="padding:0;">
               <h2 class="heading">-ОБО МНЕ-</h2>
@@ -644,7 +713,7 @@ text-align: center;
          
          
           <div class="col-lg-4 col-sm-8 offset-sm-1 aboutPhoto" style="padding-left:80px;z-index:1;"><img class="img-fluid" style="border-radius:50px;" src="img/IMG_7366.jpeg" alt=""></div>
-          <div class="col-lg-8 col-sm-12 aboutText" style="padding-left:20px;">
+          <div class="col-lg-8 col-sm-12 aboutText" style="padding-left:18px;padding-right:11px;">
               <p><i>Я - Максимова Татьяна. <br>
 Основатель онлайн-школы английского языка. <br>
 <b>10 лет опыта и активной практики.</b><br>
@@ -672,15 +741,13 @@ text-align: center;
           </div>
       </div>
       
-      <div class="row adv" style="margin:0;">
-          <div class="col-lg-6 col-sm-12 advs" style="padding-left:130px;">
-              <img style="width:50%;float:left;padding:20px;" src="img/ten.png" alt="">
-              <p class="adv">ЛЕТ ОПЫТА<br>И АКТИВНОЙ<br>ПРАКТИКИ</p>
+      <div class="row adv" style="margin:0;background-color: #fbf9f9;">
+          <div class="col-lg-6 col-sm-12 advs" style="padding-left:130px;text-align: center;">
+              <img style="height:200px;padding-top:20px;padding-bottom: 20px;" class="img-fluid" src="img/opyt.png" alt="">
           </div>
           
-           <div class="col-lg-6 col-sm-12 advs" style="padding-left:130px;">
-              <img style="width:50%;float:left;padding:20px;" src="img/group.png" alt="">
-              <p class="adv" style="line-height: .7em;margin-top:.6em;"><b style="font-size:80pt;line-height: .9em;">100+</b><br>УЧЕНИКОВ<br><span style="font-size:29.5pt;">ПРОШЛИ КУРС</span></p>
+           <div class="col-lg-6 col-sm-12 advs" style="text-align: center;">
+              <img style="height:200px;padding-top:15px;padding-bottom:15px;" class="img-fluid" src="img/100+.png" alt="">
           </div>
           
       </div>
@@ -802,9 +869,9 @@ aria-expanded="false"><h2>КУРС А1</h2></div>
                       
                       <div class="col-12" style="padding-bottom:50px;">     
                     <div class="text btnCourse" style="margin:0;"> 
-                        <button class="btn btn-secondary dropdown-toggle" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:20pt;border-radius:40px;border:none !important;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       <button class="btn btn-secondary dropdown-toggle" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:20pt !important;border-radius:40px;padding-top: 0 !important;height: 40px !important;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            ПОДРОБНЕЕ
-                          </button> 
+                          </button>
                     </div>
                   </div>
                   
@@ -822,19 +889,20 @@ aria-expanded="false"><h2>КУРС А1</h2></div>
                   <div class="col-12 courseItem"><h2>КУРС C2</h2></div>
               </div>
           </div>
-          <div class="col-8 courseInfo courseInfoFull" style="background-color: white;">
+          <div class="col-8 courseInfo courseInfoFull" style="background-color: white;padding-right:80px;">
              <div class="scrollLine">
                  <div class="scroller"></div>
              </div>
               <div class="row" style="border-bottom: 2px solid #8f8686;">
                   <div class="col-5">
                   <h2 style="float:left;">A1</h2>
-                  <p class="headP">Курс английского <br>языка</p>
+                  <p class="headP" style="line-height: 0.85em;">
+                  Курс английского <br>языка</p>
                   </div>
                   
                   <div class="col-4 price" style="line-height:0.2em;">
                   <h2>4500/6000 <span style="font-size:15pt;font-weight: 200;">РУБ</span></h2>
-                  <p class="headP" style="padding:0;float:right;">за 2 месяца обучения</p>
+                  <p class="headP" style="padding:0;margin-top:0;float:right;">за 2 месяца обучения</p>
                   </div>
                   
                   <div class="col-3">     
@@ -879,7 +947,7 @@ aria-expanded="false"><h2>КУРС А1</h2></div>
                   
                   <div class="col-3 pr">
                       <img class="img-fluid" src="img/24.png" alt="">
-                      <h2>24 часа в сутки</h2>
+                      <h2>24 часа</h2>
                       <p>
                        Доступ к занятиям 
                         в любое для вас время
@@ -913,15 +981,15 @@ aria-expanded="false"><h2>КУРС А1</h2></div>
                          </p>
                       </div>
                       
-                      <div class="col-4">
+                      <div class="col-5">
                           <p>Либо учитесь в выходные <br> 
                             - выбирайте свой вариант! 
                          </p>
                       </div>
                       
-                      <div class="col-3">     
+                      <div class="col-2">     
                     <div class="text btnCourse" style="margin:0;"> 
-                        <button class="btn btn-secondary dropdown-toggle" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:20pt;border-radius:40px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle" style="background-color:#a48f82;font-family: 'Duke-Fill';font-size:18pt;border-radius:40px; height:40px;border:none;padding-top:2px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            ПОДРОБНЕЕ
                           </button> 
                     </div>
@@ -949,14 +1017,39 @@ aria-expanded="false"><h2>КУРС А1</h2></div>
       
       <div class="row">
           <div class="col-sm-12 col-lg-6" style="padding-left:50px;padding-right:50px;">
-              <input class="form-control" type="text" placeholder="ИМЯ">
+             <div class="inputSign" style="margin-right: -45px; margin-left: 50px;">
+                <input class="form-control" type="text" placeholder="ИМЯ">
               <input class="form-control" type="text" placeholder="ФАМИЛИЯ">
-              <input class="form-control" type="text" placeholder="E-MAIL">
+              <input class="form-control" type="text" placeholder="E-MAIL"> 
+             </div>  
           </div>
           
           <div class="col-sm-12 col-lg-6" style="padding-left:50px;padding-right:50px;">
-              <input class="form-control" type="text" placeholder="СТРАНИЦА INSTAGRAM">
-              <select class="sel" id="exampleFormControlSelect1" style="outline: none;color:#a48f82;">
+             
+             <style>
+                 .sel{                    
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    text-indent: 1px;
+                    text-overflow: '';
+                 }
+                 
+                 .arrow{
+                     width:30px;
+                     height:30px;
+                     background-size: cover;
+                     position: absolute;
+                     right: 22%;
+                     margin-top:2.5%;
+                     background-image: url("img/arrow.png");
+                 }
+              </style>
+             
+              <div class="inputSign" style="margin-right: 50px; margin-left: -45px;">
+              <input class="form-control instaInput" type="text" placeholder="СТРАНИЦА INSTAGRAM">
+              <div class="arrow"></div>
+              <select class="sel round" id="exampleFormControlSelect1" style="outline: none;color:#a48f82;">
+              
               <option>Курс</option>
               <option>1</option>
               <option>2</option>
@@ -965,19 +1058,17 @@ aria-expanded="false"><h2>КУРС А1</h2></div>
               <option>5</option>
             </select>
               <input class="form-control buy" type="text" style="color:white !important;" disabled value="СОВЕРШИТЬ ПОКУПКУ">
+              </div>
+             
           </div>
       </div>
       
       </div>
       
   </section>
-  
-  
-  
-  
   <footer>
      <div class="container">
-        <div class="brand">ENGLISH TEACHER</div>
+        <div class="brand" style="width:25%;">ENGLISH TEACHER</div>
       <div class="footer-menu">
           <ul>
               <li>КОНФИДЕНЦИАЛЬНОСТЬ</li>
@@ -990,6 +1081,13 @@ aria-expanded="false"><h2>КУРС А1</h2></div>
      </div>
       
   </footer>
+   </div>
+  </div>
+  
+  
+  
+  
+  
  
       
  

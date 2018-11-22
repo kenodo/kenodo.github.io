@@ -229,9 +229,6 @@
           
        }
        
-       body{
-           padding-top:70px;
-       }
        
        .row{
            margin-left:0;
@@ -344,12 +341,13 @@
            cursor: pointer;
        }
        
-       footer{
+        footer{
            background-color:white;
-           font-family: 'Duke-Fill';
+           font-family: 'captain';
            padding-top:20px;
            padding-bottom:40px;
-           font-size:16pt;
+           font-size:14pt;
+           font-weight: 200;
            color:#8f8686;
        }
        
@@ -365,7 +363,8 @@
        
        footer ul{
            list-style: none;
-           font-family: 'Duke-Fill';
+           font-family: 'captain';
+           font-size:11pt;
        }
        
        footer ul li{
@@ -421,7 +420,7 @@
       }
       
       .courseItem:hover > :before{
-          left:30px;
+          left:25px;
       }
       
       
@@ -489,11 +488,28 @@
           
        }
       
+        .contentShadow .shadow{
+           box-shadow: 12px 0 15px -4px rgba(31, 73, 125, 0.8), -12px 0 8px -4px rgba(31, 73, 125, 0.8);
+       }
+       
+       .container .shadow{
+           margin:0;
+           padding:0;
+       }
+       
+       .container{
+           padding-left:0;
+           padding-right:0;
+       }
+      
       
     </style>
-
- <header>
-      <nav class="navbar fixed-top navbar-expand-lg">
+    
+    
+    <div class="contentShadow">
+        <div class="container shadow">
+           <header>
+      <nav class="navbar navbar-expand-lg">
       <div class="container">
           <a class="navbar-brand" href="index.html">
     </a>
@@ -529,7 +545,7 @@
           <div class="row" style="background-color:#f8f5f4;">
       </div>
       
-      <div class="row lRow" style="border-bottom: 2px solid black;">
+      <div class="row lRow" style="border-bottom: 2px solid #e2dddd;">
           <div class="col-sm-12 col-lg-4 courseBlock" style="background-color:#fbf9f9;">
               <div class="row">
                   <div class="col-12 courseItem selected" data-toggle="collapse" data-target="#infoMob1"
@@ -696,7 +712,11 @@ aria-expanded="false"><h2>МОЙ ПРОФИЛЬ</h2></div>
           </ul>
       </div> 
      </div>
-  </footer>
+  </footer>  
+        </div>
+    </div>
+
+
  
       
  
