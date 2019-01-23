@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Игра</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+</head>
+<body>
+
+<style>
+    body,html{
+        height: 100%;
+    }    
+    .input-group .form-control{
+        margin-bottom:10px;
+    }
+    
+    .userpage{
+        display:none;
+        border-left:1px solid black;
+        padding-bottom:10px;
+        padding-left:25px;
+    }
+    
+    .activepage{
+        display: block;
+    }
+    
+    .userScreen{
+        display: none;
+        margin-top:20%;
+    }
+    
+    .gameScreen{
+        display:none;
+    }
+    
+    .slickItems img{
+        width:100px;
+        height:100px;
+        border-radius: 100%;
+    }
+    
+    .works .thumbnail{
+        border:3px solid lightgreen;
+    }
+</style>
+
+<div class="modal fade" id="inputModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Внести средства</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Внести на счёт</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Внести</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="outputModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Вывести деньги</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Вывести на карту или счёт</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Вывести</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+ <div class="container">
+    <div class="row loginScreen">
+        <div class="center-block col-md-4" style="margin-top:20%;margin-left:36%;float: none;">
+            <div class="input-group">
+              <input type="text" placeholder="логин" class="form-control">
+              <input type="text" placeholder="пароль" class="form-control">
+              <button type="button" id="loginBtn" class="btn btn-primary" style="float:right;">Войти</button>
+            </div>
+
+
+        </div>
+    </div>
+    
+        
+            
+                
+    <div class="row userScreen">
+        <div class="col-sm-3">
+            <ul class="nav nav-pills nav-stacked" style="margin-top:10%;">
+              <li opens="fundsPage" role="presentation" class="active"><a href="#">Ввод/вывод средств</a></li>
+              <li opens="gameBeginPage" role="presentation"><a href="#">Игра</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            <div class="userpage gameBeginPage">
+              <h1>Игра</h1>
+               <button type="button" id="startGameBtn" class="btn btn-primary">Начать</button> 
+            </div>
+            
+            <div class="userpage fundsPage activepage">
+                <h1>Ваши средства</h1>
+                <h3><span class="glyphicon glyphicon-ruble" aria-hidden="true"></span> 200</h3>
+                <button type="button" data-toggle="modal" data-target="#inputModal" id="fundsInputBtn" class="btn btn-primary"><span class="glyphicon glyphicon-import" aria-hidden="true"></span> Внести на счёт</button> 
+                <button type="button" data-toggle="modal" data-target="#outputModal" id="fundsOutputBtn" class="btn btn-primary"><span class="glyphicon glyphicon-export" aria-hidden="true"></span> Вывести деньги</button> 
+            </div>
+        </div>
+    </div>
+    
+    <div class="row gameScreen" style="margin-top:20%;">
+        <div class="col-sm-9" style="text-align: center;">
+           <div class="row">
+               <h1 id="betSum" style="font-size:40pt;">200 <span class="glyphicon glyphicon-ruble" aria-hidden="true"></span></h1>
+             <button type="button" id="makeBet" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Сделать ставку</button> 
+           </div>
+           
+           <div class="row slickItems" style="margin-top:50px;">
+               <div>
+                    <a href="#" class="thumbnail">
+                      <img src="face.jpg" alt="...">
+                    </a>
+               </div>
+               
+                <div>
+                    <a href="#" class="thumbnail">
+                      <img src="face.jpg" alt="...">
+                    </a>
+               </div>
+               
+               <div>
+                    <a href="#" class="thumbnail">
+                      <img src="face.jpg" alt="...">
+                    </a>
+               </div>
+               
+               <div>
+                    <a href="#" class="thumbnail">
+                      <img src="face.jpg" alt="...">
+                    </a>
+               </div>
+               
+               <div>
+                    <a href="#" class="thumbnail">
+                      <img src="face.jpg" alt="...">
+                    </a>
+               </div>
+               
+               <div>
+                    <a href="#" class="thumbnail">
+                      <img src="face.jpg" alt="...">
+                    </a>
+               </div>
+           </div>
+           
+           
+            
+        </div>
+        
+        <div class="col-sm-3">
+            <ul class="list-group" id="gameBetsList" style="height:400px;overflow:auto;">
+              <li class="list-group-item">
+                <span class="badge">200 <span class="glyphicon glyphicon-ruble" aria-hidden="true"></span></span>
+                Lesya13
+              </li>
+              
+              <li class="list-group-item">
+                <span class="badge">180 <span class="glyphicon glyphicon-ruble" aria-hidden="true"></span></span>
+                Alexx
+              </li>
+              
+              <li class="list-group-item">
+                <span class="badge">140 <span class="glyphicon glyphicon-ruble" aria-hidden="true"></span></span>
+                SuperPlayer
+              </li>
+              
+              <li class="list-group-item">
+                <span class="badge">133 <span class="glyphicon glyphicon-ruble" aria-hidden="true"></span></span>
+                Felix
+              </li>
+            </ul>
+        </div>
+    </div>   
+ </div>
+ 
+  
+  
+
+   
+   
+    
+    
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+<script>
+
+var randomNames=["Lesya", "Andrey", "Pasha555", "tankist12", "Olga", "Super", "vityaPlayer"];
+var sumOfBet=200;
+
+$(".nav-stacked li").click(function(){
+    $(".nav-stacked li").removeClass("active");
+    $(this).addClass("active");
+    var pageToOpen=$(this).attr("opens");
+    $(".userpage").hide();
+    $("."+pageToOpen).show();
+});    
+    
+$("#loginBtn").click(function(){
+    $(".loginScreen").hide();
+    $(".userScreen").show();
+    
+});
+    
+$("#startGameBtn").click(function(){
+    $(".userScreen").hide();
+    $(".gameScreen").show();
+    
+});
+    
+$("#makeBet").click(function(){
+  var makeBetAmount=sumOfBet+10;
+  $("#gameBetsList").prepend('<li class="list-group-item"><span class="badge">'+makeBetAmount+' <span class="glyphicon glyphicon-ruble" aria-hidden="true"></span></span>ПОЛЬЗОВАТЕЛЬ</li>');
+  $("#betSum").html(makeBetAmount + ' <span class="glyphicon glyphicon-ruble" aria-hidden="true"></span>');
+  makeBetAmount=makeBetAmount+10;
+  $("#makeBet").html('<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Сделать ставку ' + makeBetAmount + ' руб.');
+    $('.slickItems').slick("slickNext");
+      
+      $(".slick-slide").removeClass('works');
+      $('.slick-current').addClass('works');
+});
+    
+    $('.slickItems').slick({
+    slidesToShow: 3,
+  slidesToScroll: 1,
+  arrows:false,
+  centerMode: true,
+  focusOnSelect: true
+    });
+    
+
+    
+    
+  var timerId = setInterval(function() {
+  var additional=20+Math.floor(Math.random() * 50);
+  sumOfBet+=additional;
+  
+  var randomName=randomNames[Math.floor(Math.random()*randomNames.length)];
+  $("#gameBetsList").prepend('<li class="list-group-item"><span class="badge">'+sumOfBet+' <span class="glyphicon glyphicon-ruble" aria-hidden="true"></span></span>'+randomName+'</li>');
+  $("#betSum").html(sumOfBet + ' <span class="glyphicon glyphicon-ruble" aria-hidden="true"></span>');
+  var makeBetAmount=sumOfBet+10;
+  $("#makeBet").html('<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Сделать ставку ' + makeBetAmount + ' руб.');
+  $('.slickItems').slick("slickNext");
+      
+      $(".slick-slide").removeClass('works');
+      $('.slick-current').addClass('works');   
+      
+  }, 4000);
+    
+    
+</script>
+
+</body>
+</html>
