@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="rangeSlider.css">
+</head>
+<body>
+ 
+<style>
+    
+    body,html{
+        overflow-x: hidden;
+    }
+    
+    @font-face {
+    font-family: Bebas-Regular; /* Имя шрифта */
+    src: url("fonts/BebasNeue-Regular.otf"); /* Путь к файлу со шрифтом */
+   }
+    
+    @font-face{
+        font-family:Helvetica-Bold;
+        src: url("fonts/Helvetica Neue Condensed Bold.ttf");
+    }
+    
+    .nav-content{
+        padding:15px 100px 15px 100px;
+        width:100%;
+    }    
+    
+    .nav-right{
+        float:right;
+    }
+    
+    nav{
+        background-color: rgba(72, 71, 70, 0.86);
+        background-image: url("headerBg.png");
+        background-size: contain;
+        font-family: Bebas-Regular;
+    }
+    nav a{
+        color:rgb(247, 225, 189);
+    }
+    nav a:hover{
+        color:rgb(204, 184, 153);
+    }
+    
+    .navbar-brand{
+        font-size:30pt;
+    }
+    
+    .nav-right .langLink{
+        float:left;
+        margin-right:10px;
+        list-style: none;
+        color:rgb(247, 225, 189);
+        font-size:15pt;
+        font-family: Helvetica-Bold;
+        padding:0px 3px 0px 3px;
+        background-color:#333;
+        -webkit-box-shadow: 3px 2px 8px 0px rgba(0,0,0,0.47);
+        -moz-box-shadow: 3px 2px 8px 0px rgba(0,0,0,0.47);
+        box-shadow: 3px 2px 8px 0px rgba(0,0,0,0.47);
+        transition: .3s;
+    }
+    
+    .nav-right .socialLink{
+        float:right;
+        margin-top:10px;
+        margin-right:10px;
+        list-style: none;
+        color: rgba(72, 71, 70, 0.86);
+        font-size:15pt;  
+        padding:0px 5px 0px 5px;
+        border-radius: 10px;
+        background-color:rgb(247, 225, 189);
+        margin-right:12px;
+        transition: .3s;
+    }
+    
+    .nav-right .socialLink:hover{
+        transform: scale(1.2);
+        cursor: pointer;
+    }
+    
+    .nav-right .langLink:hover{
+        transform: scale(1.2);
+        cursor: pointer;
+    }
+    
+    .slide{
+        width:100%;
+        height: 550px;
+        overflow: hidden;
+        text-align: center;
+    }
+    
+    .arrows{
+        position:absolute;
+        margin-top:220px;
+        font-size: 40pt;
+        background-color:transparent;
+        z-index: 2;
+        color:white;
+        opacity:.6;
+        transition:.3s;
+        cursor:pointer;
+    }
+    
+    .arrows:hover{
+        opacity:1;
+    }
+    
+    .prev{
+        left:20px;
+    }
+    
+    .next{
+       right:20px;
+    }
+    
+    .sliderText{
+        position: absolute;
+        width:84%;
+        z-index:2;
+        font-family: Bebas-Regular;
+        font-size:80pt;
+        text-align: center;
+        margin-left:8%;
+        margin-right:8%;
+        padding-left:15px;
+        padding-right:15px;
+        margin-top:5%;
+        background-color:rgba(247, 225, 189, 0.6);
+    }
+    
+    .sliderText p{
+        line-height: 8.5rem;
+        color:rgb(138, 55, 75);
+        
+    }
+    
+    #calculator{
+        background-image: url("bgCalc.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    
+    .calcItem{
+        background-color:rgb(247, 225, 189);
+        border-radius:8px;
+        border:2px solid rgb(113, 45, 61);
+        overflow: visible;
+        width:270px;
+    }
+    
+    .calcTitle{
+       font-family: Bebas-Regular;
+       font-size:28pt;
+       text-align: center;
+       line-height: 40px;
+       color:rgb(113, 45, 61);
+       padding-top:20px;
+    }
+    
+    .fuelTypes{
+        margin:0;
+        padding:0;
+        margin-left:0px;
+        background-color:rgb(247, 225, 189);
+    }
+    
+    .fuelTypes li{
+        list-style: none;
+        width:60px;
+        height:60px;
+        border-radius: 100%;
+        background-color:black;
+        float:left;
+        margin-left:1rem;
+        margin-bottom:60px;
+        background-image:url("http://fanera-doski.ru/img/reyki_derevyannie.jpg");
+        background-position: center;
+        background-size:cover;
+    }
+    
+    
+    
+    .fuelTypes li p{
+        font-size:8pt;
+        text-align: center;
+        margin-top:65px;
+    }
+    
+    .fuelTypes li .overlay{
+        opacity:0;
+        width:60px;
+        height:60px;
+        border-radius:100%;
+        position:absolute;
+        margin-top:0;
+        background-color:rgb(113, 45, 61);
+        transition:.3s;
+    }
+    
+    .fuelTypes li .overlay:hover{
+        opacity:.5;
+        transition: .3s;
+    }
+    
+    .sliderValue{
+        margin-top:-45px;
+    }
+    
+    .sliderValue p{
+        background-color:rgb(113, 45, 61);
+        color:white;
+        padding:0px 3px 0px 3px;
+        border-radius:5px;
+        width:30px;
+    }
+    
+    .sliderValues{
+        position: absolute;
+        margin-top:-40px;
+        background-color:#d9c6a7;
+        color:#333;
+        padding:0px 3px 0px 3px;
+        border-radius:5px;
+    }
+    
+    .maxValue1,.maxValue2{
+        right:20px;
+    }
+    
+    .minValue1,.minValue2{
+        display:none;
+    }
+    
+    
+    .preVideoBlock{
+        display: none;
+    }
+    
+    .pollBlock{
+        display: none;
+    }
+    
+    .orderBtn{
+        padding:10px 20px 10px 20px;
+        width:100%;
+        background-color: rgb(113, 45, 61);
+        border:none;
+        font-size: 18px;
+        color: rgb(247, 225, 189);
+        border-radius: 2px;
+        margin-bottom:20px;
+        cursor:pointer;
+        transition:.3s;
+    }
+    
+    .orderBtn:hover{
+        background-color:#d6103e;
+    }
+    
+    @media screen and (max-width:1200px){
+        .calcLabels{
+            font-size:12pt !important;
+        }
+    }
+    
+    @media screen and (max-width:1200px){
+        .fuelTypes li{
+        margin-left: 1.7rem;        
+    }
+    }
+    
+   
+    
+    @media screen and (max-width:1150px){
+        .sliderText p {
+            line-height: 5.5rem;
+            font-size:62pt;
+        }
+        
+        .sliderText{
+            margin-top:12%;
+        }
+    }
+    
+    @media screen and (max-width:989px){
+        .videoBlock{
+            display:none;
+        }
+        
+        .preVideoBlock{
+            display:block;
+        }
+        
+        .pollBlock{
+            display: block;
+        }
+        
+        .poll{
+        width: 95% !important;
+        margin: 0 auto;
+            }
+    }
+    
+    @media screen and (max-width:830px){
+         .nav-right{
+            position: absolute;
+            top: 20px;
+        }
+        
+        .nav-right ul{
+            float:left;
+        }
+        
+        .nav-content{
+            padding-top:50px;
+        }
+        
+        .langMenu{
+            margin-top:8px;
+        }
+    }
+    
+    @media screen and (max-width:769px){
+        .prButton{
+            padding:inherit!important;
+        }
+    }
+    
+    @media screen and (max-width:630px){
+        .nav-content{
+            margin-top:50px;
+        }
+        
+        .poll{
+            width: 520px !important;
+            margin:0 auto;
+        }
+    }
+    
+    
+    @media screen and (max-width:600px){
+        .sliderText p {
+            line-height: 5rem;
+            font-size:10vw;
+        }
+        
+        .sliderText{
+            margin-top:16%;
+        }
+        
+        .nav-content{
+            padding:0;
+        }
+        
+        .video{
+            margin:0;
+            width:100% !important;
+        }
+        
+    }
+    
+     @media screen and (max-width:530px){
+        .nav-content{
+            margin-top:80px;
+        }
+        
+         .nav-right ul{
+             margin:0;
+         }
+         
+         .calcItem{
+             margin-bottom: 20px;
+         }
+         
+         
+        
+        .poll{
+            width: 270px !important;
+            margin:0 auto;
+        }
+    
+    
+    }
+    
+    @media screen and (max-width:580px){
+        .calcItem{
+            width: 319px !important;
+        }
+        
+        .prButton{
+            padding:0;
+            width:319px !important;
+        }
+    }
+    
+    .prButton button{
+        font-family:Bebas-Regular;
+        font-size:18pt !important;
+        font-weight: 300;
+    }
+    
+    .prButton .special{
+        background-color: rgb(247, 225, 189);
+        border-color: rgb(113, 45, 61);
+        border:2px solid;
+        border-radius:2px;
+        color: rgb(113, 45, 61);
+    }
+
+    
+    
+</style>
+  
+<!-- Здесь начинается header -->
+   
+<header>
+  <nav class="navbar">
+  <div class="nav-content">
+    <a class="navbar-brand" href="#">
+        <img src="logo.png" style="margin-top:7px;" class="d-inline-block align-top" alt="">
+        WOOD EXPORT COMPANY
+    </a>
+    
+    <div class="nav-right">
+       <ul class="langMenu">
+           <li class="langLink">EN</li>
+           <li class="langLink">FR</li>
+           <li class="langLink">DE</li>
+           <li class="langLink">IT</li>
+           <li class="langLink">ES</li>
+           <li class="langLink">RU</li>
+       </ul> 
+       
+       <ul>
+           <li class="socialLink"><i class="fab fa-telegram"></i></li>
+           <li class="socialLink"><i class="fab fa-whatsapp"></i></li>
+           <li class="socialLink"><i class="fab fa-skype"></i></li>
+           <li class="socialLink"><i class="fab fa-viber"></i></li>
+           <li class="socialLink"><i class="fab fa-instagram"></i></li>
+       </ul>
+    </div>    
+  </div>
+  
+</nav>  
+</header>
+    
+<!-- /Конец header -->
+   
+   
+    
+<!-- Здесь начинается слайдер -->
+
+<section id="slider" style="border-bottom:2px solid rgb(113, 45, 61);">
+       <div class="arrows prev"><i class="fas fa-arrow-left"></i></div>   
+       <div class="arrows next"><i class="fas fa-arrow-right"></i></div>  
+       
+       <div class="sliderText center-block">
+           <p>ОПТОВАЯ ПРОДАЖА<br>
+ПЕЛЛЕТ И ПИЛОМАТЕРИАЛА<br>
+ПО ВСЕЙ ЕВРОПЕ</p>
+       </div>
+       
+        <div class="slider">
+          <div class="slide">
+              <img src="http://st.gde-fon.com/wallpapers_original/234475_fon_-derevo_-bruski_2560x1600_www.Gde-Fon.com.jpg" alt="">
+          </div>
+           <div class="slide">
+              <img src="http://img.archiexpo.com.ru/images_ae/photo-g/148965-9297250.jpg" alt="">
+          </div>
+        </div>
+</section>
+
+<!-- /Конец слайдера -->
+    
+<section id="calculator">
+   
+    <div class="container" style="padding:30px 0px 30px 0px;">
+       <div class="row">
+       <div class="col-md-10 col-lg-6 mx-auto preVideoBlock" style="margin-bottom:20px;">
+            <div class="video" style="width: 96%;
+    margin: 0 auto;height:300px;background-color:black;">
+                 
+            </div>
+        </div>
+        
+        <div class="col-sm-5 col-md-5 mx-auto col-lg-3 calcItem calcBio">
+            <p class="calcTitle">КУПИТЬ<br>БИОТОПЛИВО</p>
+            <p style="font-size:10pt;letter-spacing: 1px;color:#555;">ВЫБЕРИТЕ ТИП БИОТОПЛИВА</p>
+            <ul class="fuelTypes">
+                <li><p class="overlay" name="Брикеты RUF"></p><p>Брикеты RUF</p></li>
+                <li><p class="overlay" name="Брикеты Pini Kay"></p><p>Брикеты Pini Kay</p></li>
+                <li><p class="overlay" name="Брикеты Nestro"></p><p>Брикеты Nestro</p></li>
+                <li><p class="overlay" name="Пеллеты"></p><p>Пеллеты</p></li>
+                <li><p class="overlay" name="Дрова"></p><p>Дрова</p></li>
+                <li><p class="overlay" name="Древесный уголь"></p><p>Древесный уголь</p></li>
+                
+            </ul>
+            <p class="calcLabels" style="font-size:10pt;letter-spacing: 1px;color:#555;">ОБЪЕМ, ТН</p>
+            <div class="slidecontainer" style="padding-top:10px;">
+              <input type="range" min="1" max="100" value="1" class="rangeSlider" id="myRange">
+              <div style="position:relative;" class="sliderValue" id="currentValue">
+              <p id="currentValueP1"></p>    
+              </div>
+              
+              <div class="sliderValues minValue1">50</div>
+              <div class="sliderValues maxValue1">5000</div>
+              
+            </div>
+            <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:40px;">СТРАНА ДОСТАВКИ</p>
+            <select style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
+                <option value="0">Выберите страну</option>
+                <option value="1">Бельгия</option>
+                <option value="2">Венгрия</option>
+                <option value="3">Германия</option>
+                <option value="4">Голландия</option>
+                <option value="5">Италия</option>
+                <option value="6">Латвия</option>
+                <option value="7">Литва</option>
+                <option value="8">Польша</option>
+                <option value="9">Словакия</option>
+                <option value="10">Чехия</option>
+              </select>
+              <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:10px;">ГОРОД</p>
+            <select style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
+                <option value="0">Выберите город</option>
+                <option value="1">Бельгия</option>
+                <option value="2">Венгрия</option>
+                <option value="3">Германия</option>
+                <option value="4">Голландия</option>
+                <option value="5">Италия</option>
+                <option value="6">Латвия</option>
+                <option value="7">Литва</option>
+                <option value="8">Польша</option>
+                <option value="9">Словакия</option>
+                <option value="10">Чехия</option>
+              </select>
+            <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:20px;">УПАКОВКА</p>
+            <button class="orderBtn"><span class="text">Заказать</span></button>
+        </div>
+        
+        <div class="col-md-2 col-lg-6 mx-auto videoBlock">
+            <div class="videoBlock" style="width:auto;height:300px;background-color:black;">
+                 
+            </div>
+            
+            <div class="poll calcItem" style="width:100%;margin-top:40px;">
+                <p class="calcTitle" style="text-align: left;color:#712d3d;font-size:20pt;padding:20px;">ДОСКУ ПОЛУ КАКОЙ ПОРОДЫ ВЫ ПРЕДПОЧИТАЕТЕ?</p>
+            </div>
+        </div>
+        
+        
+        <div class="col-sm-5 col-md-5 mx-auto col-lg-3 calcItem calcBio">
+            <p class="calcTitle">КУПИТЬ<br>ПИЛОМАТЕРИАЛ</p>
+            <p style="font-size:10pt;letter-spacing: 1px;color:#555;">ВЫБЕРИТЕ ТИП ПИЛОМАТЕРИАЛА</p>
+            <ul class="fuelTypes">
+                <li><p>Обрезная доска</p></li>
+                <li><p>Брус</p></li>
+                <li><p>Фанера</p></li>
+                <li><p>Мебельный щит</p></li>
+                <li><p>Вагонка</p></li>
+                <li><p>Садовые домики</p></li>
+                
+            </ul>
+            <p class="calcLabels" style="font-size:10pt;letter-spacing: 1px;color:#555;">ОБЪЕМ, М3</p>
+            <div class="slidecontainer" style="padding-top:10px;">
+              <input type="range" min="1" max="100" value="1" class="rangeSlider" id="myRange2">
+              <div style="position:relative;" class="sliderValue" id="currentValue2">
+              <p id="currentValueP2"></p>    
+              </div>
+              
+              <div class="sliderValues minValue2">50</div>
+              <div class="sliderValues maxValue2">5000</div>
+              
+            </div>
+              <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:40px;">СТРАНА ДОСТАВКИ</p>
+            <select style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
+                <option value="0">Выберите страну</option>
+                <option value="1">Бельгия</option>
+                <option value="2">Венгрия</option>
+                <option value="3">Германия</option>
+                <option value="4">Голландия</option>
+                <option value="5">Италия</option>
+                <option value="6">Латвия</option>
+                <option value="7">Литва</option>
+                <option value="8">Польша</option>
+                <option value="9">Словакия</option>
+                <option value="10">Чехия</option>
+              </select>
+              <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:10px;">ГОРОД</p>
+            <select style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
+                <option value="0">Выберите город</option>
+                <option value="1">Бельгия</option>
+                <option value="2">Венгрия</option>
+                <option value="3">Германия</option>
+                <option value="4">Голландия</option>
+                <option value="5">Италия</option>
+                <option value="6">Латвия</option>
+                <option value="7">Литва</option>
+                <option value="8">Польша</option>
+                <option value="9">Словакия</option>
+                <option value="10">Чехия</option>
+              </select>
+            <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:20px;">УПАКОВКА</p>
+            
+        </div>
+        
+        
+       </div>
+       
+       <div class="row" style="margin-top:20px;">
+         <div class="col-sm-11 prButton col-md-3 mx-auto" style="width:300px;padding:0;">
+             <button class="orderBtn"><span class="text"><i class="fas fa-leaf" style="font-size:15pt;"></i> ПРЕДЛОЖИТЬ БИОТОПЛИВО</span></button>
+         </div>
+         
+          <div class="col-sm-11 prButton col-md-3 mx-auto" style="width:300px;">
+             <button class="orderBtn special"><span class="text">ПРЕДЛОЖИТЬ СКЛАД/ТРАНСПОРТ</span></button>
+         </div>
+         
+         <div class="col-sm-11 prButton col-md-3 mx-auto" style="width:300px;">
+             <button class="orderBtn special"><span class="text">ПРЕДЛОЖИТЬ УСЛУГИ АГЕНТА</span></button>
+         </div>
+         
+         <div class="col-sm-11 prButton col-md-3 mx-auto" style="width:300px;padding:0;">
+             <button class="orderBtn"><span class="text"><i class="fas fa-tree" style="font-size:15pt;"></i> ПРЕДЛОЖИТЬ ПИЛОМАТЕРИАЛ</span></button>
+         </div>
+         
+         <div class="col-sm-11 col-md-12 col-lg-6 mx-auto pollBlock">
+            <div class="poll calcItem" style="width:100%;">
+                <p class="calcTitle" style="text-align: left;color:#712d3d;font-size:20pt;padding:20px;">ДОСКУ ПОЛУ КАКОЙ ПОРОДЫ ВЫ ПРЕДПОЧИТАЕТЕ?</p>
+            </div>
+        </div>
+         
+       </div>
+    </div>
+</section>
+
+    
+    
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+<script>
+    
+$(".overlay").click(function(){
+    console.log($(this).attr("name"));
+});    
+
+$(document).ready(function(){
+  $('.slider').slick({
+   autoplay: true,
+  fade: true,
+  cssEase: 'linear',
+ prevArrow: $('.prev'),
+ nextArrow: $('.next'),
+  });
+});   
+   
+var slider = document.getElementById("myRange");
+var output = document.getElementById("currentValueP1");
+output.innerHTML = slider.value*50; // Display the default slider value
+ 
+    
+var slider2 = document.getElementById("myRange2");
+var output2 = document.getElementById("currentValueP2");
+output2.innerHTML = slider2.value*50; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+    
+slider.oninput = function() {
+  var left=$("#myRange").css("left");
+  console.log(left);
+  var value = Number(slider.value);
+  var sliderNumber=value*50;
+  output.innerHTML = sliderNumber;
+    
+  if (sliderNumber<=99)$("#currentValueP1").css("width","25px");
+  else if (sliderNumber>99)$("#currentValueP1").css("width","40px");
+  else if (sliderNumber>999)$("#currentValueP1").css("width","45px");
+    
+  if(value<=83)$("#currentValue").css("left",value + "%");
+  if(value<=5)$(".minValue1").hide();
+  else if(value>5)$(".minValue1").show();
+    
+  if(value>=65)$(".maxValue1").hide();
+  else if(value<65)$(".maxValue1").show();
+  
+  
+}
+
+
+slider2.oninput = function() {
+  var left=$("#myRange2").css("left");
+  console.log(left);
+  var value = Number(slider2.value);
+  var sliderNumber=value*50;
+  output2.innerHTML = sliderNumber;
+    
+  if (sliderNumber<=99)$("#currentValueP2").css("width","25px");
+  else if (sliderNumber>99)$("#currentValueP2").css("width","40px");
+  else if (sliderNumber>999)$("#currentValueP2").css("width","45px");
+    
+  if(value<=83)$("#currentValue2").css("left",value + "%");
+  if(value<=5)$(".minValue2").hide();
+  else if(value>5)$(".minValue2").show();
+    
+  if(value>=65)$(".maxValue2").hide();
+  else if(value<65)$(".maxValue2").show();
+  
+  
+}
+
+</script>
+</body>
+</html>
