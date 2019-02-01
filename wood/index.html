@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="rangeSlider.css">
+    <link rel="stylesheet" href="radio.css">
 </head>
 <body>
  
@@ -39,7 +40,6 @@
     nav{
         background-color: rgba(72, 71, 70, 0.86);
         background-image: url("headerBg.png");
-        background-size: contain;
         font-family: Bebas-Regular;
     }
     nav a{
@@ -278,6 +278,11 @@
         .fuelTypes li{
         margin-left: 1.7rem;        
     }
+        
+        .cert{
+            padding-left:0 !important;
+            width:95%;
+        }
     }
     
    
@@ -310,6 +315,14 @@
         width: 95% !important;
         margin: 0 auto;
             }
+        
+        .footerAdv i{
+            width:10% !important;
+        }
+        
+        .footerAdv p{
+            width:90%;
+        }
     }
     
     @media screen and (max-width:830px){
@@ -419,6 +432,52 @@
     }
 
     
+    footer{
+        background-color: rgba(72, 71, 70, 0.86);
+        background-image: url("headerBg.png");
+      
+        color:#f7e1bd;
+        font-size:10pt;
+    }
+    
+    .footerAdv{
+        list-style: none;
+    }
+    
+    .footerAdv li{
+        width:100%;
+        padding-bottom: 5px;
+    }
+    
+    .footerAdv i{
+        float: left;
+        width:15%;
+        position: relative;
+        margin-top:5px;
+    }
+    
+    .footerAdv p{
+        float:left;
+        width:85%;
+        padding:0;
+        margin:0;
+        margin-bottom:5px;
+    }
+    
+    footer a{
+        color:lightgray;
+        margin:0px 15px 0px 15px;
+        transition:.3s;
+        text-decoration: none;
+    }
+    
+    footer a:hover{
+        text-decoration: none;
+        color:lemonchiffon;
+    }
+    
+    
+    
     
 </style>
   
@@ -447,7 +506,7 @@
            <li class="socialLink"><i class="fab fa-whatsapp"></i></li>
            <li class="socialLink"><i class="fab fa-skype"></i></li>
            <li class="socialLink"><i class="fab fa-viber"></i></li>
-           <li class="socialLink"><i class="fab fa-instagram"></i></li>
+           <li class="socialLink"><i class="fab fa-linkedin-in"></i></li>
        </ul>
     </div>    
   </div>
@@ -518,7 +577,7 @@
               
             </div>
             <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:40px;">СТРАНА ДОСТАВКИ</p>
-            <select style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
+            <select id="bioCountries" style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
                 <option value="0">Выберите страну</option>
                 <option value="1">Бельгия</option>
                 <option value="2">Венгрия</option>
@@ -532,7 +591,7 @@
                 <option value="10">Чехия</option>
               </select>
               <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:10px;">ГОРОД</p>
-            <select style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
+            <select id="bioCities" style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
                 <option value="0">Выберите город</option>
                 <option value="1">Бельгия</option>
                 <option value="2">Венгрия</option>
@@ -545,8 +604,25 @@
                 <option value="9">Словакия</option>
                 <option value="10">Чехия</option>
               </select>
+             <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:40px;">ТИП ДОСТАВКИ</p>
+                     <label class="radioContainer"><p>Авто</p>
+                      <input type="radio" checked="checked" name="radio">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radioContainer"><p>Ж/Д</p>
+                      <input type="radio" name="radio">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radioContainer"><p>Море</p>
+                      <input type="radio" name="radio">
+                      <span class="checkmark"></span>
+                    </label>
+
             <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:20px;">УПАКОВКА</p>
-            <button class="orderBtn"><span class="text">Заказать</span></button>
+            <select style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
+                <option value="0">Выберите упаковку</option>
+              </select>
+            <button class="orderBtn" style="margin-top:20px;"><span class="text">Заказать</span></button>
         </div>
         
         <div class="col-md-2 col-lg-6 mx-auto videoBlock">
@@ -584,7 +660,7 @@
               
             </div>
               <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:40px;">СТРАНА ДОСТАВКИ</p>
-            <select style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
+            <select id="piloCountries" style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
                 <option value="0">Выберите страну</option>
                 <option value="1">Бельгия</option>
                 <option value="2">Венгрия</option>
@@ -598,20 +674,28 @@
                 <option value="10">Чехия</option>
               </select>
               <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:10px;">ГОРОД</p>
-            <select style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
+            <select id="piloCities" style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
                 <option value="0">Выберите город</option>
-                <option value="1">Бельгия</option>
-                <option value="2">Венгрия</option>
-                <option value="3">Германия</option>
-                <option value="4">Голландия</option>
-                <option value="5">Италия</option>
-                <option value="6">Латвия</option>
-                <option value="7">Литва</option>
-                <option value="8">Польша</option>
-                <option value="9">Словакия</option>
-                <option value="10">Чехия</option>
               </select>
+             <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:40px;">ТИП ДОСТАВКИ</p>
+                     <label class="radioContainer"><p>Авто</p>
+                      <input type="radio" checked="checked" name="radio">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radioContainer"><p>Ж/Д</p>
+                      <input type="radio" name="radio">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radioContainer"><p>Море</p>
+                      <input type="radio" name="radio">
+                      <span class="checkmark"></span>
+                    </label>
+
             <p style="font-size:10pt;letter-spacing: 1px;color:#555;margin-top:20px;">УПАКОВКА</p>
+            <select style="width:100%;border:none; outline: none;background-color:antiquewhite;font-size:12pt;">
+                <option value="0">Выберите упаковку</option>
+              </select>
+                <button class="orderBtn" style="margin-top:20px;"><span class="text">Заказать</span></button>
             
         </div>
         
@@ -644,6 +728,52 @@
        </div>
     </div>
 </section>
+    
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-11 col-lg-3" style="margin-top:30px;padding:0;">
+                <b style="font-size:12pt;">WOOD EXPORT COMPANY</b>
+                   <br><br>
+                    <p>
+                        Тел.: +375 44 548 2307 <br>
+E-mail: olga01081979@yahoo.it <br>
+E-mail: wec@woodexcompany.com <br>
+<br>
+Адрес: 247400, ул. Дорожная, 8/21, г.Светлогорск, Республика Беларусь. <br>
+УНП: 491033907 <br>
+Р/с: IBAN: BY07AKBB30130492223613200000 в ОАО «АСБ «Беларусбанк» <br>ЦБУ №322 филиала №312 247400г. Светлогорск, ул.Мирошниченко, 21
+                    </p>
+            </div>
+            
+             <div class="col-sm-11 col-lg-6">
+                <img class="cert" style="margin-top:10%;padding-left:7%;" src="http://u10.platformalp.ru/s/31f32r4061/d79eeb6636f04b7a79cec6e5d09c581c/013944123b0615c73df90ca52343fd3d.jpg" alt="">
+            </div>
+            
+             <div class="col-sm-11 col-lg-3" style="margin-top:30px;padding:0;">
+               <b style="font-size:12pt;">WOOD EXPORT COMPANY</b> 
+              
+               <ul class="footerAdv">
+                   <li><i class="fas fa-check"></i><p>На рынке с 2010 года</p></li>
+                   <li><i class="fas fa-check"></i><p>Экспорт пиломатериала северной сортировки</p></li>
+                   <li><i class="fas fa-check"></i><p>Точное соответствие спецификации покупателя</p></li>
+                   <li><i class="fas fa-check"></i><p>Различные формы оплаты</p></li>
+                   <li><i class="fas fa-check"></i><p>Контроль на каждом этапе реализации заказа</p></li>
+                   <li><i class="fas fa-check"></i><p>Собственная товаро-проводящая сеть</p></li>
+                   <li><i class="fas fa-check"></i><p>Доставка продукции «до двери»</p></li>
+               </ul>
+            </div>
+            
+            <hr>
+            
+            <div class="divider" style="height:1px;width:100%;background-color:darkgray;"></div>
+            
+           <div class="col mx-auto" style="text-align: center;color:lightgray;padding:20px 0px 20px 0px;">
+               <a href="#">Политика конфиденциальности</a>|<a href="#">Политика в отношении файлов cookie</a>
+           </div>
+        </div>
+    </div>
+</footer>
 
     
     
@@ -654,6 +784,107 @@
 
 
 <script>
+    
+(function($, window) {
+  $.fn.replaceOptions = function(options) {
+    var self, $option;
+
+    this.empty();
+    self = this;
+
+    $.each(options, function(index, option) {
+      $option = $("<option></option>")
+        .attr("value", option.value)
+        .text(option.text);
+      self.append($option);
+    });
+  };
+})(jQuery, window);
+    
+    
+var cities = {
+    
+    'Бельгия':{
+        '1':'Брюссель'
+    },
+    
+     'Венгрия':{
+        '1':'Будапешт'
+    },
+    
+    'Германия':{
+        '1':'Берлин',
+        '2':'Гамбург'
+    },
+    
+     'Голландия':{
+        '1':'Амстердам',
+        '2':'Роттердам'
+    },
+    
+     'Италия':{
+        '1':'Венеция',
+         '2':'Верона',
+         '3':'Генуя',
+         '4':'Кальяри',
+         '5':'Милан',
+         '6':'Турин'
+    },
+     'Латвия':{
+        '1':'Рига'
+    },
+    
+     'Литва':{
+        '1':'Вильнюс',
+        '2':'Клайпеда'
+    },
+    
+     'Польша':{
+        '1':'Варшава',
+        '2':'Малашевичи'
+    },
+     'Чехия':{
+        '1':'Карловы Вары',
+        '2':'Прага'
+    },
+    
+    
+        
+}
+
+    
+function selectByCountry(country){
+var options=[];
+for (var key in cities) {
+  if (key==country){
+     console.log("key " + key + " has value ");
+  //console.log(cities[key]);
+    for(var city in cities[key]){
+        var ob={text:cities[key][city],value:city};
+        console.log(cities[key][city]);
+        options.push(ob);
+    }  
+  }
+}  
+    return options;
+}
+
+
+
+$("#bioCountries").click(function(){
+ var country=$("#bioCountries option:selected").text();
+ var options=selectByCountry(country);
+$("#bioCities").replaceOptions(options);   
+});
+    
+$("#piloCountries").click(function(){
+ var country=$("#piloCountries option:selected").text();
+ var options=selectByCountry(country);
+$("#piloCities").replaceOptions(options);   
+});
+    
+
+    
     
 $(".overlay").click(function(){
     console.log($(this).attr("name"));
