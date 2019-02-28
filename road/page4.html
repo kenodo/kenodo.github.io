@@ -40,8 +40,8 @@
           </li>
           
           
-          <li class="nav-item active">
-            <a class="nav-link fr-view" href="#" style="outline: none; display: inline-block;">Главная <span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link fr-view" href="index.html" style="outline: none; display: inline-block;">Главная <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link fr-view" scrollTo="#about" onClick="scrollTo" style="outline: none; display: inline-block;">О нас</a>
@@ -60,6 +60,12 @@
 </header>
 
 <style>
+    
+    
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    
+    
+    
     @font-face {
 font-family: "Mont";
 src: url("mont.ttf");
@@ -67,6 +73,11 @@ src: url("mont.ttf");
     
     *{
             font-family: 'Open Sans', sans-serif;
+    }
+    
+    .service{
+        opacity:1;
+        animation:fadeIn ease-in 1s;
     }
     
     .mainBlock ul{
@@ -84,6 +95,16 @@ src: url("mont.ttf");
     .mainBlock span{
         margin-left:30px;
         color:#373737;
+    }
+    
+    .service img{
+        filter:sepia();
+        transition:.3s;
+    }
+    
+    .service img:hover{
+        filter:none;
+        transition:.3s;
     }
     
     
@@ -119,26 +140,46 @@ src: url("mont.ttf");
         color:#f8e042 !important;
     }
     
-    .links a{
-        text-decoration: none;
-        color:inherit;
+    .service b{
+        font-size:10pt !important;
     }
-    
     
 </style>
 
 
-<section class="fdb-block fdb-viewport fp-active links" style="background-image: url(bg.png); background-size:contain;background-position:right;margin-top:-40px;" data-block-type="call_to_action" data-id="1" draggable="true">
+
+
+
+<section class="fdb-block fp-active service" data-block-type="contents" data-id="2" draggable="true" style="padding-top:50px">
   <div class="container">
-    <div class="row" style="padding-bottom:150px;">
-      <div class="col-12 col-sm-10 col-md-8 col-lg-6 mainBlock">
-        <ul>
-            <li><a href="page1.html">01 <span>Производство, продажа и доставка асфальта</span></a></li>
-            <li><a href="page2.html">02 <span>Производство и розлив битумной эмульсии</span></a></li>
-            <li><a href="page3.html">03 <span>Асфальтирование дорог и территорий</span></a></li>
-            <li><a href="page4.html">04 <span>Аренда дорожных фрез и фрезерование</span></a></li>
-        </ul>
-        
+    <div class="row text-center align-items-center">
+      <div class="col-8 col-md-4">
+        <img alt="image" class="img-fluid" src="https://images.ru.prom.st/105819424_w640_h640_emulsiya.jpg">
+      </div>
+
+      <div class="col-4 col-md-2">
+        <div class="row">
+          <div class="col-12">
+            <img alt="image" class="img-fluid" src="http://www.elizar07.ru/wyswyg/image/_DSC4672.jpg">
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-12">
+            <img alt="image" class="img-fluid" src="http://www.postavshhiki.ru/images/com_adsmanager3/contents/bitumnaya-emulsiya-ebk-2-dlya-yamochnogo-remonta_1314_1.jpg">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-5 ml-auto" style="text-align: left;">
+        <h2>Аренда дорожных фрез и фрезерование</h2>
+        <p style=" font-family: 'Roboto', sans-serif;font-size:12pt !important;">&nbsp;&nbsp;&nbsp;&nbsp;Дорожная фреза экс. масса 30 т, мощность 433 кВт, ширина фрезерования 2 м
+стоимость аренды от 30 руб за м2.<br><br>
+Вся техника в собственности , сдается с операторами, в стоимость аренды фрезы входит цена топлива и услуг оператора.<br>
+При длительном заказе от 1 месяца и аренде 2х единиц техники предлагаем серьезные скидки.<br>
+Доставка техники до места работы осуществляется транспортом компании за отдельную оплату.
+Условия аренды уточняйте у менеджера.</p><br>
+        <a style="margin-left:0 !important;background-color:#ffde00;border:none;color:#444;" href="#" class="btn btn-dark ml-4">Заказать</a>
       </div>
     </div>
   </div>
@@ -146,37 +187,13 @@ src: url("mont.ttf");
 
 
 
-<section class="fdb-block" data-block-type="contents" data-id="5" draggable="true" style="padding-bottom: 90px;
-    padding-top: 70px;">
-  <div class="container">
-    <div class="row justify-content-center" id="about">
-      <div class="col col-md-8 text-center" style="z-index: 10000;"><h1 style="letter-spacing: 50px;">О НАС</h1></div>
-    </div>
-  </div>
-</section>
-<section class="fdb-block" data-block-type="contents" data-id="7" draggable="true" style="padding-top: 0;">
-  <div class="col-fill-left" style="background-image: url('bgAbout.jpg'); z-index: 10000;"></div>
-
-  <div class="container">
-    <div class="row justify-content-end">
-      <div class="col-12 col-md-5 text-center" style="z-index: 10000;"><p style="text-align: left;font-family: 'Roboto', sans-serif;">&nbsp; &nbsp; Возросшее количество всех видов транспорта на дорогах и высокие требования к качеству асфальта для безопасности дорожного движения привело к высокому спросу на услуги по асфальтированию дорог в нашей стране. Что в свою очередь вызвало всплеск предложений по услугам укладки асфальта со стороны новоявленных мелких строительных фирм.&nbsp;</p><p style="text-align: left;font-family: 'Roboto', sans-serif;">&nbsp; &nbsp; К сожалению не все строительные предприятия соблюдают все строительные нормы, стараясь экономить на технологическом процессе и материалах. Наша компания имеет большой опыт работы в сфере строительства дорог, тротуаров, площадей с применением асфальта. Наш автопарк включает в себя всю необходимую спецтехнику необходимую, чтобы провести асфальтирование&nbsp;</p><p class="mt-4"><a href="#">&nbsp;<!-- <i class="fas fa-angle-right"></i> --></a></p></div>
-    </div>
-  </div>
-</section>
-<section class="fdb-block bg-gray fp-active" data-block-type="contacts" data-id="9" draggable="true">
-  <div class="container">
-    <div class="row text-center justify-content-center">
-      <div class="col-12 col-md-8 col-lg-7" style="z-index: 10000;"><p class="h2">инфо@асфальт61.рф</p><p class="lead" style="font-family: 'Roboto', sans-serif;font-size:1rem !important;">Пожалуйста, дайте нам знать, если у вас остались какие либо вопросы. Мы будем рады ответить в ближайшее время!</p><p><br></p><p class="h2"><a class="mx-2" href="#"><!-- <i class="fab fa-facebook"></i> --></a> <a class="mx-2" href="#"><!-- <i class="fab fa-twitter"></i> --></a> <a class="mx-2" href="#"><!-- <i class="fab fa-instagram"></i> --></a> <a class="mx-2" href="#"><!-- <i class="fab fa-google"></i> --></a> <a class="mx-2" href="#"><!-- <i class="fab fa-pinterest"></i> --></a></p></div>
-    </div>
-  </div>
-</section>
 <footer class="fdb-block footer-small bg-dark">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-12 col-md-8">
         <ul class="nav justify-content-center justify-content-md-start">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Главная</a>
+            <a class="nav-link" href="index.html">Главная</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" scrollTo="#about">О нас</a>
