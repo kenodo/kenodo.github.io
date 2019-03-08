@@ -225,14 +225,14 @@ a:focus{
 .logo-left{
 	position: absolute;
 	top: 50px;
-	left: 50px;
+	right: 50px;
 	z-index: 1;
 	-webkit-transition: top .5s ease-in-out;
 	transition: top .5s ease-in-out;
 }
 .menu-button{
 	position: fixed;
-	left: 90%;
+	left: 4%;
 	text-align: right;
 	top: 50px;
 	z-index: 16;
@@ -241,7 +241,7 @@ a:focus{
 	transition: top .5s ease-in-out, left .5s;
 }
 .menu-active {
-  left: 75%;
+  left: 20% !important;
 }
 .menu-button button {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
