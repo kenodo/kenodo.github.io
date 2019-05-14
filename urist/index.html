@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ГолосПраво</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <style>
+        .navbar-brand {
+            font-size: 12pt;
+        }
+
+        .nav-link {
+            margin-right: 10px;
+            color: #f39d48 !important;
+            font-size: 10.5pt;
+        }
+
+        .navbar {
+            background: black !important;
+        }
+
+        nav {
+            padding-bottom: 0 !important;
+        }
+
+        .navbar-text p {
+            margin: 0;
+            padding: 0;
+            color: white;
+            font-size: 11pt;
+        }
+
+        .blockOne {
+            background-image: url('block1_bg.png');
+            background-size: cover;
+            padding-bottom: 50px;
+            margin-top: -9px;
+            padding-top: 15px;
+        }
+
+        .blockOne-headText {
+            font-size: 17pt !important;
+            margin-top: 19px;
+            padding-bottom: 32px;
+            text-align: center;
+            color: white;
+            margin-bottom: 0;
+        }
+
+        .blockOneAdv p {
+            font-size: 14pt;
+            font-weight: 500;
+            color: white;
+            max-width: 70%;
+            margin-top: 7px;
+        }
+
+        .blockOneAdv img {
+            float: left;
+            width: 75px;
+            height: auto;
+            padding-right: 20px;
+        }
+
+        .blockOneAdv .col-12 {
+            padding-bottom: 30px;
+        }
+
+        .blockOneContact {
+            background-color: rgba(243, 157, 72, 0.43);
+            padding: 20px 40px 20px 40px;
+        }
+
+
+        .blockOneContact .formHeadText {
+            text-align: center;
+            color: white;
+            padding: 10px;
+            font-size: 10.5pt;
+            margin-bottom: 0;
+        }
+
+        .blockOneContact .formInner {
+            border: 3px solid #f39d48;
+        }
+
+        .blockOneContact .formFields {
+            background-color: transparent;
+            outline: none;
+            border: 0;
+            border-bottom: 2px solid #f39d48;
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-bottom: 20px;
+            color: white;
+
+        }
+
+        .blockOneContact .formFields::placeholder {
+            color: white;
+        }
+
+        .blockTwoSteps {
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .blockTwoSteps img {
+            position: relative;
+            width: 65px;
+            z-index: 2;
+        }
+
+        .blockTwoSteps p {
+            width: 90%;
+            margin-left: 5%;
+            margin-top: 10px;
+
+            position: relative;
+            z-index: 3;
+        }
+
+        .blockTwoSteps .item {
+            padding-left: 0;
+            padding-right: 0;
+            z-index: 3;
+        }
+
+        .blockTwoSteps .item .content {
+            width: 95%;
+            float: left;
+            z-index: 3;
+        }
+
+
+        .blockTwoSteps .item .afterLine {
+            float: left;
+            width: 3%;
+            border-radius: 10px;
+            height: 75%;
+            margin-top: 4%;
+            background-color: #f8cda3;
+        }
+
+        .blockTwoSteps .number {
+            font-size: 95pt;
+            position: absolute;
+            top: -40px;
+            z-index: 0;
+            color: #fceee1;
+            left: -80px;
+        }
+
+        .block3 {
+            text-align: center;
+        }
+
+        .block3img {
+            height: 100px;
+
+        }
+
+        .block3 p {
+            font-size: 13pt;
+        }
+        
+        footer{
+            background-color:black;
+            color:white;
+            padding:20px 0 10px 0;
+        }
+        
+        .fas {
+            color:#f39d48 !important;
+            padding-right:15px;
+        }
+
+    </style>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="logo-big.png" style="height:56px;float:left;" alt="">
+
+            <p class="text" style="position:relative;left:20px;top:13px;padding-right:100px;font-size:11pt;line-height: 17px;color:white;">ЮРИДИЧЕСКИЕ УСЛУГИ ПО<br>РОСТОВСКОЙ ОБЛАСТИ</p>
+
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav mx-auto">
+                <a class="nav-item nav-link active" href="#">О компании</a>
+                <a class="nav-item nav-link" href="#">Уголовные дела</a>
+                <a class="nav-item nav-link" href="#">Физическим лицам</a>
+                <a class="nav-item nav-link" href="#">Юридическим лицам</a>
+                <a class="nav-item nav-link" href="#">Бухгалтерский учёт</a>
+            </div>
+
+            <span class="navbar-text ml-auto" style='text-align: center; margin-left:50px;'>
+                <p>+7 (952) 563-75-58</p>
+                <p style='font-size: 12pt;
+    margin-top: -5px;'>КОНСУЛЬТАЦИЯ</p>
+            </span>
+
+
+
+            <span class="navbar-text" style='margin-left:20px;margin-right:20px;'>
+                <img src="phone.png" alt="">
+            </span>
+        </div>
+    </nav>
+
+    <section class="blockOne">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 mx-auto">
+
+                    <p class='blockOne-headText'>Защита в арбитражных судах и судах общей юрисдикции</p>
+
+                </div>
+
+                <div class="col-sm-12 col-md-6 blockOneAdv">
+                    <div class="row">
+                        <div class="col-12"><img src="24hrs.png" alt="">
+                            <p>дежурный юрист работает круглосуточно</p>
+                        </div>
+                        <div class="col-12"><img src="house.png" alt="">
+                            <p style='margin-top:10px;'>выезд к клиенту</p>
+                        </div>
+                        <div class="col-12"><img src="free.png" alt="">
+                            <p>все первичные консультации бесплатны</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-5 offset-md-1 blockOneContact">
+                    <div class="formInner">
+                        <p class="formHeadText">
+                            Оставьте данные для связи и мы проконсультируем Вас по телефону или назначим встречу
+                        </p>
+
+                        <input type="text" class='formFields' placeholder='Имя*'>
+                        <input type="text" class='formFields' placeholder='Номер телефона*'>
+                        <input type="text" class='formFields' placeholder='Электронная почта' style='margin-bottom: 0;'>
+                        <input type="submit" style='background-color:#f39d48;outline: none;border:none;width:90%;margin:5%;color:white;font-weight:500;'>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section style='padding:15px 0px 30px 0px;-webkit-box-shadow: 0px 12px 32px -14px rgba(0,0,0,0.47);
+-moz-box-shadow: 0px 12px 32px -14px rgba(0,0,0,0.47);
+box-shadow: 0px 12px 32px -14px rgba(0,0,0,0.47);'>
+        <div class="container">
+            <div class="row blockTwoSteps">
+                <div class="col-md-3 mx-auto item">
+                    <div class="content">
+                        <p class="number">1</p>
+                        <img src="contact-phone.png" alt="">
+                        <p>Оставьте свои данные для звонка</p>
+                    </div>
+
+                    <div class="afterLine"></div>
+                </div>
+                <div class="col-md-3 mx-auto item">
+                    <div class="content">
+                        <p class="number">2</p>
+                        <img src="clock.png" alt="">
+                        <p>Мы свяжемся с вами по телефону</p>
+                    </div>
+
+                    <div class="afterLine"></div>
+                </div>
+                <div class="col-md-3 mx-auto item">
+                    <div class="content">
+                        <p class="number">3</p>
+                        <img src="map.png" alt="">
+                        <p>Наш сотрудник приедет к Вам в оговоренное время или назначим встречу в офисе</p>
+                    </div>
+
+                    <div class="afterLine"></div>
+                </div>
+                <div class="col-md-3 mx-auto item">
+                    <div class="content">
+                        <p class="number">4</p>
+                        <img src="consult.png" alt="">
+                        <p>Вы получите консультацию на личной встрече</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class='block3' style='margin-top:30px;padding-bottom:50px;background-image: url(block3_bg.png);background-size: contain;'>
+       
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mx-auto" style='text-align: center;'>
+                    <h2 style='font-size:20pt;text-transform:uppercase;color:#f39d48;padding-bottom:30px;'>Наши услуги</h2>
+                </div>
+
+                <div class="col-9 offset-2 mx-auto">
+                    <div class="row">
+                        <div class="col-3 mx-auto">
+                            <img class='block3img' src="yurLic.png" alt="">
+                            <p>Юридическим лицам</p>
+                        </div>
+                        <div class="col-3 mx-auto">
+                            <img class='block3img' src="phizLic.png" alt="">
+                            <p>Физическим лицам</p>
+                        </div>
+
+                        <div class="col-3 mx-auto">
+                            <img class='block3img' src="ugol.png" alt="">
+                            <p>Уголовные дела</p>
+                        </div>
+
+                        <div class="col-3 mx-auto">
+                            <img class='block3img' src="buh.png" alt="">
+                            <p>Бухгалтерский учёт</p>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+   
+   
+   
+   <footer>
+   <div class="container-fluid">
+       <div class="row">
+           <div class="col-sm-12 col-md-6">
+               <p style='margin-bottom:0;'><i class="fas fa-map-marker-alt"></i>Наш офис: Россия, Ростовская область, г.Ростов-на-Дону</p>
+               <p><i class="fas fa-envelope"></i>E-mail: <span style='color:#f39d48;'>golospravo@gmail.com</span></p>
+           </div>
+           
+           <div class="col-1" style='text-align: center;padding:0;'>
+               <img class='phoneImg' style='margin-right:-100%;' src="phone.png" alt="">
+           </div>
+           <div class="col-sm-12 col-md-5 ml-auto">
+              <div class="row">
+                  <div class="col-6" style='padding-left:10%;'>
+                      <p style='margin-bottom: 0;'>+7 (952) 563-75-58 <span style='color:#f39d48;'>(Tele2)</span></p>
+                      <p>+7 (961) 287-75-58 <span style='color:#f39d48;'>(Билайн)</span></p>
+                  </div>
+                 <div class="col-6" style='padding:0;'>
+                      <p style='margin-bottom: 0;'>+7 (919) 889-75-58 <span style='color:#f39d48;'>(МТС)</span></p>
+                      <p>+7 (928) 775-45-58 <span style='color:#f39d48;'>(Мегафон)</span></p>
+                  </div>
+              </div>
+           </div>
+           
+           
+           <div class="col-sm-12" style='padding:0;'>
+               <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa29baee52b6361ed1792705ce90fc9fc85f447c6c892c5ab0f33cfe6291e6e89&amp;width=100%25&amp;height=180&amp;lang=ru_RU&amp;scroll=true"></script>
+           </div>
+       </div>
+   </div>
+   
+   <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="logo-big.png" style="height:56px;float:left;" alt="">
+
+            <p class="text" style="position:relative;left:20px;top:13px;padding-right:100px;font-size:11pt;line-height: 17px;color:white;">ЮРИДИЧЕСКИЕ УСЛУГИ ПО<br>РОСТОВСКОЙ ОБЛАСТИ</p>
+
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" style='position:absolute;right:50px;'>
+            <div class="navbar-nav mx-auto">
+                <a class="nav-item nav-link active" href="#">О компании</a>
+                <a class="nav-item nav-link" href="#">Уголовные дела</a>
+                <a class="nav-item nav-link" href="#">Физическим лицам</a>
+                <a class="nav-item nav-link" href="#">Юридическим лицам</a>
+                <a class="nav-item nav-link" href="#">Бухгалтерский учёт</a>
+            </div>
+
+        </div>
+    </nav>
+    </footer>
+   
+   
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
