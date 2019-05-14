@@ -2,445 +2,414 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>BloggerInvest | Платформа подбора и размещения рекламы</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/animate.min.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/jquery.bxslider.css">
-  <link rel="stylesheet" href="css/jPushMenu.css">
-  <link rel="stylesheet" href="css/lightbox.css">
-  <link rel="stylesheet" href="css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ГолосПраво</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
- <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-  <![endif]-->
+</head>
 
-</head> <!-- head -->
 <body>
-	
-	<!-- ============== start wrapper  ============== -->
-	<div id="wrapper">
-		<!-- main-nav -->
-		<div class="main-nav">
-			<div class="menu-button toggle-menu menu-left push-body">
-				<button><i class="fa fa-bars"></i></button>
-			</div>
-			
-			<div class="logo-left">
-				<a data-scroll href="#home">
-					<img src="img/logo.png" alt="logo">
-				</a>
-			</div>
-		</div> <!-- //end main-nav -->
+    <style>
+        .navbar-brand {
+            font-size: 12pt;
+        }
 
-		<!--=========================
-			Start area for Menu 
-		============================== -->
-		<nav id="main-navigation" style="overflow: hidden;" class="nav-menu nav-menu-vertical nav-menu-left">
-			<ul class="list-inline">
-				<li class="current"><a href="#home">Домой</a></li>
-				<li><a href="#features">Наши услуги</a></li>
-				<li><a href="#teams">Блоггеры</a></li>
-				<li><a href="#client-feedback">Отзывы</a></li>
-				<li><a href="#contact">Контакты</a></li>
-				<li style="background:white;"><a href="login/index.html">ВОЙТИ</a></li>
-				<li  style="background:white;"><a href="reg/index.html">РЕГИСТРАЦИЯ</a></li>
-			</ul>
-		</nav>
-		
-		<!-- End of menu area -->
+        .nav-link {
+            margin-right: 10px;
+            color: #f39d48 !important;
+            font-size: 10.5pt;
+        }
 
+        .navbar {
+            background: black !important;
+        }
 
-		<!-- ============== start home section  ============== -->
-		<section id="home">
-			<div id="home-slider" class="carousel slide in" data-ride="carousel">
-			  <!-- Indicators -->
-			<ol class="carousel-indicators">
-				<li class="active" data-slide-to="0" data-target="#home-slider"></li>
-				<li data-slide-to="1" data-target="#home-slider" class=""></li>
-				<li data-slide-to="2" data-target="#home-slider" class=""></li>
-			</ol>
+        nav {
+            padding-bottom: 0 !important;
+        }
 
-		      <div class="carousel-inner">
-		        <div class="item active" style="background-image: url(img/slider/01.jpg)">
-		        	<div class="col-sm-offset-1 caption caption-wide">
-		        		<h1 class="main-title wow fadeInUp" data-wow-delay=".25s">Инструмент<br/>подбора<br/>и размещения<br/>рекламы</h1>
+        .navbar-text p {
+            margin: 0;
+            padding: 0;
+            color: white;
+            font-size: 11pt;
+        }
 
-		        		<a class="btn btn-start wow fadeInUp" href="#features" data-scroll data-wow-delay=".85s">Показать ещё</a>
-		        	</div>
-		        </div><!-- //item -->
-		        <div class="item" style="background-image: url(img/slider/02.jpg)">
-		        	<div class="col-sm-offset-1 caption caption-wide">
-		        		<h1 class="main-title wow fadeInUp" data-wow-delay=".25s">Лидеры <br/>Мнений <br/>Instagram<br/>Youtube...</h1>
-		        		
-		        	</div>
-		        </div><!-- //item -->
-		        <div class="item" style="background-image: url(img/slider/03.jpg)">
-		          <div class="col-sm-offset-1 caption">
-		        		<h1 class="main-title wow fadeInUp" data-wow-delay=".25s">Размещайте рекламу<br/>у блоггеров</h1>
-		        		<p class="sub-title wow fadeInUp" data-wow-delay=".55s">И смотрите за результатом</p>
-		        		
-		        	</div>
-		        </div><!-- //item -->
-		      </div>
-		    </div>
-		</section>
-		<!-- ========= //End home section ========= -->
-		
+        .blockOne {
+            background-image: url('block1_bg.png');
+            background-size: cover;
+            padding-bottom: 50px;
+            margin-top: -9px;
+            padding-top: 15px;
+        }
 
-		<!-- ============== Start features section ============== -->
-		<section id="features">
-			<div class="container">
-				<div class="row">
-					 
-					<div class="col-md-4 feature-item">
-						<div class="content wow fadeInDown" data-wow-delay=".15s">
-							<p class="icon text-center"><i class="fa fa-camera-retro"></i></p>
-							<h5 class="title text-center">Реклама у блоггеров бывает разной</h5>
-							<p class="info">
-								Это может быть фотография любимого крема для лица, фото с друзьями в любимом кафе или счастливые дети со сладким пирогом, но самое главное - реклама работает.
-							</p>
-						</div>
-					</div>
-					<div class="col-md-4 feature-item">
-						<div class="content wow fadeInDown" data-wow-delay=".35s">
-							<p class="icon text-center"><i class="fa fa-male"></i></p>
-							<h5 class="title text-center">Как заказать рекламу у блоггеров?</h5>
-							<p class="info">
-								Самый безопасный и надежный способ - использовать нашу площадку. Здесь вы точно получите отклик от рекламы, т. к. у нас есть выход на популярных блоггеров всех площадок, большой опыт в интернет-маркетинге и создании рекламных постов, налажена схема взаимодействия.
-						</div>
-					</div>
-					<div class="col-md-4 feature-item">
-						<div class="content wow fadeInDown" data-wow-delay=".55s">
-							<p class="icon text-center"><i class="fa fa-users"></i></p>
-							<h5 class="title text-center">Сколько стоит реклама?</h5>
-							<p class="info">
-								Стоимость зависит от нескольких факторов: Популярность самого блоггера и формат рекламы (эксклюзивный видеоролик, интеграция в видео, уникальная статья со ссылкой на ваш сайт, упоминание, нативная реклама и т. д.).
-							</p>
-						</div>
-					</div>
-				</div> <!-- //row -->
-			</div> <!-- //container -->
-		</section>
-		<!-- ========= //End features section ========= -->
-		
-		
-		<!-- ============== Start counter ============== -->
-		<section id="count-down" class="text-center">
-			<div class="color-overlay ptb100">
-				<div class="container">
-					<h3 class="section-title wow fadeInDown">Лучше скажут только цифры:</h3>
-					<div class="row">
-						<div class="counter-content">
-							<div class="col-sm-4 each-counter wow zoomIn">
-								<span class="counter count1">2043</span>
-								<p class="title">рекламных постов за сегодня</p>
-							</div>
-							<div class="col-sm-4 each-counter wow zoomIn">
-								<span class="counter count2">10000</span>
-								<p class="title">просмотров в день</p>
-							</div>
-							<div class="col-sm-4 each-counter wow zoomIn">
-								<span class="counter count3">31</span>
-								<p class="title">довольный клиент</p>
-							</div>
-						</div>
-					</div> <!-- //row -->
-				</div> <!-- //container -->
-			</div>
-		</section>
-		<!-- ========= //End counter ========= -->
+        .blockOne-headText {
+            font-size: 17pt !important;
+            margin-top: 19px;
+            padding-bottom: 32px;
+            text-align: center;
+            color: white;
+            margin-bottom: 0;
+        }
 
-		
-		<!-- ============== Start team section  ============== -->
-		<section id="teams" class="ptb100">
-			<div class="container">
-				<h3 class="section-title wow fadeInDown">Познакомьтесь поближе</h3>
-				<p class="section-info col-sm-8 col-sm-offset-2 wow fadeInDown" data-wow-dealy=".25s">
-					Получите доступ к огромной базе Instagram, Youtube, Vk, Twitter или Фейсбук аккаутнов, готовых размещать вашу рекламу.
-				</p>
-				<div class="clearfix"></div>
+        .blockOneAdv p {
+            font-size: 14pt;
+            font-weight: 500;
+            color: white;
+            max-width: 70%;
+            margin-top: 7px;
+        }
 
-				<div class="row">
-					<div class="col-lg-3 col-sm-6 col-xs-12 team-member wow fadeInDown" data-wow-delay=".25s">
-						<div class="content">
-							<figure class="member-pic">
-								<img src="img/team/01.jpg" alt="team-member" class="img-100p">
-								<figcaption class="caption">
-									<div class="color-overlay overflow-content-full">
-										<ul class="social-icon horizontal-vertical-center list-inline">
-											<li><a href="#"><i class="fa fa-facebook-official "></i></a></li>
-											<li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-											<li><a href="#"><i class="fa fa-google-plus-square "></i></a></li>
-										</ul>
-									</div>
-								</figcaption>
-							</figure>
-							<div class="member-info">
-								<p class="name">Валентин Петухов</p>
-								<p>
-									Так же известен как Wylsacom, ведет один из самых популярных ютуб-каналов, посвященных технологиям. 
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-6 col-xs-12 team-member wow fadeInDown" data-wow-delay=".45s">
-						<div class="content">
-							<figure class="member-pic">
-								<img src="img/team/02.jpg" alt="team-member" class="img-100p">
-								<figcaption class="caption">
-									<div class="color-overlay overflow-content-full">
-										<ul class="social-icon horizontal-vertical-center list-inline">
-											<li><a href="#"><i class="fa fa-facebook-official "></i></a></li>
-											<li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-											<li><a href="#"><i class="fa fa-google-plus-square "></i></a></li>
-										</ul>
-									</div>
-								</figcaption>
-							</figure>
-							<div class="member-info">
-								<p class="name">Екатерина Трофимова</p>
-								<p>
-									Ведет видео-дневник с 2009 года, в котором делиться со зрителями подробностями своей жизни, лайфхаками для подростков, снимает скетчи. 
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-6 col-xs-12 team-member wow fadeInDown" data-wow-delay=".65s">
-						<div class="content">
-							<figure class="member-pic">
-								<img src="img/team/03.jpg" alt="team-member" class="img-100p">
-								<figcaption class="caption">
-									<div class="color-overlay overflow-content-full">
-										<ul class="social-icon horizontal-vertical-center list-inline">
-											<li><a href="#"><i class="fa fa-facebook-official "></i></a></li>
-											<li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-											<li><a href="#"><i class="fa fa-google-plus-square "></i></a></li>
-										</ul>
-									</div>
-								</figcaption>
-							</figure>
-							<div class="member-info">
-								<p class="name">Амиран Сардаров</p>
-								<p>
-									Видеоблоггер, известный прежде всего как автор YouTube-канала "Дневник Хача".
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-6 col-xs-12 team-member wow fadeInDown" data-wow-delay=".85s">
-						<div class="content">
-							<figure class="member-pic">
-								<img src="img/team/04.jpg" alt="team-member" class="img-100p">
-								<figcaption class="caption">
-									<div class="color-overlay overflow-content-full">
-										<ul class="social-icon horizontal-vertical-center list-inline">
-											<li><a href="#"><i class="fa fa-facebook-official "></i></a></li>
-											<li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-											<li><a href="#"><i class="fa fa-google-plus-square "></i></a></li>
-										</ul>
-									</div>
-								</figcaption>
-							</figure>
-							<div class="member-info">
-								<p class="name">Юрий Дудь</p>
-								<p>
-									Российский спортивный журналист и главный редактор портала Sports.ru.
-									Ведет авторское шоу на YouTube под названием "вДудь."
-								</p>
-							</div>
-						</div>
-					</div>
-				</div> <!-- //row -->
-			</div> <!-- //container -->
-		</section>
-		<!-- ========= //End team section  ========= -->
+        .blockOneAdv img {
+            float: left;
+            width: 75px;
+            height: auto;
+            padding-right: 20px;
+        }
 
-		<!-- ============== Start client-feedback ============== -->
-		<section id="client-feedback">
-			<div class="color-overlay ptb100">
-				<div class="container">
-					<h3 class="section-title wow fadeInDown">Истории успеха</h3>
-					<div class="row">
-						<div class="col-sm-10 col-sm-offset-1">
-							<div class="custom-control">
-								<p><span id="slider-prev"></span> <span id="slider-next"></span></p>
-							</div>
-							<ul class="bx-slider main-content">
-								<li>
-									<p>Благодаря BloggerInvest сотрудничество с блоггерами проходит на более высоком, профессиональном уровне.</p>
-									<p class="client-name"><a href="#">Салон красоты Noir</a></p>
-								</li>
-								<li>
-									<p>Уже первые публикации сразу принесли хороший объем заказов, что показало эффективность канала и послужило основной для его мастабирования.</p>
-									<p class="client-name"><a href="#">Сервис быстрой доставки Golamago</a></p>
-								</li>
-								<li>
-									<p>Приняли решение попробовать работу с блоггерами на платформе BloggerInvest и не пожалели.Сейчас готовим к запуску следующую рекламную кампанию.</p>
-									<p class="client-name"><a href="#">Магазин плетеной мебели 4SIS</a></p>
-								</li>
-								<li>
-									<p>С BloggerInvest мы стали быстрее принимать решения о сотрудничестве, обратили внимание на тех, у кого аудитория относительно небольшая, но вовлечённая и доступная.</p>
-									<p class="client-name"><a href="#">Сеть фитнес-клубов World Class</a></p>
-								</li>
-							</ul>
-						</div>
-					</div> <!-- //row -->
-				</div> <!-- //container -->
-			</div>
-		</section>
-		<!-- ========= //End client-feedback ========= -->
+        .blockOneAdv .col-12 {
+            padding-bottom: 30px;
+        }
+
+        .blockOneContact {
+            background-color: rgba(243, 157, 72, 0.43);
+            padding: 20px 40px 20px 40px;
+        }
 
 
-		<!-- ============== Start client section ============== -->
-		<section id="our-clients" class="mtb100">
-			<div class="container">
-				<h3 class="section-title wow fadeInDown">Через нас продвигались</h3>
-				<div class="clearfix"></div>
+        .blockOneContact .formHeadText {
+            text-align: center;
+            color: white;
+            padding: 10px;
+            font-size: 10.5pt;
+            margin-bottom: 0;
+        }
 
-				<div class="row">
-					<div class="col-sm-12">
-						<ul class="list-inline text-center">
-							<li class="each-client"><a href="#"><img src="img/clients/logo-01.png" alt="client"></a></li>
-							<li class="each-client"><a href="#"><img src="img/clients/logo-02.png" alt="client"></a></li>
-							<li class="each-client"><a href="#"><img src="img/clients/logo-03.png" alt="client"></a></li>
-							<li class="each-client"><a href="#"><img src="img/clients/logo-04.png" alt="client"></a></li>
-							<li class="each-client"><a href="#"><img src="img/clients/logo-05.png" alt="client"></a></li>
-						</ul>
-					</div>
-				</div> <!-- //row -->
-			</div> <!-- //container -->
-		</section>
-		<!-- ========= //End client section ========= -->
+        .blockOneContact .formInner {
+            border: 3px solid #f39d48;
+        }
 
-		<!-- ============== Start join-us section ============== -->
-		<section id="join-us">
-			<div class="color-overlay ptb100">
-				<div class="container">
-					<h3 class="section-title wow fadeInDown">Начните эффективную рекламную кампанию прямо сейчас</h3>
-					<p class="section-info col-sm-8 col-sm-offset-2 wow fadeInDown" data-wow-delay=".25s">
-						Помогаем брендам и компаниям транслировать свои маркетинговые активности через лидеров мнений и блогеров.
-					</p>
-					<div class="clearfix"></div>
-					<p class="join-btn text-center wow zoomIn">
-						<a href="#" class="btn btn-primary">начать</a>
-					</p>
-				</div> <!-- //container -->
-			</div>
-		</section>
-		<!-- ========= //End join-us section ========= -->
+        .blockOneContact .formFields {
+            background-color: transparent;
+            outline: none;
+            border: 0;
+            border-bottom: 2px solid #f39d48;
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-bottom: 20px;
+            color: white;
 
+        }
 
-		<!-- ============== Start contact section ============== -->
-		<section id="contact">
-			<div class="map-content">
-				<div id="gmap">
-				</div>
-			</div>
-			<div class="color-overlay">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-8 col-sm-offset-2 form-content ptb100">
-							<h3 class="section-title wow fadeInDown">Заинтересованы? Давайте сотрудничать!</h3>
-							<p class="section-info wow fadeInDown" data-wow-delay=".25s">
-								Начните размещать рекламу у блогеров прямо сейчас
-							</p>
-							<div class="clearfix"></div>
-							<form action="#" class="form wow fadeIn" data-wow-delay=".25s">
-								<input type="text" class="form-control" placeholder="Фамилия Имя Отчество">
-								<input type="text" class="form-control" placeholder="Почта">
-								<input type="text" class="form-control" placeholder="Телефон">
-								<textarea name="" class="form-control" cols="30" rows="5" placeholder="Текст сообщения"></textarea>
-								<a class="btn-block btn btn-submit text-uppercase">отправить</a>
-							</form>
-						</div>
-					</div> <!-- //row -->
-				</div> <!-- //container -->
-			</div>
-		</section>
-		<!-- ========= //End contact section ========= -->
+        .blockOneContact .formFields::placeholder {
+            color: white;
+        }
+
+        .blockTwoSteps {
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .blockTwoSteps img {
+            position: relative;
+            width: 65px;
+            z-index: 2;
+        }
+
+        .blockTwoSteps p {
+            width: 90%;
+            margin-left: 5%;
+            margin-top: 10px;
+
+            position: relative;
+            z-index: 3;
+        }
+
+        .blockTwoSteps .item {
+            padding-left: 0;
+            padding-right: 0;
+            z-index: 3;
+        }
+
+        .blockTwoSteps .item .content {
+            width: 95%;
+            float: left;
+            z-index: 3;
+        }
 
 
-		<!-- ============== Start footer ============== -->
-		<section id="footer">
-			<div class="container bottom-part">
-				<div class="row">
-					<div class="col-sm-4 left-part">
-						<p class="footer-logo "><img src="img/logo.png" alt="logo"></p><br/>
-						<p>Информация о сайте</p>
-					</div>
-					<div class="col-sm-4 col-sm-offset-4">
-						<ul class="social-icon-footer list-inline mtb50">
-							<li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
-							<li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
-							<li><a href="#"><i class="fa fa-youtube-square"></i></a></li>
-							<li><a href="#"><i class="fa fa-tumblr-square"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-						</ul>
-						<form action="#" class="form subscribe-form">
-							<p class="text-uppercase mtb20">Подпишитесь, чтобы узнавать новости первыми</p>
-							<input type="email" class="form-control" placeholder="Введите почту:">
-						</form>
-					</div>
-				</div> <!-- //row -->
-			</div> <!-- //container -->
+        .blockTwoSteps .item .afterLine {
+            float: left;
+            width: 3%;
+            border-radius: 10px;
+            height: 75%;
+            margin-top: 4%;
+            background-color: #f8cda3;
+        }
 
-			<!-- copyright -->
-			<div class="copyright">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-6 col-sm-offset-4">
-							<p class="info">
-								&copy; <a href="#" target="_blank">Михаил Никитин</a>.  BloggerInvest.
-							</p>
-						</div>
-					</div> <!-- //row -->
-				</div> <!-- //container -->
-			</div> <!-- //end copyright -->
-		</section>
-		<!-- ========= //End footer ========= -->
+        .blockTwoSteps .number {
+            font-size: 95pt;
+            position: absolute;
+            top: -40px;
+            z-index: 0;
+            color: #fceee1;
+            left: -80px;
+        }
 
-	</div> <!-- //end wrapper -->
+        .block3 {
+            text-align: center;
+        }
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <!-- loader -->
-  <script src="js/loader.min.js"></script>
-  <script src="js/preloader.js"></script>
-  <!-- animation effects -->
-  <script src="js/wow.min.js"></script>
-  <!-- count-down -->
-  <script src="js/jquery.inview.min.js"></script>
-  <script src="js/jquery.counterup.min.js"></script>
-  <!-- content slider -->
-  <script src="js/jquery.bxslider.min.js"></script>
-  <!-- google maps -->
-  <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
-  <script src="js/gmaps.js"></script>
-  <script src="js/init-map.js"></script>
-  <!-- pushmenu -->
-  <script src="js/jPushMenu.js"></script>
-  <!-- smooth navigation -->
-  <script src="js/mousescroll.js"></script>
-  <script src="js/jquery.nav.js"></script>
-  <!-- filter portfolio & lightbox -->
-  <script src="js/jquery.isotope.min.js"></script>
-  <script src="js/lightbox.min.js"></script>
-  <!-- smooth scrool -->
-  <script src="js/smoothscroll.js"></script>
-  <!-- custom js -->
-  <script src="js/app.js"></script>
-  
+        .block3img {
+            height: 100px;
+
+        }
+
+        .block3 p {
+            font-size: 13pt;
+        }
+        
+        footer{
+            background-color:black;
+            color:white;
+            padding:20px 0 10px 0;
+        }
+        
+        .fas {
+            color:#f39d48 !important;
+            padding-right:15px;
+        }
+
+    </style>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="logo-big.png" style="height:56px;float:left;" alt="">
+
+            <p class="text" style="position:relative;left:20px;top:13px;padding-right:100px;font-size:11pt;line-height: 17px;color:white;">ЮРИДИЧЕСКИЕ УСЛУГИ ПО<br>РОСТОВСКОЙ ОБЛАСТИ</p>
+
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav mx-auto">
+                <a class="nav-item nav-link active" href="#">О компании</a>
+                <a class="nav-item nav-link" href="#">Уголовные дела</a>
+                <a class="nav-item nav-link" href="#">Физическим лицам</a>
+                <a class="nav-item nav-link" href="#">Юридическим лицам</a>
+                <a class="nav-item nav-link" href="#">Бухгалтерский учёт</a>
+            </div>
+
+            <span class="navbar-text ml-auto" style='text-align: center; margin-left:50px;'>
+                <p>+7 (952) 563-75-58</p>
+                <p style='font-size: 12pt;
+    margin-top: -5px;'>КОНСУЛЬТАЦИЯ</p>
+            </span>
+
+
+
+            <span class="navbar-text" style='margin-left:20px;margin-right:20px;'>
+                <img src="phone.png" alt="">
+            </span>
+        </div>
+    </nav>
+
+    <section class="blockOne">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 mx-auto">
+
+                    <p class='blockOne-headText'>Защита в арбитражных судах и судах общей юрисдикции</p>
+
+                </div>
+
+                <div class="col-sm-12 col-md-6 blockOneAdv">
+                    <div class="row">
+                        <div class="col-12"><img src="24hrs.png" alt="">
+                            <p>дежурный юрист работает круглосуточно</p>
+                        </div>
+                        <div class="col-12"><img src="house.png" alt="">
+                            <p style='margin-top:10px;'>выезд к клиенту</p>
+                        </div>
+                        <div class="col-12"><img src="free.png" alt="">
+                            <p>все первичные консультации бесплатны</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-5 offset-md-1 blockOneContact">
+                    <div class="formInner">
+                        <p class="formHeadText">
+                            Оставьте данные для связи и мы проконсультируем Вас по телефону или назначим встречу
+                        </p>
+
+                        <input type="text" class='formFields' placeholder='Имя*'>
+                        <input type="text" class='formFields' placeholder='Номер телефона*'>
+                        <input type="text" class='formFields' placeholder='Электронная почта' style='margin-bottom: 0;'>
+                        <input type="submit" style='background-color:#f39d48;outline: none;border:none;width:90%;margin:5%;color:white;font-weight:500;'>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section style='padding:15px 0px 30px 0px;-webkit-box-shadow: 0px 12px 32px -14px rgba(0,0,0,0.47);
+-moz-box-shadow: 0px 12px 32px -14px rgba(0,0,0,0.47);
+box-shadow: 0px 12px 32px -14px rgba(0,0,0,0.47);'>
+        <div class="container">
+            <div class="row blockTwoSteps">
+                <div class="col-md-3 mx-auto item">
+                    <div class="content">
+                        <p class="number">1</p>
+                        <img src="contact-phone.png" alt="">
+                        <p>Оставьте свои данные для звонка</p>
+                    </div>
+
+                    <div class="afterLine"></div>
+                </div>
+                <div class="col-md-3 mx-auto item">
+                    <div class="content">
+                        <p class="number">2</p>
+                        <img src="clock.png" alt="">
+                        <p>Мы свяжемся с вами по телефону</p>
+                    </div>
+
+                    <div class="afterLine"></div>
+                </div>
+                <div class="col-md-3 mx-auto item">
+                    <div class="content">
+                        <p class="number">3</p>
+                        <img src="map.png" alt="">
+                        <p>Наш сотрудник приедет к Вам в оговоренное время или назначим встречу в офисе</p>
+                    </div>
+
+                    <div class="afterLine"></div>
+                </div>
+                <div class="col-md-3 mx-auto item">
+                    <div class="content">
+                        <p class="number">4</p>
+                        <img src="consult.png" alt="">
+                        <p>Вы получите консультацию на личной встрече</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class='block3' style='margin-top:30px;padding-bottom:50px;background-image: url(block3_bg.png);background-size: contain;'>
+       
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mx-auto" style='text-align: center;'>
+                    <h2 style='font-size:20pt;text-transform:uppercase;color:#f39d48;padding-bottom:30px;'>Наши услуги</h2>
+                </div>
+
+                <div class="col-9 offset-2 mx-auto">
+                    <div class="row">
+                        <div class="col-3 mx-auto">
+                            <img class='block3img' src="yurLic.png" alt="">
+                            <p>Юридическим лицам</p>
+                        </div>
+                        <div class="col-3 mx-auto">
+                            <img class='block3img' src="phizLic.png" alt="">
+                            <p>Физическим лицам</p>
+                        </div>
+
+                        <div class="col-3 mx-auto">
+                            <img class='block3img' src="ugol.png" alt="">
+                            <p>Уголовные дела</p>
+                        </div>
+
+                        <div class="col-3 mx-auto">
+                            <img class='block3img' src="buh.png" alt="">
+                            <p>Бухгалтерский учёт</p>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+   
+   
+   
+   <footer>
+   <div class="container-fluid">
+       <div class="row">
+           <div class="col-sm-12 col-md-6">
+               <p style='margin-bottom:0;'><i class="fas fa-map-marker-alt"></i>Наш офис: Россия, Ростовская область, г.Ростов-на-Дону</p>
+               <p><i class="fas fa-envelope"></i>E-mail: <span style='color:#f39d48;'>golospravo@gmail.com</span></p>
+           </div>
+           
+           <div class="col-1" style='text-align: center;padding:0;'>
+               <img class='phoneImg' style='margin-right:-100%;' src="phone.png" alt="">
+           </div>
+           <div class="col-sm-12 col-md-5 ml-auto">
+              <div class="row">
+                  <div class="col-6" style='padding-left:10%;'>
+                      <p style='margin-bottom: 0;'>+7 (952) 563-75-58 <span style='color:#f39d48;'>(Tele2)</span></p>
+                      <p>+7 (961) 287-75-58 <span style='color:#f39d48;'>(Билайн)</span></p>
+                  </div>
+                 <div class="col-6" style='padding:0;'>
+                      <p style='margin-bottom: 0;'>+7 (919) 889-75-58 <span style='color:#f39d48;'>(МТС)</span></p>
+                      <p>+7 (928) 775-45-58 <span style='color:#f39d48;'>(Мегафон)</span></p>
+                  </div>
+              </div>
+           </div>
+           
+           
+           <div class="col-sm-12" style='padding:0;'>
+               <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa29baee52b6361ed1792705ce90fc9fc85f447c6c892c5ab0f33cfe6291e6e89&amp;width=100%25&amp;height=180&amp;lang=ru_RU&amp;scroll=true"></script>
+           </div>
+       </div>
+   </div>
+   
+   <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="logo-big.png" style="height:56px;float:left;" alt="">
+
+            <p class="text" style="position:relative;left:20px;top:13px;padding-right:100px;font-size:11pt;line-height: 17px;color:white;">ЮРИДИЧЕСКИЕ УСЛУГИ ПО<br>РОСТОВСКОЙ ОБЛАСТИ</p>
+
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" style='position:absolute;right:50px;'>
+            <div class="navbar-nav mx-auto">
+                <a class="nav-item nav-link active" href="#">О компании</a>
+                <a class="nav-item nav-link" href="#">Уголовные дела</a>
+                <a class="nav-item nav-link" href="#">Физическим лицам</a>
+                <a class="nav-item nav-link" href="#">Юридическим лицам</a>
+                <a class="nav-item nav-link" href="#">Бухгалтерский учёт</a>
+            </div>
+
+        </div>
+    </nav>
+    </footer>
+   
+   
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>
