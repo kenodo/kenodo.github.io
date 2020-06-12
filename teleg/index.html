@@ -4,19 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+
 </head>
 
 <body>
 
     <style>
+        @font-face {
+            font-family: 'Calibri';
+            src: url('Calibri.ttf');
+        }
+
+
         body {
-            background-image: url('back3.jpg');
+            background-image: url('back4.jpg');
             background-repeat: no-repeat;
             background-color: lightsteelblue;
         }
 
         p {
-            font-family: Calibri;
+            font-family: 'Calibri';
         }
 
         .name {
@@ -38,7 +45,7 @@
             border-radius: 5px;
             background-color: white;
             margin-left: 16px;
-            margin-top:1%;
+           
             -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.21);
             -moz-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.21);
             box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.21);
@@ -50,7 +57,7 @@
             position: relative;
             margin: 0;
             padding: 0;
-            margin-top: 12px;
+            
             letter-spacing: -0.1px;
             margin-left: 13px;
             padding-right: 50px;
@@ -61,12 +68,12 @@
         .message span {
             font-size: 10.4pt;
             font-weight: 200;
-            font-family: Calibri;
+            font-family: 'Calibri';
             color: #a0acb8;
             position: relative;
             top: -20px;
             float: right;
-            margin-right: 10px;
+                margin-right: 13px;
         }
 
         .message .leftArr {
@@ -78,8 +85,8 @@
 
         .right {
             float: right;
-            margin-right: 257px;
-            
+            margin-right: 8px;
+
             background-color: #effdde;
         }
 
@@ -88,7 +95,7 @@
             padding-right: 75px !important;
         }
 
-        .right img {
+        .right .leftArr {
             position: relative !important;
             content: url('msgRightArr.png') !important;
             margin-right: -7px;
@@ -98,11 +105,12 @@
         }
 
         .right span {
-            position: inherit;
+            position: absolute;
             top: inherit;
             margin-right: 36px;
-            margin-top: -22px;
+            margin-top: -20px;
             color: #6cc264;
+            right: 7px;
         }
 
 
@@ -113,17 +121,17 @@
             transform: scaleX(1);
             margin-top: -21px;
         }
-        
-        .date{
-            height:30px;
-            margin-top:10px;
+
+        .date {
+            height: 30px;
+            margin-top: 10px;
         }
 
 
         .date p {
             text-align: center;
-            float:left;
-            margin-left: 240px;
+            float: left;
+            margin-left: 370px;
             background: rgba(0, 0, 0, 0.4);
             width: 79px;
             padding: 2.5px;
@@ -131,63 +139,121 @@
             border-radius: 12px;
             font-size: 11pt;
         }
-        
-        .msgBlock{
-            float:left;
-            width:100%;
-            height:auto;
+
+        .msgBlock {
+            float: left;
+            width: 100%;
+            height: auto;
         }
-      
-        .control img{
+
+        .control img {
             transition: .2s;
             cursor: pointer;
         }
-        
-        .control img:hover{
-            transform:scale(1.1);
-            transition:.2s;
+
+        .control img:hover {
+            transform: scale(1.1);
+            transition: .2s;
         }
 
     </style>
-    <div class="container">
+
+
+
+    <style>
+        .container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar {
+            position: absolute;
+            margin-top: 5px;
+            width: 815px;
+            height: 475px;
+            overflow-y: scroll;
+            margin-bottom: 25px;
+        }
+
+        .force-overflow {
+            min-height: 4000px;
+        }
+
+        #style-2::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 20px rgba(0, 0, 0, .3);
+            border-radius: 10px;
+
+            opacity: .5;
+        }
+
+        #style-2::-webkit-scrollbar {
+            width: 6px;
+            height: 2px;
+
+        }
+
+        #style-2::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+
+            background-color: rgba(0, 0, 0, .2);
+        }
+
+
+        
+        .message img {
+            max-width: 422px;
+            border-radius: 6px 6px 0px 0px;
+
+        }
+        
+        .msgRight{
+            margin-bottom: 10px;
+        }
+        
+        .left{
+            margin-bottom: -7px;
+        }
+
+    </style>
+
+    <div class="container" style='height:400px;overflow: scroll;'>
+        <div class="scrollbar" id="style-2">
+
+
+            <div class="inner" style='position: relative;height: auto;'>
+                <div class="date">
+                    <p contenteditable>11 июня</p>
+                </div>
+
+                
+
+            </div>
+        </div>
+
         <p contenteditable class="name">Иван Иванов</p>
 
-       
-       <div class="date">
-            <p contenteditable>11 июня</p>
-        </div>
-        
-       <div class="msgBlock">
-           <div class="message">
-            <p contenteditable>Текст</p>
-            <span contenteditable class="time">8:40</span>
-            <img class='leftArr' src="msgArrLeft.png" alt="">
-        </div>  
-       
-       </div>
-       
-       
-       <br>
-       
-       <div class="msgBlock">
-           <div class="message right">
-            <p contenteditable>Текст</p>
-            <span contenteditable class="time">8:40</span>
-            <img class='leftArr' src="msgArrLeft.png" alt="">
-            <img class='leftArr check' src="check.jpg" alt="">
-        </div>  
-        
-       </div>
-        
-        
+
+
+
 
 
     </div>
-    
-    <div class="control" style='position:absolute;right:30px;'>
+
+    <div class="control" style='position:absolute;right:30px;top:50px;'>
         <div class="addLeft"><img id='leftAdd' src="addLeft.png" alt=""></div>
         <div class="addRight"><img id='rightAdd' src="addRight.png" alt=""></div>
         <div class="addDate"><img id='dateAdd' style='margin-left:10px;' src="date.png" alt=""></div>
+        
+        <label for="left" class="btn">Выбрать картинку ВЛЕВО</label><br>
+        <input id='left' type='file' onchange="readURL(this);" />
+        <br>
+        
+        
+        <label for="right" class="btn">Выбрать картинку ВПРАВО</label><br>
+        <input id='right' type='file' onchange="readURLr(this);" />
+        
+        
+        
+        
     </div>
 
 </body>
@@ -196,24 +262,52 @@
 
 
 <script>
-    $('#leftAdd').click(function(){
-       console.log('Нажали добавить сообщение <слева');
-   
-    $(".container").append("<div class='msgBlock'>           <div class='message'>            <p contenteditable>НАЖМИТЕ ДЛЯ РЕДАКТИРОВАНИЯ</p>            <span contenteditable class='time'>8:40</span>            <img class='leftArr' src='msgArrLeft.png' alt=''></div></div>");
-        
+    $('#leftAdd').click(function() {
+        console.log('Нажали добавить сообщение <слева');
+
+        $(".inner").append("<div class='msgBlock left'>           <div class='message'>            <p contenteditable>НАЖМИТЕ ДЛЯ РЕДАКТИРОВАНИЯ</p>            <span contenteditable class='time'>8:40</span>            <img class='leftArr' src='msgArrLeft.png' alt=''></div></div>");
+
+    });
+
+    $('#rightAdd').click(function() {
+        console.log('Нажали добавить сообщение справа>');
+        $(".inner").append("<div class='msgBlock msgRight'>           <div class='message right'>            <p contenteditable>НАЖМИТЕ ДЛЯ РЕДАКТИРОВАНИЯ</p><span contenteditable class='time'>8:40</span>            <img class='leftArr' src='msgArrLeft.png' alt=''>            <img class='leftArr check' src='check.jpg' alt=''>        </div>  ");
+
+    });
+
+
+    $('#dateAdd').click(function() {
+        console.log('Нажали добавить дату');
+        $(".inner").append(" <div class='date'>            <p contenteditable>дата</p>        </div>");
     });
     
-    $('#rightAdd').click(function(){
-       console.log('Нажали добавить сообщение справа>');
-        $(".container").append("<div class='msgBlock'>           <div class='message right'>            <p contenteditable>НАЖМИТЕ ДЛЯ РЕДАКТИРОВАНИЯ</p><span contenteditable class='time'>8:40</span>            <img class='leftArr' src='msgArrLeft.png' alt=''>            <img class='leftArr check' src='check.jpg' alt=''>        </div>  ");
-        
-    });
-   
     
-     $('#dateAdd').click(function(){
-       console.log('Нажали добавить дату');
-         $(".container").append(" <div class='date'>            <p contenteditable>дата</p>        </div>");
-    });
+    
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $(".inner").append("<div class='msgBlock left'>           <div class='message'> <img src='" + e.target.result + "' alt=''>           <p contenteditable style='padding-top:0;'>НАЖМИТЕ ДЛЯ РЕДАКТИРОВАНИЯ</p>            <span contenteditable class='time'>8:40</span>            <img class='leftArr' src='msgArrLeft.png' alt=''></div></div>");
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    
+    function readURLr(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $(".inner").append("<div class='msgBlock msgRight'>           <div class='message right'>     <img src='" + e.target.result + "' alt=''>        <p style='padding-top:0;' contenteditable>НАЖМИТЕ ДЛЯ РЕДАКТИРОВАНИЯ</p><span contenteditable class='time'>8:40</span>            <img class='leftArr' src='msgArrLeft.png' alt=''>            <img class='leftArr check' src='check.jpg' alt=''>        </div>  ");
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
 </script>
 
 </html>
