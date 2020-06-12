@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        body {
+            background-image: url('back3.jpg');
+            background-repeat: no-repeat;
+            background-color: lightsteelblue;
+        }
+
+        p {
+            font-family: Calibri;
+        }
+
+        .name {
+            position: absolute;
+            top: 12px;
+            left: 26px;
+            font-style: normal;
+        }
+
+        .container {
+            margin-top: 73px;
+            width: 795px;
+        }
+
+        .message {
+            display: block;
+            width: fit-content;
+            max-width: 422px;
+            border-radius: 5px;
+            background-color: white;
+            margin-left: 16px;
+            margin-top:1%;
+            -webkit-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.21);
+            -moz-box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.21);
+            box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.21);
+        }
+
+
+        .message p {
+            font-size: 11pt;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-top: 12px;
+            letter-spacing: -0.1px;
+            margin-left: 13px;
+            padding-right: 50px;
+            padding-top: 7px;
+            padding-bottom: 8px;
+        }
+
+        .message span {
+            font-size: 10.4pt;
+            font-weight: 200;
+            font-family: Calibri;
+            color: #a0acb8;
+            position: relative;
+            top: -20px;
+            float: right;
+            margin-right: 10px;
+        }
+
+        .message .leftArr {
+            position: absolute;
+            margin-top: -12px;
+            margin-left: -7px;
+
+        }
+
+        .right {
+            float: right;
+            margin-right: 257px;
+            
+            background-color: #effdde;
+        }
+
+        .right p {
+            margin-top: 0;
+            padding-right: 75px !important;
+        }
+
+        .right img {
+            position: relative !important;
+            content: url('msgRightArr.png') !important;
+            margin-right: -7px;
+            float: right !important;
+            /* padding-right: 1px; */
+            transform: scaleX(-1);
+        }
+
+        .right span {
+            position: inherit;
+            top: inherit;
+            margin-right: 36px;
+            margin-top: -22px;
+            color: #6cc264;
+        }
+
+
+        .right .check {
+            content: url(check.jpg) !important;
+            margin-right: 7px;
+            position: absolute;
+            transform: scaleX(1);
+            margin-top: -21px;
+        }
+        
+        .date{
+            height:30px;
+            margin-top:10px;
+        }
+
+
+        .date p {
+            text-align: center;
+            float:left;
+            margin-left: 240px;
+            background: rgba(0, 0, 0, 0.4);
+            width: 79px;
+            padding: 2.5px;
+            color: white;
+            border-radius: 12px;
+            font-size: 11pt;
+        }
+        
+        .msgBlock{
+            float:left;
+            width:100%;
+            height:auto;
+        }
+      
+        .control img{
+            transition: .2s;
+            cursor: pointer;
+        }
+        
+        .control img:hover{
+            transform:scale(1.1);
+            transition:.2s;
+        }
+
+    </style>
+    <div class="container">
+        <p contenteditable class="name">Иван Иванов</p>
+
+       
+       <div class="date">
+            <p contenteditable>11 июня</p>
+        </div>
+        
+       <div class="msgBlock">
+           <div class="message">
+            <p contenteditable>ПроверкаПроверкаПроверкаПроверкаПроверкаПроверка</p>
+            <span contenteditable class="time">8:40</span>
+            <img class='leftArr' src="msgArrLeft.png" alt="">
+        </div>  
+       
+       </div>
+       
+       
+       <br>
+       
+       <div class="msgBlock">
+           <div class="message right">
+            <p contenteditable>asd</p>
+            <span class="time">8:40</span>
+            <img class='leftArr' src="msgArrLeft.png" alt="">
+            <img class='leftArr check' src="check.jpg" alt="">
+        </div>  
+        
+       </div>
+        
+        
+
+
+    </div>
+    
+    <div class="control" style='position:absolute;right:30px;'>
+        <div class="addLeft"><img id='leftAdd' src="addLeft.png" alt=""></div>
+        <div class="addRight"><img id='rightAdd' src="addRight.png" alt=""></div>
+        <div class="addDate"><img id='dateAdd' style='margin-left:10px;' src="date.png" alt=""></div>
+    </div>
+
+</body>
+
+<script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+
+
+<script>
+    $('#leftAdd').click(function(){
+       console.log('Нажали добавить сообщение <слева');
+   
+    $(".container").append("<div class='msgBlock'>           <div class='message'>            <p contenteditable>НАЖМИТЕ ДЛЯ РЕДАКТИРОВАНИЯ</p>            <span contenteditable class='time'>8:40</span>            <img class='leftArr' src='msgArrLeft.png' alt=''></div></div>");
+        
+    });
+    
+    $('#rightAdd').click(function(){
+       console.log('Нажали добавить сообщение справа>');
+        $(".container").append("<div class='msgBlock'>           <div class='message right'>            <p contenteditable>НАЖМИТЕ ДЛЯ РЕДАКТИРОВАНИЯ</p><span class='time'>8:40</span>            <img class='leftArr' src='msgArrLeft.png' alt=''>            <img class='leftArr check' src='check.jpg' alt=''>        </div>  ");
+        
+    });
+   
+    
+     $('#dateAdd').click(function(){
+       console.log('Нажали добавить дату');
+         $(".container").append(" <div class='date'>            <p contenteditable>дата</p>        </div>");
+    });
+</script>
+
+</html>
