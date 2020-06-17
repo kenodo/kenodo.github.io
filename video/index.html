@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta content="width=device-width, initial-scale=1" name="viewport" /></head>
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+</head>
 
 <body>
 
@@ -16,13 +18,13 @@
 
         .skipBtn {
             position: absolute;
-            right:2%;
-            bottom:2%;
+            right: 2%;
+            bottom: 2%;
             width: 30%;
             height: 15%;
             background-color: black;
             color: white;
-           
+
             font-size: 20pt;
             font-family: Arial;
             text-align: center;
@@ -32,35 +34,56 @@
             z-index: 999;
         }
 
-       
-        
-        
-        @media screen and (max-width:500px){
-             #player {
-            height:80%;
-            margin-top:10%;
-        }
-            
-            .skipBtn{
-                bottom:0;
-                right:0;
-                width:40%;
-                height:10%;
+
+
+
+        @media screen and (max-width:500px) {
+            #player {
+                height: 80%;
+                margin-top: 10%;
+            }
+
+            .skipBtn {
+                bottom: 21%;
+                right: 9%;
+                width: 40%;
+                height: 10%;
+                font-size: 7vw;
             }
         }
         
+    #wrapper {
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  background-color: black;
+}
+video#bgvid {
+  width: 100%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
         
+       video {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+
     </style>
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 
-   
-    <button class="skipBtn"><p id='skipBtnText'>5</p></button>
+
+    <button class="skipBtn">
+        <p id='skipBtnText'>5</p>
+    </button>
 
 
-    <div class="vidFromVimeo">
-
-    </div>
-
+   <div id="wrapper">
+  <video autoplay loop controls id="vidEl">
+    <source src="video.mp4" type="video/mp4" />
+  </video>
+</div>
 
 
 
@@ -70,11 +93,16 @@
 
     <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
     <script>
+     
+        
+        
+        
+      
         // переменные
 
         var youtubeVideoId = "M7lc1UVf-VE";
         var secondsCounting = 5;
-        var vimeoVideoUrl='https://player.vimeo.com/video/331466789';
+        var videoPath='video.mp4';
         //
         //
         //
@@ -83,7 +111,7 @@
 
 
         $('#skipBtnText').text(secondsCounting);
-        
+
         // 2. This code loads the IFrame Player API code asynchronously.
         var tag = document.createElement('script');
 
@@ -96,12 +124,15 @@
         var player;
 
         function onYouTubeIframeAPIReady() {
+            console.log($('#player').contents());
+            $('#player').contents().find('.ytp-cued-thumbnail-overlay-image').hide();
             player = new YT.Player('player', {
                 height: '100%',
                 width: '100%',
                 videoId: youtubeVideoId,
                 playerVars: {
-                    controls: 0
+                    controls: 0,
+                    fs: 0
                 },
                 events: {
                     'onReady': onPlayerReady,
@@ -134,12 +165,10 @@
 
         function skipAd() {
             console.log('skipping ad');
-            $('.vidFromVimeo').load('vimeo.html', function(){
-                $('#vimeoIframe').attr('src',vimeoVideoUrl+'?autoplay=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;');
-            });
-            
+            $('#vidEl').attr('src',videoPath);
             $('#player').hide();
             $('.skipBtn').hide();
+            $('#vidEl').show();
         }
 
         function updateTimer() {
@@ -159,11 +188,14 @@
                 clearInterval(interval);
             }
         }
-        
-        
-        $("iframe").click(function(){
-            alert('kek');
-        });
+
+
+      
+    </script>
+    
+    
+    <script>
+    
     </script>
 </body>
 
