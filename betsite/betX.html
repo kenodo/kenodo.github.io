@@ -40,35 +40,34 @@
 
 
         html {
-            zoom: .51;
+            zoom: .48;
         }
 
         body {
-            background: url(back.jpg);
+            background: url(backX.jpg);
             background-repeat: no-repeat;
         }
 
         .net {
-            font-size: 25.5px;
-            font-family: "Calibri";
+            font-size: 18px;
+            font-family: "SF Pro Text";
             color: white;
-            font-weight: 400;
+            font-weight: 600;
             line-height: 1.778;
             position: fixed;
-            left: 65px;
-            top: 1px;
+            left: 487px;
+            top: 24px;
             z-index: 999;
         }
 
-
         .time {
-            font-size: 22px;
+            font-size: 21.5px;
             font-family: "SF Pro Text";
             color: white;
             line-height: 2.286;
             position: fixed;
-            left: 325.734px;
-            top: -0.997px;
+            left: 56px;
+            top: 16.003px;
             z-index: 999;
             font-weight: 600;
         }
@@ -76,13 +75,14 @@
         .battery {
             font-size: 21px;
             font-family: "SF Pro Text";
-            color: white;
+            color: black;
             line-height: 2.286;
             position: fixed;
-            left: 576.734px;
-            top: 0.003px;
+            left: 663.734px;
+            top: 10.003px;
             letter-spacing: -1px;
             z-index: 999;
+
         }
 
 
@@ -100,18 +100,19 @@
 
         .batteryContainer {
             position: fixed;
-            left: 629.5px;
-            top: 17.503px;
+            left: 615.5px;
+            top: 40.503px;
             z-index: 999;
-            width: 37px;
+            width: 33px;
             height: 14px;
             overflow: hidden;
+            zoom: .856;
         }
 
 
         .bets-container {
             position: absolute;
-            top: 229px;
+            top: 218px;
             left: 14px;
             height: 973px;
             overflow: hidden;
@@ -123,19 +124,19 @@
             font-family: "SF Pro Text";
             color: #1a2f4c;
             position: absolute;
-            left: 206.5px;
-            margin-top: -256px;
+            left: 191.5px;
+            margin-top: -245px;
             z-index: 6;
         }
 
         .bet-date {
-            font-size: 24px;
+            font-size: 23px;
             font-family: "SF Pro Text";
             color: #233748;
             line-height: 2;
             position: absolute;
-            left: 181.453px;
-            margin-top: -212px;
+            left: 168.453px;
+            margin-top: -206px;
             z-index: 7;
             letter-spacing: -0.3px;
         }
@@ -146,48 +147,48 @@
             color: #263d4b;
             line-height: 1.6;
             position: absolute;
-            left: 98.891px;
-            margin-top: -158px;
+            left: 89.891px;
+            margin-top: -157px;
             z-index: 6;
             font-weight: 600;
 
         }
 
         .amount {
-            font-size: 28px;
+            font-size: 26px;
             font-family: "SF Pro Text";
             color: #0a1b35;
             line-height: 1.714;
             position: absolute;
-            margin-top: -160px;
+            margin-top: -157px;
             z-index: 7;
             float: right;
-            right: 94px;
+            right: 96px;
             font-weight: 600;
         }
 
         .jackpot {
-            font-size: 28px;
+            font-size: 26px;
             font-family: "SF Pro Text";
             color: #0a1b35;
             line-height: 1.714;
             position: absolute;
-            margin-top: -108px;
+            margin-top: -109px;
             z-index: 7;
             float: right;
-            right: 94px;
+            right: 95px;
             font-weight: 600;
         }
 
 
         .status {
-            font-size: 23.3px;
+            font-size: 22.5px;
             font-family: "SF Pro Text";
             color: #002442;
             line-height: 2;
             position: absolute;
-            left: 18.766px;
-            margin-top: -57px;
+            left: 16.766px;
+            margin-top: -60px;
             z-index: 6;
             font-weight: 600;
         }
@@ -220,14 +221,27 @@
             width: 300px;
             height: 100px;
         }
-        
-        .betHist{
-             position: absolute;
+
+        .betHist {
+            position: absolute;
             font-size: 27px;
             left: 900px;
             top: 350px;
             width: 300px;
             height: 100px;
+        }
+
+
+
+
+        .bet-item {
+            margin-top: -5px;
+            margin-left: -4px;
+
+        }
+
+        .bet-item p {
+            zoom: .84;
         }
 
     </style>
@@ -236,7 +250,7 @@
 
 
 
-    <span contenteditable class="net">MTS RUS 3G</span>
+    <span contenteditable class="net">LTE</span>
     <span contenteditable class="time">12:12</span>
 
 
@@ -250,13 +264,13 @@
 
     <div class="bets-container">
         <div class="bet-item">
-            <img src="bet1.jpg" alt="">
+            <img src="betX.jpg" alt="">
             <p contenteditable class="bet-number">11111111111</p>
-            <p contenteditable class="bet-date">20 июня (20:49)</p>
-            <p contenteditable class="betCo">20</p>
-            <p contenteditable class="amount">10 000 ₽</p>
-            <p contenteditable class="jackpot">200 000 ₽</p>
-            <p contenteditable class="status coloredGreen">Выплачена 200 000 ₽<span class='popup'>Нажмите, чтобы изменить цвет.</span></p>
+            <p contenteditable class="bet-date">10 июня 2020 (11:11)</p>
+            <p contenteditable class="betCo">10</p>
+            <p contenteditable class="amount">100 ₽</p>
+            <p contenteditable class="jackpot">1 000 ₽</p>
+            <p contenteditable class="status coloredGreen">Выплачена 1 000 ₽<span class='popup'>Нажмите, чтобы изменить цвет.</span></p>
 
         </div>
 
@@ -309,11 +323,11 @@
 
     $('.addBet').click(function() {
         console.log('addbet');
-        $('.bets-container').append('<div class="bet-item"><img src="bet2.jpg" alt=""><p contenteditable class="bet-number">11111111111</p>            <p contenteditable class="bet-date">20 июня (20:49)</p>           <p contenteditable class="betCo">20</p>            <p contenteditable class="amount">10 000 ₽</p>            <p contenteditable class="jackpot">200 000 ₽</p>            <p contenteditable class="status coloredGreen">Выплачена 200 000 ₽<span class="popup">Нажмите, чтобы изменить цвет.</span></p> </div>');
+        $('.bets-container').append('<div class="bet-item"><img src="betX.jpg" alt=""><p contenteditable class="bet-number">11111111111</p>            <p contenteditable class="bet-date">20 июня (20:49)</p>           <p contenteditable class="betCo">20</p>            <p contenteditable class="amount">10 000 ₽</p>            <p contenteditable class="jackpot">200 000 ₽</p>            <p contenteditable class="status coloredGreen">Выплачена 200 000 ₽<span class="popup">Нажмите, чтобы изменить цвет.</span></p> </div>');
     });
-    
-    $('.betHist').click(function(){
-        window.location.href = "hist.html";
+
+    $('.betHist').click(function() {
+        window.location.href = "hist.php";
     });
 
 </script>

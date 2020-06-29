@@ -44,7 +44,7 @@
         }
 
         body {
-            background: url(back.jpg);
+            background: url(back2.jpg);
             background-repeat: no-repeat;
         }
 
@@ -162,7 +162,7 @@
             margin-top: -160px;
             z-index: 7;
             float: right;
-            right: 94px;
+            right: 14px;
             font-weight: 600;
         }
 
@@ -175,7 +175,7 @@
             margin-top: -108px;
             z-index: 7;
             float: right;
-            right: 94px;
+            right: 14px;
             font-weight: 600;
         }
 
@@ -230,6 +230,84 @@
             height: 100px;
         }
 
+        
+        .typeOfGame {
+  font-size: 26px;
+  font-family: "SF Pro Text";
+  color: rgb(253, 255, 253);
+  line-height: 1.846;
+  position: absolute;
+  left: 79.469px;
+  top: 250.48px;
+  z-index: 5;
+}
+        
+        .match {
+  font-size: 26px;
+  font-family: "SF Pro Text";
+  color: rgb(28, 48, 92);
+  line-height: 1.846;
+  position: absolute;
+  left: 235.578px;
+  top: 305.48px;
+  z-index: 4;
+}
+        
+        .matchDate {
+  font-size: 25px;
+  font-family: "SF Pro Text";
+  color: rgb(28, 48, 92);
+  line-height: 1.92;
+  position: absolute;
+  left: 200.5px;
+  top: 343px;
+  z-index: 5;
+            
+}
+
+        
+        .betName {
+  font-size: 27px;
+  font-family: "SF Pro Text";
+  color: rgb(22, 52, 70);
+  line-height: 1.778;
+  position: absolute;
+  left: 18.266px;
+  top: 395px;
+  z-index: 4;
+            
+}
+        
+        .betStatus {
+  font-size: 24px;
+  font-family: "SF Pro Text";
+  color: rgb(46, 64, 90);
+  line-height: 2;
+  position: absolute;
+  left: 18.453px;
+   top: 470px;
+  z-index: 4;
+            
+}
+        
+        .betRes {
+  font-size: 24px;
+  font-family: "SF Pro Text";
+  color: black;
+  line-height: 2;
+  position: absolute;
+  left: 523.766px;
+  top: 470px;
+  z-index: 4;
+           
+}
+
+
+        .coloredGreen{
+            color:#709256;
+        }
+
+
     </style>
 
 
@@ -250,7 +328,7 @@
 
     <div class="bets-container">
         <div class="bet-item">
-            <img src="bet1.jpg" alt="">
+            <img src="betHist.jpg" alt="">
             <p contenteditable class="bet-number">11111111111</p>
             <p contenteditable class="bet-date">20 июня (20:49)</p>
             <p contenteditable class="betCo">20</p>
@@ -259,14 +337,25 @@
             <p contenteditable class="status coloredGreen">Выплачена 200 000 ₽<span class='popup'>Нажмите, чтобы изменить цвет.</span></p>
 
         </div>
+        
+        
+        <div class="bet-item" style='margin-top: -4px;'>
+            <img src="betHH.jpg" alt="">
+            <p contenteditable class="typeOfGame">Футбол</p>
+            <p contenteditable class="match">Матч 1-Матч 2</p>
+            <p contenteditable class="matchDate">10 июня 2020 (11:00)</p>
+            <p contenteditable class="betName">Ставка: Точный счет 0-0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</p>
+            
+            <p contenteditable class="betStatus">Счет: 0:0 (0:0,0:0)</p>
+            
+            <p contenteditable class="betRes">Выиграла</p>
+           
+        </div>
 
 
     </div>
 
 
-
-    <button class="addBet">Добавить ставку</button>
-    <button class="betHist">История ставки</button>
 
 
 </body>
@@ -297,8 +386,13 @@
     $('body').on('mouseout', '.status', function() {
         $(this).children('span').css('visibility', 'hidden');
     });
-
+    
     $('body').on('click', '.status', function() {
+        $(this).toggleClass('coloredGreen');
+    });
+
+
+    $('body').on('click', '.betRes', function() {
         $(this).toggleClass('coloredGreen');
     });
 
@@ -313,7 +407,7 @@
     });
     
     $('.betHist').click(function(){
-        window.location.href = "hist.html";
+        
     });
 
 </script>
