@@ -5,22 +5,40 @@ body {
   padding: 20px;
 }
 
-.video {
-  display: flex;
-  gap: 14px;
-  border-bottom: 1px solid #333;
+/* ⬅️ Изменения здесь: Сетка для контейнера ленты */
+#feed {
+  display: grid;
+  /* Резиновая сетка, элементы шириной не менее 250px */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px; /* Отступы между карточками */
   padding: 12px 0;
+}
+
+/* ⬅️ Изменения здесь: Карточка видео в сетке */
+.video {
+  /* Удаляем display: flex, border-bottom и gap, которые нужны были для строчного отображения */
+  border-bottom: none;
+  padding: 0;
+  display: block; /* Снова делаем его блочным элементом */
+  /* Ограничиваем максимальную ширину, чтобы сетка выглядела лучше на очень широких экранах */
+  max-width: 400px;
 }
 
 .thumb-wrap {
   position: relative;
-  width: 160px;
-  height: 90px;
+  /* Делаем высоту адаптивной (соотношение сторон 16:9) */
+  width: 100%;
+  padding-top: 56.25%; /* 9 / 16 = 0.5625 */
+  height: 0;
   cursor: pointer;
   flex-shrink: 0;
+  margin-bottom: 10px; /* Отступ после миниатюры */
 }
 
 .thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -42,16 +60,21 @@ body {
 .info {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px; /* Уменьшил gap для более компактной информации */
 }
 
 .title {
   font-size: 16px;
-  line-height: 1.3;
+  line-height: 1.4;
+  /* Может потребоваться ограничить количество строк, как на YouTube */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .meta {
-  font-size: 12px;
+  font-size: 14px; /* Немного увеличил размер */
   color: #888;
 }
 
@@ -59,12 +82,19 @@ a {
   color: #6cf;
   text-decoration: none;
   font-size: 13px;
+  margin-top: 4px; /* Отступ от мета-информации */
 }
 
 .player {
-  width: 160px;
-  height: 90px;
+  /* Чтобы плеер занимал всю ширину ячейки, как и thumb-wrap */
+  width: 100%;
+  /* Высота должна соответствовать соотношению 16:9, как у thumb-wrap */
+  height: 0;
+  padding-top: 56.25%;
   border: none;
   border-radius: 6px;
   flex-shrink: 0;
+  position: absolute; /* Позиционируем плеер внутри .thumb-wrap, который теперь имеет height: 0 */
+  top: 0;
+  left: 0;
 }
