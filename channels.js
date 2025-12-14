@@ -20,9 +20,11 @@ export const channels = [
     channelId: "UC4xkz9m8Q0y7yM9zXvQYx6A"
   },
   {
-  name: "Космос просто",
-  channelId: "UCp4bMZ4cQ3A6z1zZ1p6WZ9A"
+  name: "Береста",
+  channelId: "UCf-vHLevJIdQjm3t2fVUrjg"
 },
+
+
 
   // Космос и смежные
   { name: "Alpha Centauri", channelId: "UCi5iY9dF3vXqYQJzM8Z0W9A" },
