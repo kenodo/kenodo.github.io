@@ -5,11 +5,11 @@ export const channels = [
   },
   {
     name: "ЧД",
-    channelId: "UC9V0GJYw1JH0jYQJ9ZqzZ7A"
+    channelId: "UCzdhDZnwLa5_-xUletu1DhQ"
   },
   {
     name: "Чтиво",
-    channelId: "UCyPp8ZpM5W5hJ2L8XQyXQXg"
+    channelId: "UCeKCxQDv6lWDSzuqUXGtMRA"
   },
   {
     name: "Файб",
