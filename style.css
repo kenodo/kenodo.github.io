@@ -6,12 +6,48 @@ body {
 }
 
 .video {
+  display: flex;
+  gap: 14px;
   border-bottom: 1px solid #333;
-  padding: 10px 0;
+  padding: 12px 0;
+}
+
+.thumb-wrap {
+  position: relative;
+  width: 160px;
+  height: 90px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: white;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 6px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .title {
   font-size: 16px;
+  line-height: 1.3;
 }
 
 .meta {
@@ -22,4 +58,13 @@ body {
 a {
   color: #6cf;
   text-decoration: none;
+  font-size: 13px;
+}
+
+.player {
+  width: 160px;
+  height: 90px;
+  border: none;
+  border-radius: 6px;
+  flex-shrink: 0;
 }
