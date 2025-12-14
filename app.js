@@ -3,7 +3,7 @@ import { channels } from "./channels.js";
 const feed = document.getElementById("feed");
 
 // CORS-прокси
-const CORS_PROXY = "https://r.jina.ai/http://";
+const CORS_PROXY = "https://";
 
 // ---------- RSS helpers ----------
 
