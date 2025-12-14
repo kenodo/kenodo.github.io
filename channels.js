@@ -13,7 +13,7 @@ export const channels = [
   },
   {
     name: "Файб",
-    channelId: "UCpHk7tQJpZ5M8gK7y9zPZ0A"
+    channelId: "UUCGjqnAIqvrWts_pm4hLe5Eg"
   },
   {
     name: "Репич",
