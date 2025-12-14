@@ -2,14 +2,14 @@ import { channels } from "./channels.js";
 
 const feed = document.getElementById("feed");
 
-const CORS_PROXY = "https://api.allorigins.win/raw?url=";
+const CORS_PROXY = "https://r.jina.ai/http://";
 
 async function loadChannel(channel) {
-  const rssUrl =
-    "https://www.youtube.com/feeds/videos.xml?channel_id=" +
-    channel.channelId;
+const rssUrl =
+  "www.youtube.com/feeds/videos.xml?channel_id=" +
+  channel.channelId;
 
-  const url = CORS_PROXY + encodeURIComponent(rssUrl);
+const url = CORS_PROXY + rssUrl;
 
   const res = await fetch(url);
   const text = await res.text();
