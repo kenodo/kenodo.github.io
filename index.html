@@ -23,16 +23,19 @@
       border-radius: 20px;
       backdrop-filter: blur(10px);
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-width: 320px;
     }
 
     h1 {
       margin-bottom: 20px;
       font-weight: 500;
+      font-size: 20px;
     }
 
     button {
-      padding: 15px 30px;
-      font-size: 18px;
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 16px;
       border: none;
       border-radius: 12px;
       background: linear-gradient(135deg, #4facfe, #00f2fe);
@@ -49,25 +52,71 @@
     button:active {
       transform: scale(0.97);
     }
+
+    .hint {
+      margin-top: 15px;
+      font-size: 12px;
+      opacity: 0.7;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(0,0,0,0.8);
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Готово к подключению</h1>
-    <button onclick="connect()">Подключиться</button>
+    <h1>Скопируй и импортируй в v2rayNG</h1>
+    <button onclick="copyConfig()">Скопировать подключение</button>
+    <div class="hint">Затем: v2rayNG → Import config → Paste</div>
   </div>
 
+  <div id="toast" class="toast">Скопировано 👌</div>
+
   <script>
-    // Base64-обфускация
-    const encoded = "djJyYXluZzovLzI0MDQxMWFjLWM2NTAtNGJjZS04YTg3LTAxNDNhZjZlYjc1NkA0Ni4xNDkuNjYuNDg6NDQzP3NlY3VyaXR5PXJlYWxpdHkmc25pPWFwaS5lbm90ZXMucHJvJmZwPWNocm9tZSZwYms9Y1o2YmJDWllPOU5sM2RqRVM4cXE0VjJJcUNQcmZGQWNpdUlUTFhDOURMUXMmc2lkPWE4JnNweD0vJnR5cGU9Z3JwYyZlbmNyeXB0aW9uPW5vbmUjdGltZXdlYi1ydQ=="
+    // base64 обфускация
+    const encoded = "dmxlc3M6Ly8yNDA0MTFhYy1jNjUwLTRiY2UtOGE4Ny0wMTQzYWY2ZWI3NTZANDYuMTQ5LjY2LjQ4OjQ0Mz9zZWN1cml0eT1yZWFsaXR5JnNuaT1hcGkuZW5vdGVzLnBybyZmcD1jaHJvbWUmcGJrPWNaNmJiQ1pZTzlObDNkakVTOHFxNFYySXFDUHJmRkFjaXVJVExYQzlMUXMmc2lkPWE4JnNweD0vJnR5cGU9Z3JwYyZlbmNyeXB0aW9uPW5vbmUjdGltZXdlYi1ydQ==";
+
     function decode(str) {
       return atob(str);
     }
 
-    function connect() {
-      const url = decode(encoded);
-      console.log(url);
-      window.location.href = url;
+    function showToast() {
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 1500);
+    }
+
+    async function copyConfig() {
+      const text = decode(encoded);
+
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast();
+      } catch (e) {
+        // fallback
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showToast();
+      }
     }
   </script>
 </body>
