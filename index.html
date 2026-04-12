@@ -130,7 +130,7 @@ function resize() {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 
-const threshold = () => W * 0.6;
+const threshold = () => W * 0.5;
 
     
     const sources = [
@@ -153,14 +153,14 @@ sources.forEach(src => {
     resize();
 
     const icons = [];
-    const COUNT = 65;
+    const COUNT = 40;
 
     for (let i = 0; i < COUNT; i++) {
 
       
       icons.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
+        x: Math.random() * W, // Используем W вместо canvas.width
+        y: Math.random() * H, // Используем H вместо canvas.height
         speed: 0.5 + Math.random() * 0.7,
         size: 40,
         img: images[Math.floor(Math.random() * images.length)]
