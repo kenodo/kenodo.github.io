@@ -89,6 +89,12 @@
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
+
+
+    .buttonApp{
+      margin-top: 10px;
+      background: linear-gradient(135deg, #d84ffe, #feb300);
+    }
   </style>
 </head>
 <body>
@@ -97,6 +103,7 @@
   <div class="container">
     <h1>Скопируй и импортируй в v2rayNG</h1>
     <button onclick="copyConfig()">Скопировать подключение</button>
+    <button class="buttonApp" onclick="openApp()">Открыть в приложении</button>
     <div class="hint">Затем: v2rayNG → Import config → Paste</div>
   </div>
 
@@ -184,8 +191,11 @@ sources.forEach(src => {
     draw();
 
     // base64 обфускация
+    
     const encoded = "dmxlc3M6Ly8yNDA0MTFhYy1jNjUwLTRiY2UtOGE4Ny0wMTQzYWY2ZWI3NTZANDYuMTQ5LjY2LjQ4OjQ0Mz9zZWN1cml0eT1yZWFsaXR5JnNuaT1hcGkuZW5vdGVzLnBybyZmcD1jaHJvbWUmcGJrPWNaNmJiQ1pZTzlObDNkakVTOHFxNFYySXFDUHJmRkFjaXVJVExYQzlMUXMmc2lkPWE4JnNweD0vJnR5cGU9Z3JwYyZlbmNyeXB0aW9uPW5vbmUjdGltZXdlYi1ydQ==";
-
+    const encodedDeep = "djJyYXluZzovL2luc3RhbGwtY29uZmlnLz91cmw9dmxlc3MlM0ElMkYlMkYyNDA0MTFhYy1jNjUwLTRiY2UtOGE4Ny0wMTQzYWY2ZWI3NTYlNDA0Ni4xNDkuNjYuNDglM0E0NDMlM0ZzZWN1cml0eSUzRHJlYWxpdHklMjZzbmklM0RhcGkuZW5vdGVzLnBybyUyNmZwJTNEY2hyb21lJTI2cGJrJTNEY1o2YmJDWllPOU5sM2RqRVM4cXE0VjJJcUNQcmZGQWNpdUlUTFhDOUxRcyUyNnNpZCUzRGE4JTI2c3B4JTNEJTJGJTI2dHlwZSUzRGdycGMlMjZlbmNyeXB0aW9uJTNEbm9uZSUyM3RpbWV3ZWItcnU=";
+  
+  
     function decode(str) {
       return atob(str);
     }
@@ -194,6 +204,19 @@ sources.forEach(src => {
       const t = document.getElementById('toast');
       t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 1500);
+    }
+
+
+    function openApp() {
+      const url = atob(encodedDeep);
+
+      // пробуем открыть
+      window.location.href = url;
+
+      // fallback если не сработало
+      setTimeout(() => {
+        showToast("Не удалось открыть. Попробуй вручную или скопируй.");
+      }, 1500);
     }
 
     async function copyConfig() {
