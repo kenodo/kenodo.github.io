@@ -113,10 +113,26 @@
     const canvas = document.getElementById('bg');
     const ctx = canvas.getContext('2d');
 
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
+    let W, H;
+
+function resize() {
+  const dpr = window.devicePixelRatio || 1;
+
+  W = window.innerWidth;
+  H = window.innerHeight;
+
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+
+  canvas.style.width = W + "px";
+  canvas.style.height = H + "px";
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+const threshold = () => W * 0.6;
+
+    
     const sources = [
       "icons/telegram.png",
       "icons/youtube.png",
@@ -151,7 +167,7 @@ sources.forEach(src => {
       });
     }
 
-    const threshold = () => canvas.width * 0.6;
+
 
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
