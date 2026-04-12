@@ -1,14 +1,75 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>YouTube RSS</title>
-  <link rel="stylesheet" href="./style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Подключение</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1e1e2f, #2b5876);
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+      padding: 40px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+  </style>
 </head>
 <body>
-  <h1>YouTube без YouTube</h1>
-  <div id="feed"></div>
+  <div class="container">
+    <h1>Готово к подключению</h1>
+    <button onclick="connect()">Подключиться</button>
+  </div>
 
-  <script type="module" src="./app.js"></script>
+  <script>
+    // Base64-обфускация
+    const encoded = "dmxlc3M6Ly8yNDA0MTFhYy1jNjUwLTRiY2UtOGE4Ny0wMTQzYWY2ZWI3NTZANDYuMTQ5LjY2LjQ4OjQ0Mz9zZWN1cml0eT1yZWFsaXR5JnNuaT1hcGkuZW5vdGVzLnBybyZmcD1jaHJvbWUmcGJrPWNaNmJiQ1pZTzlObDNkakVTOHFxNFYySXFDUHJmRkFjaXVJVExYQzlMUXMmc2lkPWE4JnNweD0vJnR5cGU9Z3JwYyZlbmNyeXB0aW9uPW5vbmUjdGltZXdlYi1ydQ==";
+
+    function decode(str) {
+      return atob(str);
+    }
+
+    function connect() {
+      const url = decode(encoded);
+      console.log(url);
+      window.location.href = url;
+    }
+  </script>
 </body>
 </html>
