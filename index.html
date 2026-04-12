@@ -114,8 +114,15 @@
     const ctx = canvas.getContext('2d');
 
     function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
     const sources = [
@@ -138,7 +145,7 @@ sources.forEach(src => {
     resize();
 
     const icons = [];
-    const COUNT = 40;
+    const COUNT = 30;
 
     for (let i = 0; i < COUNT; i++) {
 
@@ -147,7 +154,7 @@ sources.forEach(src => {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         speed: 0.3 + Math.random() * 0.7,
-        size: 30,
+        size: 40,
         img: images[Math.floor(Math.random() * images.length)]
       });
     }
